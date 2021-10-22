@@ -21,6 +21,9 @@ AvengersChat is a demo application based on modern Android tech stacks and Strea
 <img src="/previews/preview2.gif" width="32%"/>
 </p>
 
+## Download
+Go to the [Releases](https://github.com/skydoves/AvengersChat/releases) to download the latest APK.
+
 <img src="https://user-images.githubusercontent.com/24237865/138428440-b92e5fb7-89f8-41aa-96b1-71a5486c5849.png" align="right" width="12%"/>
 
 
