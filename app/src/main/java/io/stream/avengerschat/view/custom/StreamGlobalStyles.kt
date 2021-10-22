@@ -20,6 +20,10 @@ import androidx.annotation.ColorInt
 import io.getstream.chat.android.ui.StyleTransformer
 import io.getstream.chat.android.ui.TransformStyle
 
+/**
+ * StreamGlobalStyles unify the styles of the Stream UI components by using the
+ * global style transformer [TransformStyle].
+ */
 object StreamGlobalStyles {
 
     init {
@@ -31,6 +35,9 @@ object StreamGlobalStyles {
             }
     }
 
+    /**
+     * updates and unifies the Stream UI components color themes.
+     */
     fun updateGlobalStylePrimaryColor(@ColorInt color: Int) {
         TransformStyle.channelListStyleTransformer =
             StyleTransformer { channelListStyle ->

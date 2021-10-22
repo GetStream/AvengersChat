@@ -45,8 +45,9 @@ class ChannelListFragment :
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding.vm = viewModel
-        return binding.root
+        return binding {
+            vm = viewModel
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,12 +56,8 @@ class ChannelListFragment :
         binding {
             streamChannelListUIComponent.bindLayout(root)
 
-            channelListView.setChannelItemClickListener { channel ->
-                findNavController().navigate(
-                    ChannelListFragmentDirections.actionToFragmentMessageList(
-                        channel.cid, null
-                    )
-                )
+            channelListHeaderView.setOnUserAvatarClickListener {
+                UserInfoDialogFragment().show(parentFragmentManager, UserInfoDialogFragment.TAG)
             }
 
             channelListHeaderView.setOnActionButtonClickListener {
@@ -70,8 +67,12 @@ class ChannelListFragment :
                 )
             }
 
-            channelListHeaderView.setOnUserAvatarClickListener {
-                UserInfoDialogFragment().show(parentFragmentManager, UserInfoDialogFragment.TAG)
+            channelListView.setChannelItemClickListener { channel ->
+                findNavController().navigate(
+                    ChannelListFragmentDirections.actionToFragmentMessageList(
+                        channel.cid, null
+                    )
+                )
             }
         }
     }

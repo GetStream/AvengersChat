@@ -49,6 +49,7 @@ class MentionsFragment : BindingFragment<FragmentMentionsBinding>(R.layout.fragm
         binding {
             // initializes and bind layouts to Stream mention list UI components.
             viewModel.bindView(mentionsListView, viewLifecycleOwner)
+
             mentionsListView.setMentionSelectedListener { message ->
                 findNavController().navigate(
                     MentionsFragmentDirections.actionToFragmentMessageList(
