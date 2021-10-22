@@ -49,6 +49,7 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
   - App Startup - Provides a straightforward, performant way to initialize components at application startup.
 - Architecture
   - MVVM Architecture (View - DataBinding - ViewModel - Model)
+  - [Bindables](https://github.com/skydoves/bindables) - Android DataBinding kit for notifying data changes to UI layers.
   - Repository pattern
 - [Material Design & Animations](https://material.io/design) - Design system created by Google to help teams build high-quality digital experiences.
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - Construct the REST APIs and paging network data.
