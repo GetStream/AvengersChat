@@ -62,7 +62,7 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 - [Timber](https://github.com/JakeWharton/timber) - Logging.
 
 ## Join and share your funny moments! 😄
-Join and share your funny moments in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
+If you find some funny moments on this demo application, feel free to join and share that moment in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
 <p align="center">
 <img src="https://user-images.githubusercontent.com/24237865/138444812-8a9eea62-5543-42f6-96bb-635fa365b3ab.jpg" width="32%"/>
 <img src="https://user-images.githubusercontent.com/24237865/138444814-2cddcecc-e5ed-4d3f-8aca-6148cf315bb4.jpg" width="32%"/>
