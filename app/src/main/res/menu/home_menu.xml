@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragment_live"
+        android:icon="@drawable/ic_live"
+        android:title="@string/tab_live" />
+
+    <item
+        android:id="@+id/fragment_channel_list"
+        android:icon="@drawable/ic_bubble"
+        android:title="@string/tab_chat" />
+
+    <item
+        android:id="@+id/fragment_mentions"
+        android:icon="@drawable/ic_mention"
+        android:title="@string/tab_mention" />
+</menu>

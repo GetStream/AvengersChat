@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="io.stream.avengerschat.view.main.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="io.stream.avengerschat.view.main.AvengersAdapter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:context=".view.ui.main.MainActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo_stream"
+            android:layout_width="160dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/stream"
+            app:layout_constraintEnd_toStartOf="@id/logo_marvel"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo_marvel"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/marvel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/logo_stream"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/greeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/choose_your_hero"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/stream_ui_black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_stream" />
+
+        <View
+            android:id="@+id/pointView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/triangle"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H,1:1.2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.yarolegovich.discretescrollview.DiscreteScrollView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adapter="@{adapter}"
+            android:nestedScrollingEnabled="true"
+            app:adapterAvengers="@{vm.avengers}"
+            app:bindOnItemChanged="@{adapter}"
+            app:bindOnItemChangedBackground="@{pointView}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greeting"
+            tools:listitem="@layout/item_avenger" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

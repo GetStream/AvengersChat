@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Avengers Chat</string>
+    <string name="choose_your_hero">Choose your hero</string>
+    <string name="live">Live</string>
+    <string name="live_featured">Featured Live</string>
+    <string name="direct_message">Direct Message</string>
+    <string name="stream_channel_header_active">Active %s</string>
+    <string name="stream_channel_header_active_now">just now</string>
+
+    <string name="tab_live">Live</string>
+    <string name="tab_chat">Chat</string>
+    <string name="tab_mention">Mentions</string>
+
+    <string name="database">Avengers.db</string>
+    <string name="stream_api_key">uwg4ggudgjz9</string>
+</resources>

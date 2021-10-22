@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="bottom_navigation_height">60dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="badge_horizontal_offset">8dp</dimen>
+    <dimen name="badge_vertical_offset">6dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+</resources>
