@@ -60,8 +60,17 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 - [DiscreteScrollView](https://github.com/yarolegovich/DiscreteScrollView) - Implementing a scrollable list of items.
 - [Timber](https://github.com/JakeWharton/timber) - Logging.
 
+## Join and share your funny moments! 😄
+Join and share your funny moments in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24237865/138444812-8a9eea62-5543-42f6-96bb-635fa365b3ab.jpg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/138444814-2cddcecc-e5ed-4d3f-8aca-6148cf315bb4.jpg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/138444817-04f6f833-4856-4733-aab2-dd3d7223093d.jpg" width="32%"/>
+</p>
+
 ## MAD Score
 ![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
+
 
 ## Find this repository useful? 💙
 Support it by joining __[stargazers](https://github.com/skydoves/AvengersChat/stargazers)__ for this repository. :star: <br>
