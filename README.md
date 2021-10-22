@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">  
-AvengersChat is a demo application based on modern Android tech stacks and Stream's Chat SDK.
+AvengersChat is a demo application based on modern Android tech stacks and Stream Chat SDK.
 </br>
 
 <p align="center">
@@ -20,14 +20,16 @@ AvengersChat is a demo application based on modern Android tech stacks and Strea
 <img src="/previews/preview2.gif" width="32%"/>
 </p>
 
+<img src="https://user-images.githubusercontent.com/24237865/138428440-b92e5fb7-89f8-41aa-96b1-71a5486c5849.png" align="right" width="12%"/>
+
 
 ## Stream Chat SDK
 AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for implementing messaging systems.
 - [Chat Messaging Tutorial](https://getstream.io/tutorials/android-chat/) - Basic tutorials for getting started by building a simple messaging app.
 - [Stream Chat Android repository](https://github.com/GetStream/stream-chat-android) - Official Android SDK for Stream Chat.
-- [UI Components Sample](https://github.com/GetStream/stream-chat-android/tree/main/stream-chat-android-ui-components-sample) - Official sample app for building messeging app. 
+- [Chat Client Documentation](https://getstream.io/chat/docs/android/?language=kotlin) - Full documentation of the Chat client for requesting API calls. 
 - [UI Components Documentation](https://getstream.io/chat/docs/sdk/android/) - Full documentation of the Stream UI Components.
-- [Chat Client Documentation](https://getstream.io/chat/docs/android/?language=kotlin) - Full documentation of the Chat client for requesting API calls.
+- [UI Components Sample](https://github.com/GetStream/stream-chat-android/tree/main/stream-chat-android-ui-components-sample) - Official sample app for building messeging app.
 
 
 <img src="/previews/preview0.gif" align="right" width="32%"/>
