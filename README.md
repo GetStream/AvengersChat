@@ -63,7 +63,8 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 ## MAD Score
 ![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
 
-
+## Find this repository useful? 💙
+Support it by joining __[stargazers](https://github.com/skydoves/AvengersChat/stargazers)__ for this repository. :star: <br>
 
 # License
 ```xml
