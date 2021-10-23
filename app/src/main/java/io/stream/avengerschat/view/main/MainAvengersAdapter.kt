@@ -27,7 +27,7 @@ import io.stream.avengerschat.extensions.adapterPositionOrNull
 import io.stream.avengerschat.model.Avenger
 import io.stream.avengerschat.view.home.HomeActivity
 
-class AvengersAdapter : ListAdapter<Avenger, AvengersAdapter.AvengersViewHolder>(DIFF_CALLBACK) {
+class MainAvengersAdapter : ListAdapter<Avenger, MainAvengersAdapter.AvengersViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AvengersViewHolder {
         return AvengersViewHolder(parent.binding(R.layout.item_avenger))

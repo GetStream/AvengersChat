@@ -11,7 +11,7 @@
 
         <variable
             name="adapter"
-            type="io.stream.avengerschat.view.main.AvengersAdapter" />
+            type="io.stream.avengerschat.view.main.MainAvengersAdapter" />
 
     </data>
 

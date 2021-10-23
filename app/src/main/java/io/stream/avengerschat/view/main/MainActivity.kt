@@ -33,7 +33,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
         binding {
-            adapter = AvengersAdapter()
+            adapter = MainAvengersAdapter()
             vm = viewModel
         }
     }
