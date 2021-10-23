@@ -133,11 +133,13 @@ object ViewBinding {
 
     @JvmStatic
     @BindingAdapter("channelListHeader")
-    fun bindChannelListHeader(channelListHeaderView: ChannelListHeaderView, user: User) {
-        channelListHeaderView.apply {
-            setUser(user)
-            showOnlineTitle()
-            setOnlineTitle(context.getString(R.string.app_name))
+    fun bindChannelListHeader(channelListHeaderView: ChannelListHeaderView, user: User?) {
+        if (user != null) {
+            channelListHeaderView.apply {
+                setUser(user)
+                showOnlineTitle()
+                setOnlineTitle(context.getString(R.string.app_name))
+            }
         }
     }
 

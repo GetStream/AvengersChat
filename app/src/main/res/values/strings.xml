@@ -11,6 +11,8 @@
     <string name="tab_chat">Chat</string>
     <string name="tab_mention">Mentions</string>
 
+    <string name="placeholder_error">Something went wrong:\n %s</string>
+
     <string name="database">Avengers.db</string>
     <string name="stream_api_key">uwg4ggudgjz9</string>
 </resources>

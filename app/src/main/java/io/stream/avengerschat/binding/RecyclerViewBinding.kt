@@ -30,13 +30,13 @@ import io.stream.avengerschat.model.LiveRoomInfo
 import io.stream.avengerschat.view.custom.StreamGlobalStyles
 import io.stream.avengerschat.view.dm.DirectMessageAdapter
 import io.stream.avengerschat.view.live.LiveAdapter
-import io.stream.avengerschat.view.main.AvengersAdapter
+import io.stream.avengerschat.view.main.MainAvengersAdapter
 
 object RecyclerViewBinding {
     @JvmStatic
     @BindingAdapter("adapterAvengers")
     fun bindAdapterPosterList(view: DiscreteScrollView, posters: List<Avenger>?) {
-        (view.adapter as? AvengersAdapter)?.submitList(posters)
+        (view.adapter as? MainAvengersAdapter)?.submitList(posters)
         view.setItemTransformer(
             ScaleTransformer.Builder()
                 .setMaxScale(1.25f)
@@ -59,7 +59,7 @@ object RecyclerViewBinding {
 
     @JvmStatic
     @BindingAdapter("bindOnItemChanged", "bindOnItemChangedBackground")
-    fun bindOnItemChanged(view: DiscreteScrollView, adapter: AvengersAdapter, pointView: View) {
+    fun bindOnItemChanged(view: DiscreteScrollView, adapter: MainAvengersAdapter, pointView: View) {
         view.addOnItemChangedListener { viewHolder, _ ->
             val position = viewHolder?.adapterPositionOrNull ?: return@addOnItemChangedListener
             if (position >= 0 && position < adapter.itemCount) {
