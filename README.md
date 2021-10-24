@@ -61,7 +61,17 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 - [DiscreteScrollView](https://github.com/yarolegovich/DiscreteScrollView) - Implementing a scrollable list of items.
 - [Timber](https://github.com/JakeWharton/timber) - Logging.
 
-## Join and share your funny moments! 😄
+## Supported features
+- Light and Dark themes.
+- Different color themes by a chosen character.
+- 100% offline mode supports.
+- Live stream chat example.
+- Channel and message lists.
+- Direct and group messages.
+- Mentioned message list.
+- User info & direct message dialogs.
+
+## Chat screenshots
 If you find some funny moments on this demo application, feel free to join and share that moment in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
 <p align="center">
 <img src="https://user-images.githubusercontent.com/24237865/138444812-8a9eea62-5543-42f6-96bb-635fa365b3ab.jpg" width="32%"/>
