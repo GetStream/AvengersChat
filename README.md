@@ -61,15 +61,28 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 - [DiscreteScrollView](https://github.com/yarolegovich/DiscreteScrollView) - Implementing a scrollable list of items.
 - [Timber](https://github.com/JakeWharton/timber) - Logging.
 
+<img src="/previews/preview3.gif" align="right" width="32%"/>
+
 ## Supported features
 - Light and Dark themes.
 - Different color themes by a chosen character.
 - 100% offline mode supports.
 - Live stream chat example.
 - Channel and message lists.
-- Direct and group messages.
+- Direct message and group messages.
 - Mentioned message list.
+- User online/offline status.
+- User last active date.
 - User info & direct message dialogs.
+- Visual animations like transition.
+- And a lot of features by Stream Android SDK!
+
+## TODO
+- [ ] Creating group chats by selecting users.
+- [ ] Access user info dialog everywhere.
+- [ ] Login with a new custom hero.
+- [ ] Push notifications for new messages.
+- [ ] Add unit test cases for all business logic.
 
 ## Chat screenshots
 If you find some funny moments on this demo application, feel free to join and share that moment in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
