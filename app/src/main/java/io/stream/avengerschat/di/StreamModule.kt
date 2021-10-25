@@ -37,11 +37,27 @@ object StreamModule {
     fun provideStreamChatClient(
         @ApplicationContext context: Context
     ): ChatClient {
-        return ChatClient.Builder(context.getString(R.string.stream_api_key), context)
-            .logLevel(ChatLogLevel.ALL)
-            .build().also { client ->
-                ChatDomain.Builder(client, context).build()
-            }
+        /**
+         * initialize a global instance of the [ChatClient].
+         * The ChatClient is the main entry point for all low-level operations on chat.
+         * e.g, connect/disconnect user to the server, send/update/pin message, etc.
+         */
+        val chatClient: ChatClient =
+            ChatClient.Builder(context.getString(R.string.stream_api_key), context)
+                .logLevel(ChatLogLevel.ALL)
+                .build()
+
+        /**
+         * initialize a global instance of the [ChatDomain].
+         * The ChatDomain is the main entry point for all livedata & offline operations on chat.
+         * e.g, querying available channel lists, querying users, etc.
+         */
+        ChatDomain
+            .Builder(chatClient, context)
+            .offlineEnabled()
+            .build()
+
+        return chatClient
     }
 
     @Provides
