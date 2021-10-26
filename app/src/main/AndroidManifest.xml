@@ -34,7 +34,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="io.stream.avengerschat.initializer.TimberInitializer"
+                android:name="io.stream.avengerschat.initializer.StreamGlobalStyleInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

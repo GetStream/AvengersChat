@@ -14,24 +14,22 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.extensions
+@file:Suppress("unused")
+
+package io.stream.avengerschat.initializer
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import androidx.annotation.ColorRes
-import androidx.annotation.DimenRes
-import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
+import androidx.startup.Initializer
+import io.stream.avengerschat.view.custom.StreamGlobalStyles
+import timber.log.Timber
 
-fun Context.color(@ColorRes resource: Int): Int {
-    return ContextCompat.getColor(this, resource)
-}
+class StreamGlobalStyleInitializer : Initializer<Unit> {
 
-fun Context.dimensionPixelSize(@DimenRes id: Int): Int {
-    return resources.getDimensionPixelSize(id)
-}
+    override fun create(context: Context) {
+        StreamGlobalStyles.initializeReactionsGlobalStyles(context)
+        Timber.d("StreamGlobalStyleInitializer is initialized")
+    }
 
-fun Context.drawable(@DrawableRes resource: Int): Drawable {
-    return ResourcesCompat.getDrawable(resources, resource, null)!!
+    override fun dependencies(): List<Class<out Initializer<*>>> =
+        listOf(TimberInitializer::class.java)
 }
