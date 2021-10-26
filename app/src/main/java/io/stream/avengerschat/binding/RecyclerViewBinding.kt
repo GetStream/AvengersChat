@@ -68,7 +68,7 @@ object RecyclerViewBinding {
                 pointView.startCircularReveal(parsedColor)
 
                 // updates global styles of the stream chat lists.
-                StreamGlobalStyles.updateGlobalStylePrimaryColor(parsedColor)
+                StreamGlobalStyles.updatePrimaryColorGlobalStyles(parsedColor)
             }
         }
     }
