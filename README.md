@@ -71,6 +71,7 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 - Channel and message lists.
 - Direct message and group messages.
 - Mentioned message list.
+- Custom emoji reactions.
 - User online/offline status.
 - User last active date.
 - User info & direct message dialogs.
