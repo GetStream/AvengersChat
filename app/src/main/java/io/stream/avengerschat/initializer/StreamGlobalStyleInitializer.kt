@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
+@file:Suppress("unused")
+
 package io.stream.avengerschat.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import io.stream.avengerschat.BuildConfig
+import io.stream.avengerschat.view.custom.StreamGlobalStyles
 import timber.log.Timber
 
-class TimberInitializer : Initializer<Unit> {
+class StreamGlobalStyleInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-            Timber.d("TimberInitializer is initialized")
-        }
+        StreamGlobalStyles.initializeReactionsGlobalStyles(context)
+        Timber.d("StreamGlobalStyleInitializer is initialized")
     }
 
-    override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
+    override fun dependencies(): List<Class<out Initializer<*>>> =
+        listOf(TimberInitializer::class.java)
 }
