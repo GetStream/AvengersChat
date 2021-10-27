@@ -82,25 +82,18 @@ object StreamGlobalStyles {
      * updates and unifies the Stream UI components reaction data.
      */
     fun initializeReactionsGlobalStyles(context: Context) {
-        val thumbsUp = context.drawable(R.drawable.thumbsup)
-        val love = context.drawable(R.drawable.love)
-        val smile = context.drawable(R.drawable.smile)
-        val joy = context.drawable(R.drawable.joy)
-        val wink = context.drawable(R.drawable.wink)
-
-        val supportedReactionsData = mapOf(
-            THUMBS_UP to SupportedReactions.ReactionDrawable(thumbsUp, thumbsUp),
-            LOVE to SupportedReactions.ReactionDrawable(love, love),
-            SMILE to SupportedReactions.ReactionDrawable(smile, smile),
-            JOY to SupportedReactions.ReactionDrawable(joy, joy),
-            WINK to SupportedReactions.ReactionDrawable(wink, wink),
-        )
+        val supportedReactionsData = reactions.mapValues {
+            val drawable = context.drawable(it.value)
+            SupportedReactions.ReactionDrawable(drawable, drawable)
+        }
         ChatUI.supportedReactions = SupportedReactions(context, supportedReactionsData)
     }
 
-    private const val THUMBS_UP: String = "like"
-    private const val LOVE: String = "love"
-    private const val SMILE: String = "smile"
-    private const val JOY: String = "joy"
-    private const val WINK: String = "wink"
+    private val reactions: Map<String, Int> = mapOf(
+        "like" to R.drawable.thumbsup,
+        "love" to R.drawable.love,
+        "smile" to R.drawable.smile,
+        "joy" to R.drawable.joy,
+        "wink" to R.drawable.wink
+    )
 }
