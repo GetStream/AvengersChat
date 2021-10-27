@@ -93,6 +93,10 @@ If you find some funny moments on this demo application, feel free to join and s
 <img src="https://user-images.githubusercontent.com/24237865/138444817-04f6f833-4856-4733-aab2-dd3d7223093d.jpg" width="32%"/>
 </p>
 
+## Architecture
+![architecture-android-stream](https://user-images.githubusercontent.com/24237865/138990023-98e21858-534a-4607-addf-cf828139ccd2.jpg)
+
+
 ## MAD Score
 ![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
 
