@@ -79,6 +79,7 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 - And a lot of features by Stream Android SDK!
 
 ## TODO
+Anyone can contribute to our open source project! Please kindly read this [Contributing Guideline](https://github.com/skydoves/AvengersChat/blob/main/CONTRIBUTING.md) before contributing to our project. 😎
 - [ ] Creating group chats by selecting users.
 - [ ] Access user info dialog everywhere.
 - [ ] Login with a new custom hero.
