@@ -43,6 +43,13 @@ val Avenger.extraData: MutableMap<String, Any>
         EXTRA_IMAGE to getProfileImage()
     )
 
+fun Avenger.extraData(newProfileUrl: String): MutableMap<String, Any> {
+    return mutableMapOf(
+        EXTRA_NAME to name,
+        EXTRA_IMAGE to newProfileUrl
+    )
+}
+
 val Avenger.parsedColor: Int
     inline get() = Color.parseColor(color)
 

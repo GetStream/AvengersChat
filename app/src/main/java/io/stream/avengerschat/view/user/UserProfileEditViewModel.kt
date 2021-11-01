@@ -16,15 +16,25 @@
 
 package io.stream.avengerschat.view.user
 
+import android.webkit.URLUtil
 import androidx.databinding.Bindable
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.bindingProperty
-import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
+import io.stream.avengerschat.model.Avenger
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flatMapLatest
 import timber.log.Timber
-import javax.inject.Inject
 
-@HiltViewModel
-class UserProfileEditViewModel @Inject constructor() : BindingViewModel() {
+class UserProfileEditViewModel @AssistedInject constructor(
+    private val userProfileEditRepository: UserProfileEditRepository,
+    @Assisted private val avenger: Avenger,
+) : BindingViewModel() {
 
     @get:Bindable
     var sendEnabled: Boolean by bindingProperty(false)
@@ -32,7 +42,34 @@ class UserProfileEditViewModel @Inject constructor() : BindingViewModel() {
     @get:Bindable
     var profileUrl: String? by bindingProperty(null)
 
+    private val _sendUrlSateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val sendUrlSateFlow: StateFlow<Boolean> = _sendUrlSateFlow
+    val updatedUser = sendUrlSateFlow.filter { it && profileUrl != null }.flatMapLatest {
+        userProfileEditRepository.updateUser(avenger, profileUrl!!)
+    }
+
     init {
         Timber.d("injection UserProfileEditViewModel")
+    }
+
+    fun sendUrl() {
+        _sendUrlSateFlow.value = URLUtil.isNetworkUrl(profileUrl)
+    }
+
+    @dagger.assisted.AssistedFactory
+    interface AssistedFactory {
+        fun create(avenger: Avenger): UserProfileEditViewModel
+    }
+
+    companion object {
+        fun provideFactory(
+            assistedFactory: AssistedFactory,
+            avenger: Avenger
+        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return assistedFactory.create(avenger) as T
+            }
+        }
     }
 }

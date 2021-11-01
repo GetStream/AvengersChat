@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.home
+package io.stream.avengerschat.view.user
 
 import androidx.annotation.WorkerThread
 import io.getstream.chat.android.client.ChatClient
@@ -22,40 +22,21 @@ import io.getstream.chat.android.client.call.await
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
 import io.stream.avengerschat.extensions.extraData
-import io.stream.avengerschat.extensions.liveRoomInfo
 import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.persistence.AvengersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
 
-class HomeRepository @Inject constructor(
+class UserProfileEditRepository @Inject constructor(
     private val chatClient: ChatClient,
-    private val avengersDao: AvengersDao,
     private val dispatcher: CoroutineDispatcher,
 ) {
 
     init {
-        Timber.d("injection HomeRepository")
+        Timber.d("injection UserProfileEditRepository")
     }
-
-    /**
-     * Connects a specific user using the given user token to the Stream client server.
-     * This connection will keep maintained until be disconnected.
-     */
-    @WorkerThread
-    fun connectUser(avenger: Avenger) = flow {
-        val user = User(
-            id = avenger.id,
-            extraData = avenger.extraData
-        )
-        val result = chatClient.connectUser(user, avenger.token).await()
-        result.onSuccessSuspend {
-            emit(result.data())
-        }
-    }.flowOn(dispatcher)
 
     /**
      * Updates a specific user for updating the new profile image.
@@ -70,22 +51,5 @@ class HomeRepository @Inject constructor(
         result.onSuccessSuspend {
             emit(result.data())
         }
-    }.flowOn(dispatcher)
-
-    /**
-     * Disconnect a current connected user from the Stream client server.
-     */
-    fun disconnectUser() {
-        chatClient.disconnect()
-    }
-
-    /**
-     * gets live room information list from the local database.
-     */
-    @WorkerThread
-    fun getLiveRoomInfo(avenger: Avenger) = flow {
-        val avengers = avengersDao.getAvengers()
-        val liveRoomInfo = avengers.filterNot { it.id == avenger.id }.map { it.liveRoomInfo }
-        emit(liveRoomInfo)
     }.flowOn(dispatcher)
 }

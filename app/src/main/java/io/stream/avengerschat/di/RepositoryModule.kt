@@ -27,6 +27,7 @@ import io.stream.avengerschat.persistence.AvengersDao
 import io.stream.avengerschat.view.dm.DirectMessageRepository
 import io.stream.avengerschat.view.home.HomeRepository
 import io.stream.avengerschat.view.main.MainRepository
+import io.stream.avengerschat.view.user.UserProfileEditRepository
 import kotlinx.coroutines.CoroutineDispatcher
 
 @Module
@@ -60,5 +61,14 @@ object RepositoryModule {
         dispatcher: CoroutineDispatcher
     ): DirectMessageRepository {
         return DirectMessageRepository(chatClient, dispatcher)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideUserProfileEditRepository(
+        chatClient: ChatClient,
+        dispatcher: CoroutineDispatcher
+    ): UserProfileEditRepository {
+        return UserProfileEditRepository(chatClient, dispatcher)
     }
 }

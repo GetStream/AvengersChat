@@ -20,21 +20,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
 import io.stream.avengerschat.extensions.doOnUrlTextChanged
 import io.stream.avengerschat.view.home.HomeViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class UserProfileEditDialogFragment :
     BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
 
     private val homeViewModel: HomeViewModel by activityViewModels()
-    private val editViewModel: UserProfileEditViewModel by viewModels()
+
+    @Inject
+    internal lateinit var editModelFactory: UserProfileEditViewModel.AssistedFactory
+    private val editViewModel: UserProfileEditViewModel by viewModels {
+        UserProfileEditViewModel.provideFactory(editModelFactory, homeViewModel.avenger)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,12 +70,22 @@ class UserProfileEditDialogFragment :
             profileEditText.doOnUrlTextChanged {
                 editViewModel.sendEnabled = it
             }
+
             enter.setOnClickListener {
                 val editable = profileEditText.text
                 editViewModel.profileUrl = editable.toString()
                 editable?.clear()
             }
+
             update.setOnClickListener {
+                editViewModel.sendUrl()
+            }
+        }
+
+        lifecycleScope.launch {
+            editViewModel.updatedUser.collect {
+                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                dismissAllowingStateLoss()
             }
         }
     }
