@@ -19,6 +19,7 @@ package io.stream.avengerschat.binding
 import android.app.Activity
 import android.view.View
 import android.view.WindowManager
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
@@ -41,6 +42,7 @@ import io.getstream.chat.android.ui.avatar.AvatarView
 import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
 import io.stream.avengerschat.R
 import io.stream.avengerschat.extensions.color
+import io.stream.avengerschat.extensions.drawable
 import io.stream.avengerschat.extensions.setBadgeNumber
 
 object ViewBinding {
@@ -158,5 +160,17 @@ object ViewBinding {
             .build()
 
         youTubePlayerView.initialize(playListener, false, playerOptions)
+    }
+
+    @JvmStatic
+    @BindingAdapter("sendUrlBtn")
+    fun bindSendUrlButton(imageButton: AppCompatImageButton, enabled: Boolean) {
+        val context = imageButton.context
+        imageButton.isEnabled = enabled
+        imageButton.background = if (enabled) {
+            context.drawable(R.drawable.shape_circle)
+        } else {
+            context.drawable(R.drawable.shape_circle_disabled)
+        }
     }
 }

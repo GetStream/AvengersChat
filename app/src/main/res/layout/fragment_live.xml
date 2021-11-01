@@ -49,7 +49,7 @@
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:onlineIndicator="@{vm.connectionData.user}"
+                app:onlineIndicator="@{vm.user}"
                 app:streamUiAvatarBorderWidth="0dp"
                 app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
                 app:streamUiAvatarOnlineIndicatorEnabled="true"

@@ -34,7 +34,7 @@ class DirectMessageViewModel @Inject constructor(
         by directMessageRepository.queryAvengers().asBindingProperty(null)
 
     init {
-        Timber.d("initialize DirectMessageViewMode")
+        Timber.d("injection DirectMessageViewMode")
     }
 
     fun joinNewChannel(user: User) = directMessageRepository.joinNewChannel(user)

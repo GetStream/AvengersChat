@@ -29,7 +29,7 @@ import io.stream.avengerschat.databinding.FragmentLiveBinding
 import io.stream.avengerschat.extensions.liveRoomInfo
 import io.stream.avengerschat.model.LiveRoomInfo
 import io.stream.avengerschat.view.home.HomeViewModel
-import io.stream.avengerschat.view.user.UserInfoDialogFragment
+import io.stream.avengerschat.view.user.UserProfileDialogFragment
 
 @AndroidEntryPoint
 class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live) {
@@ -44,6 +44,7 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
             adapter = LiveAdapter(::navigateToStream)
+            lifecycleOwner = viewLifecycleOwner
             vm = homeViewModel
         }.root
     }
@@ -56,7 +57,8 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
         }
 
         binding.avatar.setOnClickListener {
-            UserInfoDialogFragment().show(parentFragmentManager, UserInfoDialogFragment.TAG)
+            UserProfileDialogFragment.create()
+                .show(parentFragmentManager, UserProfileDialogFragment.TAG)
         }
     }
 

@@ -14,64 +14,51 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.home
+package io.stream.avengerschat.view.user
 
+import android.webkit.URLUtil
 import androidx.databinding.Bindable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.skydoves.bindables.BindingViewModel
-import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import io.getstream.chat.android.client.models.ConnectionData
-import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.livedata.ChatDomain
-import io.stream.avengerschat.extensions.parsedColor
 import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.model.LiveRoomInfo
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flatMapLatest
 import timber.log.Timber
 
-class HomeViewModel @AssistedInject constructor(
-    private val homeRepository: HomeRepository,
-    chatDomain: ChatDomain,
-    @Assisted val avenger: Avenger,
+class UserProfileEditViewModel @AssistedInject constructor(
+    private val userProfileEditRepository: UserProfileEditRepository,
+    @Assisted private val avenger: Avenger,
 ) : BindingViewModel() {
 
     @get:Bindable
-    val connectionData: ConnectionData?
-        by homeRepository.connectUser(avenger).asBindingProperty(null)
+    var sendEnabled: Boolean by bindingProperty(false)
 
     @get:Bindable
-    val liveRoomInfoList: List<LiveRoomInfo>?
-        by homeRepository.getLiveRoomInfo(avenger).asBindingProperty(null)
+    var profileUrl: String? by bindingProperty(null)
 
-    @get:Bindable
-    val parsedColor: Int by bindingProperty(avenger.parsedColor)
-
-    @get:Bindable
-    var visibleBottomNav: Boolean by bindingProperty(true)
-
-    val user: LiveData<User?> = chatDomain.user
-
-    val totalUnreadCount: LiveData<Int> = chatDomain.totalUnreadCount
-
-    init {
-        Timber.d("injection HomeViewModel")
+    private val _sendUrlSateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val sendUrlSateFlow: StateFlow<Boolean> = _sendUrlSateFlow
+    val updatedUser = sendUrlSateFlow.filter { it && profileUrl != null }.flatMapLatest {
+        userProfileEditRepository.updateUser(avenger, profileUrl!!)
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    init {
+        Timber.d("injection UserProfileEditViewModel")
+    }
 
-        // disconnects user login status.
-        homeRepository.disconnectUser()
+    fun sendUrl() {
+        _sendUrlSateFlow.value = URLUtil.isNetworkUrl(profileUrl)
     }
 
     @dagger.assisted.AssistedFactory
     interface AssistedFactory {
-        fun create(avenger: Avenger): HomeViewModel
+        fun create(avenger: Avenger): UserProfileEditViewModel
     }
 
     companion object {

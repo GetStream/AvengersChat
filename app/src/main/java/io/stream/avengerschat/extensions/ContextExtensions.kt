@@ -18,6 +18,7 @@ package io.stream.avengerschat.extensions
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -35,3 +36,6 @@ fun Context.dimensionPixelSize(@DimenRes id: Int): Int {
 fun Context.drawable(@DrawableRes resource: Int): Drawable {
     return ResourcesCompat.getDrawable(resources, resource, null)!!
 }
+
+fun Context.getInputMethodManager() =
+    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

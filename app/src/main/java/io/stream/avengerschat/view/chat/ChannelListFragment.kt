@@ -30,7 +30,7 @@ import io.stream.avengerschat.components.streamChannelListComponent
 import io.stream.avengerschat.databinding.FragmentChannelListBinding
 import io.stream.avengerschat.view.dm.DirectMessageDialogFragment
 import io.stream.avengerschat.view.home.HomeViewModel
-import io.stream.avengerschat.view.user.UserInfoDialogFragment
+import io.stream.avengerschat.view.user.UserProfileDialogFragment
 
 @AndroidEntryPoint
 class ChannelListFragment :
@@ -46,6 +46,7 @@ class ChannelListFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
+            lifecycleOwner = viewLifecycleOwner
             vm = viewModel
         }.root
     }
@@ -57,7 +58,7 @@ class ChannelListFragment :
             streamChannelListUIComponent.bindLayout(root)
 
             channelListHeaderView.setOnUserAvatarClickListener {
-                UserInfoDialogFragment().show(parentFragmentManager, UserInfoDialogFragment.TAG)
+                UserProfileDialogFragment.create().show(parentFragmentManager, UserProfileDialogFragment.TAG)
             }
 
             channelListHeaderView.setOnActionButtonClickListener {

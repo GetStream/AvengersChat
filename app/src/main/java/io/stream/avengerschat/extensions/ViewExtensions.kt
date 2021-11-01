@@ -18,10 +18,13 @@ package io.stream.avengerschat.extensions
 
 import android.view.View
 import android.view.ViewAnimationUtils
+import android.webkit.URLUtil
 import androidx.annotation.ColorInt
 import androidx.annotation.IdRes
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.stream.avengerschat.R
 import kotlin.math.hypot
@@ -50,4 +53,15 @@ fun BottomNavigationView.setBadgeNumber(@IdRes menuItemId: Int, badgeNumber: Int
         isVisible = badgeNumber > 0
         number = badgeNumber
     }
+}
+
+inline fun AppCompatEditText.doOnUrlTextChanged(crossinline block: (Boolean) -> Unit) {
+    doAfterTextChanged {
+        val url = it.toString()
+        block(URLUtil.isNetworkUrl(url))
+    }
+}
+
+fun View.hideSoftInputFromWindow() {
+    context.getInputMethodManager().hideSoftInputFromWindow(this.windowToken, 0)
 }

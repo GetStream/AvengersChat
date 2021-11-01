@@ -4,6 +4,9 @@
     <string name="live">Live</string>
     <string name="live_featured">Featured Live</string>
     <string name="direct_message">Direct Message</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_profile_updated">Profile has been updated</string>
+    <string name="enter_edit_profile_url">Enter your profile url</string>
     <string name="stream_channel_header_active">Active %s</string>
     <string name="stream_channel_header_active_now">just now</string>
 

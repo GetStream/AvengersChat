@@ -40,7 +40,7 @@ class DirectMessageRepository @Inject constructor(
 ) {
 
     init {
-        Timber.d("initialize DirectMessageRepository")
+        Timber.d("injection DirectMessageRepository")
     }
 
     /**
