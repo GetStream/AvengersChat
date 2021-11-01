@@ -29,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
 import io.stream.avengerschat.extensions.doOnUrlTextChanged
+import io.stream.avengerschat.extensions.hideSoftInputFromWindow
 import io.stream.avengerschat.view.home.HomeViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -72,6 +73,7 @@ class UserProfileEditDialogFragment :
             }
 
             enter.setOnClickListener {
+                root.hideSoftInputFromWindow()
                 val editable = profileEditText.text
                 editViewModel.profileUrl = editable.toString()
                 editable?.clear()

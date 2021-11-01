@@ -61,3 +61,7 @@ inline fun AppCompatEditText.doOnUrlTextChanged(crossinline block: (Boolean) -> 
         block(URLUtil.isNetworkUrl(url))
     }
 }
+
+fun View.hideSoftInputFromWindow() {
+    context.getInputMethodManager().hideSoftInputFromWindow(this.windowToken, 0)
+}
