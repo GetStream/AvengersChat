@@ -57,7 +57,7 @@ class ChannelListFragment :
             streamChannelListUIComponent.bindLayout(root)
 
             channelListHeaderView.setOnUserAvatarClickListener {
-                UserProfileDialogFragment().show(parentFragmentManager, UserProfileDialogFragment.TAG)
+                UserProfileDialogFragment.create().show(parentFragmentManager, UserProfileDialogFragment.TAG)
             }
 
             channelListHeaderView.setOnActionButtonClickListener {

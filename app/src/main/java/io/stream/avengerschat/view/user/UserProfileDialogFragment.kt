@@ -53,12 +53,17 @@ class UserProfileDialogFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.edit.setOnClickListener {
-            UserProfileEditDialogFragment().show(parentFragmentManager, UserProfileEditDialogFragment.TAG)
+            UserProfileEditDialogFragment.create().show(
+                requireActivity().supportFragmentManager,
+                UserProfileEditDialogFragment.TAG
+            )
             dismissAllowingStateLoss()
         }
     }
 
     companion object {
         const val TAG = "UserInfoDialogFragment"
+
+        fun create() = UserProfileDialogFragment()
     }
 }

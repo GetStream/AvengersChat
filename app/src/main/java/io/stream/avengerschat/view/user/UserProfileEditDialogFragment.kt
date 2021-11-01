@@ -21,17 +21,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.skydoves.bindables.BindingDialogFragment
+import androidx.fragment.app.viewModels
+import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
+import io.stream.avengerschat.extensions.doOnUrlTextChanged
 import io.stream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
 class UserProfileEditDialogFragment :
-    BindingDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
+    BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
+    private val editViewModel: UserProfileEditViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,11 +48,27 @@ class UserProfileEditDialogFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
-            vm = viewModel
+            vm = editViewModel
         }.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding {
+            profileEditText.doOnUrlTextChanged {
+                editViewModel.profileUrl = it
+            }
+            enter.setOnClickListener {
+                editViewModel.profileUrl = null
+                profileEditText.text?.clear()
+            }
+        }
     }
 
     companion object {
         const val TAG = "UserInfoDialogEditFragment"
+
+        fun create() = UserProfileEditDialogFragment()
     }
 }

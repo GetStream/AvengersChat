@@ -14,28 +14,22 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.dm
+package io.stream.avengerschat.view.user
 
 import androidx.databinding.Bindable
 import com.skydoves.bindables.BindingViewModel
-import com.skydoves.bindables.asBindingProperty
+import com.skydoves.bindables.bindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.getstream.chat.android.client.models.User
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class DirectMessageViewModel @Inject constructor(
-    private val directMessageRepository: DirectMessageRepository
-) : BindingViewModel() {
+class UserProfileEditViewModel @Inject constructor() : BindingViewModel() {
 
     @get:Bindable
-    val queriedAvengers: List<User>?
-        by directMessageRepository.queryAvengers().asBindingProperty(null)
+    var profileUrl: String? by bindingProperty(null)
 
     init {
-        Timber.d("injection DirectMessageViewMode")
+        Timber.d("injection UserProfileEditViewModel")
     }
-
-    fun joinNewChannel(user: User) = directMessageRepository.joinNewChannel(user)
 }

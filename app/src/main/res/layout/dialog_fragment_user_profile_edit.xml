@@ -1,19 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.home.HomeViewModel" />
+            type="io.stream.avengerschat.view.user.UserProfileEditViewModel" />
+
+        <import type="android.webkit.URLUtil" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        tools:background="@color/background">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_sheet_dialog"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:text="@string/edit_profile"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/stream_ui_black"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textAllCaps="true" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/profile_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:gravity="center"
+                android:hint="@string/enter_edit_profile_url"
+                android:textColor="@color/stream_ui_black"
+                android:textColorHint="@color/stream_ui_grey"
+                android:textCursorDrawable="@null"
+                app:layout_constraintEnd_toStartOf="@id/enter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edit_profile" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/enter"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/shape_circle_disabled"
+                android:enabled="false"
+                android:focusable="true"
+                android:padding="6dp"
+                android:rotation="180"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintBottom_toBottomOf="@id/profile_edit_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/profile_edit_text"
+                app:layout_constraintTop_toTopOf="@id/profile_edit_text"
+                app:sendUrlBtn="@{URLUtil.isNetworkUrl(vm.profileUrl)}"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

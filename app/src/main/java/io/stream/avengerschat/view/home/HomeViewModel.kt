@@ -56,7 +56,7 @@ class HomeViewModel @AssistedInject constructor(
     val totalUnreadCount: LiveData<Int> = chatDomain.totalUnreadCount
 
     init {
-        Timber.d("initialize HomeViewModel")
+        Timber.d("injection HomeViewModel")
     }
 
     @dagger.assisted.AssistedFactory

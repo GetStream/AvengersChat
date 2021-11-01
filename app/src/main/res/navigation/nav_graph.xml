@@ -18,6 +18,15 @@
             app:popEnterAnim="@anim/nav_enter_anim"
             app:popExitAnim="@anim/nav_exit_anim"
             app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_to_fragment_user_profile_edit"
+            app:destination="@id/fragment_user_profile_edit"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
