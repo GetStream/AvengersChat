@@ -24,12 +24,12 @@ import androidx.fragment.app.activityViewModels
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentUserInfoBinding
+import io.stream.avengerschat.databinding.DialogFragmentUserProfileBinding
 import io.stream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
-class UserInfoDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentUserInfoBinding>(R.layout.dialog_fragment_user_info) {
+class UserProfileDialogFragment :
+    BindingBottomSheetDialogFragment<DialogFragmentUserProfileBinding>(R.layout.dialog_fragment_user_profile) {
 
     private val viewModel: HomeViewModel by activityViewModels()
 
