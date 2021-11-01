@@ -55,11 +55,9 @@ fun BottomNavigationView.setBadgeNumber(@IdRes menuItemId: Int, badgeNumber: Int
     }
 }
 
-inline fun AppCompatEditText.doOnUrlTextChanged(crossinline block: (String) -> Unit) {
+inline fun AppCompatEditText.doOnUrlTextChanged(crossinline block: (Boolean) -> Unit) {
     doAfterTextChanged {
         val url = it.toString()
-        if (URLUtil.isNetworkUrl(url)) {
-            block(url)
-        }
+        block(URLUtil.isNetworkUrl(url))
     }
 }

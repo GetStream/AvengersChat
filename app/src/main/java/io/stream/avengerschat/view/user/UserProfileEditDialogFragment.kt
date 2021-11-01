@@ -48,6 +48,7 @@ class UserProfileEditDialogFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
+            homeVm = homeViewModel
             vm = editViewModel
         }.root
     }
@@ -57,11 +58,14 @@ class UserProfileEditDialogFragment :
 
         binding {
             profileEditText.doOnUrlTextChanged {
-                editViewModel.profileUrl = it
+                editViewModel.sendEnabled = it
             }
             enter.setOnClickListener {
-                editViewModel.profileUrl = null
-                profileEditText.text?.clear()
+                val editable = profileEditText.text
+                editViewModel.profileUrl = editable.toString()
+                editable?.clear()
+            }
+            update.setOnClickListener {
             }
         }
     }

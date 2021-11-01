@@ -27,6 +27,9 @@ import javax.inject.Inject
 class UserProfileEditViewModel @Inject constructor() : BindingViewModel() {
 
     @get:Bindable
+    var sendEnabled: Boolean by bindingProperty(false)
+
+    @get:Bindable
     var profileUrl: String? by bindingProperty(null)
 
     init {

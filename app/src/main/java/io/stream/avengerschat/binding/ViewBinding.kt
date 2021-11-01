@@ -166,6 +166,7 @@ object ViewBinding {
     @BindingAdapter("sendUrlBtn")
     fun bindSendUrlButton(imageButton: AppCompatImageButton, enabled: Boolean) {
         val context = imageButton.context
+        imageButton.isEnabled = enabled
         imageButton.background = if (enabled) {
             context.drawable(R.drawable.shape_circle)
         } else {
