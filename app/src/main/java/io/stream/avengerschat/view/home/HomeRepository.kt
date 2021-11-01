@@ -58,21 +58,6 @@ class HomeRepository @Inject constructor(
     }.flowOn(dispatcher)
 
     /**
-     * Updates a specific user for updating the new profile image.
-     */
-    @WorkerThread
-    fun updateUser(avenger: Avenger, newProfileUrl: String) = flow {
-        val user = User(
-            id = avenger.id,
-            extraData = avenger.extraData(newProfileUrl)
-        )
-        val result = chatClient.updateUser(user).await()
-        result.onSuccessSuspend {
-            emit(result.data())
-        }
-    }.flowOn(dispatcher)
-
-    /**
      * Disconnect a current connected user from the Stream client server.
      */
     fun disconnectUser() {

@@ -84,7 +84,8 @@ class UserProfileEditDialogFragment :
 
         lifecycleScope.launch {
             editViewModel.updatedUser.collect {
-                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.edit_profile_updated, Toast.LENGTH_SHORT)
+                    .show()
                 dismissAllowingStateLoss()
             }
         }
