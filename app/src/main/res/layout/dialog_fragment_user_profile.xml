@@ -101,5 +101,16 @@
             app:streamUiAvatarOnlineIndicatorPosition="topRight"
             tools:src="@tools:sample/avatars" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

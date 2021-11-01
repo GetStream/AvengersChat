@@ -21,22 +21,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.skydoves.bindables.BindingBottomSheetDialogFragment
+import com.skydoves.bindables.BindingDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentUserProfileBinding
+import io.stream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
 import io.stream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
-class UserProfileDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentUserProfileBinding>(R.layout.dialog_fragment_user_profile) {
+class UserProfileEditDialogFragment :
+    BindingDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
 
     private val viewModel: HomeViewModel by activityViewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,16 +44,7 @@ class UserProfileDialogFragment :
         }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.edit.setOnClickListener {
-            UserProfileEditDialogFragment().show(parentFragmentManager, UserProfileEditDialogFragment.TAG)
-            dismissAllowingStateLoss()
-        }
-    }
-
     companion object {
-        const val TAG = "UserInfoDialogFragment"
+        const val TAG = "UserInfoDialogEditFragment"
     }
 }

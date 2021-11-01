@@ -99,4 +99,14 @@
             app:popUpToInclusive="true" />
     </fragment>
 
+    <fragment
+        android:id="@+id/fragment_user_profile"
+        android:name="io.stream.avengerschat.view.user.UserProfileDialogFragment"
+        tools:layout="@layout/dialog_fragment_user_profile" />
+
+    <fragment
+        android:id="@+id/fragment_user_profile_edit"
+        android:name="io.stream.avengerschat.view.user.UserProfileEditDialogFragment"
+        tools:layout="@layout/dialog_fragment_user_profile_edit" />
+
 </navigation>
