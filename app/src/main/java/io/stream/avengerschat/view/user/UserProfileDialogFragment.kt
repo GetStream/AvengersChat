@@ -45,6 +45,7 @@ class UserProfileDialogFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
+            lifecycleOwner = viewLifecycleOwner
             vm = viewModel
         }.root
     }

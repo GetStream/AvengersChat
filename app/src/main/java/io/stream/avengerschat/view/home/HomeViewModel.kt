@@ -27,6 +27,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import io.getstream.chat.android.client.models.ConnectionData
+import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.livedata.ChatDomain
 import io.stream.avengerschat.extensions.parsedColor
 import io.stream.avengerschat.model.Avenger
@@ -52,6 +53,8 @@ class HomeViewModel @AssistedInject constructor(
 
     @get:Bindable
     var visibleBottomNav: Boolean by bindingProperty(true)
+
+    val user: LiveData<User?> = chatDomain.user
 
     val totalUnreadCount: LiveData<Int> = chatDomain.totalUnreadCount
 

@@ -48,6 +48,7 @@ class MessageListFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
+            lifecycleOwner = viewLifecycleOwner
             vm = homeViewModel
         }.root
     }

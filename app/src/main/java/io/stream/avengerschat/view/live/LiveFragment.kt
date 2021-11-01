@@ -44,6 +44,7 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
             adapter = LiveAdapter(::navigateToStream)
+            lifecycleOwner = viewLifecycleOwner
             vm = homeViewModel
         }.root
     }
@@ -56,7 +57,8 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
         }
 
         binding.avatar.setOnClickListener {
-            UserProfileDialogFragment.create().show(parentFragmentManager, UserProfileDialogFragment.TAG)
+            UserProfileDialogFragment.create()
+                .show(parentFragmentManager, UserProfileDialogFragment.TAG)
         }
     }
 
