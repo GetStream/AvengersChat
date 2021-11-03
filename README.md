@@ -91,9 +91,9 @@ Anyone can contribute to our open source project! Please kindly read this [Contr
 ## Chat screenshots
 If you find some funny moments on this demo application, feel free to join and share that moment in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
 <p align="center">
-<img src="https://user-images.githubusercontent.com/24237865/138444812-8a9eea62-5543-42f6-96bb-635fa365b3ab.jpg" width="32%"/>
-<img src="https://user-images.githubusercontent.com/24237865/138444814-2cddcecc-e5ed-4d3f-8aca-6148cf315bb4.jpg" width="32%"/>
-<img src="https://user-images.githubusercontent.com/24237865/138444817-04f6f833-4856-4733-aab2-dd3d7223093d.jpg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/139976413-675a3b32-1edf-4bfc-b600-a8ffb734f1ec.jpeg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/139976435-5da608b9-e453-47c0-be78-73f0039b4ab1.jpeg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/139976345-dedc9c4c-2140-4fbc-9d02-7d815380d900.jpeg" width="32%"/>
 </p>
 
 ## Architecture
