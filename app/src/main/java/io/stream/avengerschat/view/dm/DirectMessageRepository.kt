@@ -23,6 +23,7 @@ import io.getstream.chat.android.client.call.await
 import io.getstream.chat.android.client.models.Filters
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
+import io.stream.avengerschat.extensions.EXTRA_TEAM
 import io.stream.avengerschat.extensions.currentUserId
 import io.stream.avengerschat.network.Api.STREAM_CHANNEL_TYPE_MESSAGING
 import io.stream.avengerschat.network.Api.STREAM_USER_ID
@@ -52,6 +53,7 @@ class DirectMessageRepository @Inject constructor(
             filter = Filters.and(
                 Filters.ne(STREAM_USER_ID, chatClient.currentUserId),
                 Filters.ne(STREAM_USER_ROLE, STREAM_USER_ROLE_ADMIN),
+                Filters.exists(EXTRA_TEAM),
             ),
             offset = 0,
             limit = 20,
