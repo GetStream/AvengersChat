@@ -36,7 +36,7 @@ class MainAvengersAdapter constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return when (viewType) {
             ItemViewType.HERO.viewType -> AvengersViewHolder(parent.binding(R.layout.item_avenger))
-            ItemViewType.GUEST.viewType -> YouViewHolder(parent.binding(R.layout.item_guest))
+            ItemViewType.GUEST.viewType -> GuestViewHolder(parent.binding(R.layout.item_guest))
             else -> throw IllegalArgumentException("Wrong viewType: $viewType")
         }
     }
@@ -75,7 +75,7 @@ class MainAvengersAdapter constructor(
         }
     }
 
-    inner class YouViewHolder(binding: ItemGuestBinding) : CharacterViewHolder(binding) {
+    inner class GuestViewHolder(binding: ItemGuestBinding) : CharacterViewHolder(binding) {
 
         init {
             binding.root.setOnClickListener {

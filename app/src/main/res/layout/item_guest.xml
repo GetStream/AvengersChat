@@ -34,8 +34,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/add"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:layout_margin="24dp"
                 android:src="@drawable/ic_add"
                 app:layout_constraintBottom_toBottomOf="parent"
