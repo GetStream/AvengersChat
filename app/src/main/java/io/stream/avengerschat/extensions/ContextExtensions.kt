@@ -19,9 +19,11 @@ package io.stream.avengerschat.extensions
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 
@@ -39,3 +41,6 @@ fun Context.drawable(@DrawableRes resource: Int): Drawable {
 
 fun Context.getInputMethodManager() =
     getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+fun Context.toast(@StringRes resource: Int) =
+    Toast.makeText(this, resource, Toast.LENGTH_SHORT).show()

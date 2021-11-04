@@ -14,38 +14,33 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.user
+package io.stream.avengerschat.view.main.guest
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
+import com.skydoves.bundler.bundleNonNull
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
-import io.stream.avengerschat.extensions.doOnUrlTextChanged
-import io.stream.avengerschat.extensions.hideSoftInputFromWindow
+import io.stream.avengerschat.databinding.DialogFragmentGuestBinding
+import io.stream.avengerschat.extensions.isValidForId
 import io.stream.avengerschat.extensions.toast
-import io.stream.avengerschat.view.home.HomeViewModel
+import io.stream.avengerschat.model.Avenger
+import io.stream.avengerschat.view.home.HomeActivity
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class UserProfileEditDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
+class GuestDialogFragment :
+    BindingBottomSheetDialogFragment<DialogFragmentGuestBinding>(R.layout.dialog_fragment_guest) {
 
-    private val homeViewModel: HomeViewModel by activityViewModels()
-
-    @Inject
-    internal lateinit var editModelFactory: UserProfileEditViewModel.AssistedFactory
-    private val editViewModel: UserProfileEditViewModel by viewModels {
-        UserProfileEditViewModel.provideFactory(editModelFactory, homeViewModel.avenger)
-    }
+    private val viewModel: GuestViewModel by viewModels()
+    private val avenger: Avenger by bundleNonNull(EXTRA_AVENGER)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,42 +54,41 @@ class UserProfileEditDialogFragment :
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
-            homeVm = homeViewModel
-            vm = editViewModel
+            vm = viewModel
         }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding {
-            profileEditText.doOnUrlTextChanged {
-                editViewModel.sendEnabled = it
-            }
-
-            enter.setOnClickListener {
-                root.hideSoftInputFromWindow()
-                val editable = profileEditText.text
-                editViewModel.profileUrl = editable.toString()
-                editable?.clear()
-            }
-
-            update.setOnClickListener {
-                editViewModel.sendUrl()
+        binding.join.setOnClickListener {
+            val name = binding.nameEditText.text.toString()
+            if (name.isValidForId) {
+                viewModel.submitName(name)
+            } else {
+                requireContext().toast(R.string.enter_edit_your_name_error)
             }
         }
 
         lifecycleScope.launch {
-            editViewModel.updatedUser.collect {
-                requireContext().toast(R.string.edit_profile_updated)
+            viewModel.tokenFlow.collect {
+                val newAvenger = viewModel.createGuestAvenger(
+                    avenger = avenger,
+                    quote = getString(R.string.greeting),
+                    token = it
+                )
+                HomeActivity.startActivity(binding.transformationLayout, newAvenger)
                 dismissAllowingStateLoss()
             }
         }
     }
 
     companion object {
-        const val TAG = "UserInfoDialogEditFragment"
+        const val TAG = "GuestRepository"
+        private const val EXTRA_AVENGER = "EXTRA_AVENGER"
 
-        fun create() = UserProfileEditDialogFragment()
+        fun create(avenger: Avenger) = GuestDialogFragment().apply {
+            arguments = bundleOf(EXTRA_AVENGER to avenger)
+        }
     }
 }
