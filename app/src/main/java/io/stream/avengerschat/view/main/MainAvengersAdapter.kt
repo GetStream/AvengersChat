@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.ItemAvengerBinding
-import io.stream.avengerschat.databinding.ItemYouBinding
+import io.stream.avengerschat.databinding.ItemGuestBinding
 import io.stream.avengerschat.extensions.adapterPositionOrNull
 import io.stream.avengerschat.model.Avenger
 import io.stream.avengerschat.view.home.HomeActivity
@@ -36,7 +36,7 @@ class MainAvengersAdapter constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return when (viewType) {
             ItemViewType.HERO.viewType -> AvengersViewHolder(parent.binding(R.layout.item_avenger))
-            ItemViewType.YOU.viewType -> YouViewHolder(parent.binding(R.layout.item_you))
+            ItemViewType.GUEST.viewType -> YouViewHolder(parent.binding(R.layout.item_guest))
             else -> throw IllegalArgumentException("Wrong viewType: $viewType")
         }
     }
@@ -49,7 +49,7 @@ class MainAvengersAdapter constructor(
 
     override fun getItemViewType(position: Int): Int {
         return if (position == currentList.lastIndex) {
-            ItemViewType.YOU.viewType
+            ItemViewType.GUEST.viewType
         } else {
             ItemViewType.HERO.viewType
         }
@@ -75,7 +75,7 @@ class MainAvengersAdapter constructor(
         }
     }
 
-    inner class YouViewHolder(binding: ItemYouBinding) : CharacterViewHolder(binding) {
+    inner class YouViewHolder(binding: ItemGuestBinding) : CharacterViewHolder(binding) {
 
         init {
             binding.root.setOnClickListener {
@@ -87,7 +87,7 @@ class MainAvengersAdapter constructor(
 
     private enum class ItemViewType(val viewType: Int) {
         HERO(0),
-        YOU(1),
+        GUEST(1),
     }
 
     companion object {
