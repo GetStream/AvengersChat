@@ -10,6 +10,7 @@
     <string name="edit_profile_updated">Profile has been updated</string>
     <string name="enter_edit_profile_url">Enter your profile url</string>
     <string name="enter_edit_your_name">Enter your name</string>
+    <string name="enter_edit_your_name_error">Please enter a valid name</string>
     <string name="stream_channel_header_active">Active %s</string>
     <string name="stream_channel_header_active_now">just now</string>
 

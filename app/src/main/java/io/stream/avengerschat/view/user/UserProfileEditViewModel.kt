@@ -52,9 +52,7 @@ class UserProfileEditViewModel @AssistedInject constructor(
         Timber.d("injection UserProfileEditViewModel")
     }
 
-    fun sendUrl() {
-        _sendUrlSateFlow.value = URLUtil.isNetworkUrl(profileUrl)
-    }
+    fun sendUrl() = _sendUrlSateFlow.tryEmit(URLUtil.isNetworkUrl(profileUrl))
 
     @dagger.assisted.AssistedFactory
     interface AssistedFactory {

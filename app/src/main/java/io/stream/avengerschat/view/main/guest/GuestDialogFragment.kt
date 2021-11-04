@@ -29,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.DialogFragmentGuestBinding
 import io.stream.avengerschat.extensions.isValidForId
+import io.stream.avengerschat.extensions.toast
 import io.stream.avengerschat.model.Avenger
 import io.stream.avengerschat.view.home.HomeActivity
 import kotlinx.coroutines.flow.collect
@@ -64,6 +65,8 @@ class GuestDialogFragment :
             val name = binding.nameEditText.text.toString()
             if (name.isValidForId) {
                 viewModel.submitName(name)
+            } else {
+                requireContext().toast(R.string.enter_edit_your_name_error)
             }
         }
 

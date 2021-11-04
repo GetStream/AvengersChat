@@ -47,9 +47,7 @@ class GuestViewModel @Inject constructor(
         Timber.d("injection YouViewModel")
     }
 
-    fun submitName(name: String) {
-        nameStateFlow.value = name
-    }
+    fun submitName(name: String) = nameStateFlow.tryEmit(name)
 
     fun createGuestAvenger(avenger: Avenger, token: String, quote: String): Avenger {
         val name = nameStateFlow.value
