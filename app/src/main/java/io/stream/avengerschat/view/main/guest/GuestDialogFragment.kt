@@ -84,7 +84,7 @@ class GuestDialogFragment :
     }
 
     companion object {
-        const val TAG = "YouDialogFragment"
+        const val TAG = "GuestRepository"
         private const val EXTRA_AVENGER = "EXTRA_AVENGER"
 
         fun create(avenger: Avenger) = GuestDialogFragment().apply {

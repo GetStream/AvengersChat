@@ -32,7 +32,7 @@ class GuestRepository @Inject constructor(
 ) {
 
     init {
-        Timber.d("injection YouRepository")
+        Timber.d("injection GuestRepository")
     }
 
     /**
