@@ -30,7 +30,7 @@ import io.stream.avengerschat.model.Avenger
 import io.stream.avengerschat.view.home.HomeActivity
 
 class MainAvengersAdapter constructor(
-    private val onItemYouClicked: () -> Unit
+    private val onItemYouClicked: (Avenger) -> Unit
 ) : ListAdapter<Avenger, MainAvengersAdapter.CharacterViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
@@ -79,7 +79,8 @@ class MainAvengersAdapter constructor(
 
         init {
             binding.root.setOnClickListener {
-                onItemYouClicked.invoke()
+                val position = adapterPositionOrNull ?: return@setOnClickListener
+                onItemYouClicked.invoke(currentList[position])
             }
         }
     }

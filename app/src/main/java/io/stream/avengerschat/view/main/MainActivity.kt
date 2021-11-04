@@ -23,6 +23,8 @@ import com.skydoves.transformationlayout.onTransformationStartContainer
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.ActivityMainBinding
+import io.stream.avengerschat.model.Avenger
+import io.stream.avengerschat.view.main.you.YouDialogFragment
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -38,6 +40,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         }
     }
 
-    private val onItemYouClicked: () -> Unit = {
+    private val onItemYouClicked: (Avenger) -> Unit = {
+        YouDialogFragment.create(it).show(supportFragmentManager, YouDialogFragment.TAG)
     }
 }

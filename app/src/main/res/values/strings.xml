@@ -4,14 +4,17 @@
     <string name="live">Live</string>
     <string name="live_featured">Featured Live</string>
     <string name="direct_message">Direct Message</string>
+    <string name="join">Join</string>
+    <string name="join_us">Join Us</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="edit_profile_updated">Profile has been updated</string>
     <string name="enter_edit_profile_url">Enter your profile url</string>
+    <string name="enter_edit_your_name">Enter your name</string>
     <string name="stream_channel_header_active">Active %s</string>
     <string name="stream_channel_header_active_now">just now</string>
 
     <string name="you">You? 🦄</string>
-    <string name="greeting">Hello, %s</string>
+    <string name="greeting">Hello, %s!</string>
 
     <string name="tab_live">Live</string>
     <string name="tab_chat">Chat</string>

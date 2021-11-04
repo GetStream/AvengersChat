@@ -40,9 +40,6 @@ internal const val EXTRA_IMAGE = "image"
 @PublishedApi
 internal const val EXTRA_TEAM = "team"
 
-@PublishedApi
-internal const val emptyString: String = ""
-
 val Avenger.extraData: MutableMap<String, Any>
     inline get() = mutableMapOf(
         EXTRA_NAME to name
