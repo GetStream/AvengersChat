@@ -33,8 +33,11 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
         binding {
-            adapter = MainAvengersAdapter()
+            adapter = MainAvengersAdapter(onItemYouClicked)
             vm = viewModel
         }
+    }
+
+    private val onItemYouClicked: () -> Unit = {
     }
 }

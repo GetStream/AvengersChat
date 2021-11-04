@@ -17,30 +17,50 @@
 package io.stream.avengerschat.view.main
 
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.ItemAvengerBinding
+import io.stream.avengerschat.databinding.ItemYouBinding
 import io.stream.avengerschat.extensions.adapterPositionOrNull
 import io.stream.avengerschat.model.Avenger
 import io.stream.avengerschat.view.home.HomeActivity
 
-class MainAvengersAdapter : ListAdapter<Avenger, MainAvengersAdapter.AvengersViewHolder>(DIFF_CALLBACK) {
+class MainAvengersAdapter constructor(
+    private val onItemYouClicked: () -> Unit
+) : ListAdapter<Avenger, MainAvengersAdapter.CharacterViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AvengersViewHolder {
-        return AvengersViewHolder(parent.binding(R.layout.item_avenger))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
+        return when (viewType) {
+            ItemViewType.HERO.viewType -> AvengersViewHolder(parent.binding(R.layout.item_avenger))
+            ItemViewType.YOU.viewType -> YouViewHolder(parent.binding(R.layout.item_you))
+            else -> throw IllegalArgumentException("Wrong viewType: $viewType")
+        }
     }
 
-    override fun onBindViewHolder(holder: AvengersViewHolder, position: Int) {
-        holder.bindAvenger(getItem(position))
+    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+        if (holder is AvengersViewHolder) {
+            holder.bindAvenger(getItem(position))
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == currentList.lastIndex) {
+            ItemViewType.YOU.viewType
+        } else {
+            ItemViewType.HERO.viewType
+        }
     }
 
     fun getAvenger(position: Int): Avenger = getItem(position)
 
-    inner class AvengersViewHolder(private val binding: ItemAvengerBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    abstract class CharacterViewHolder(rootBinding: ViewDataBinding) :
+        RecyclerView.ViewHolder(rootBinding.root)
+
+    inner class AvengersViewHolder(val binding: ItemAvengerBinding) : CharacterViewHolder(binding) {
 
         init {
             binding.root.setOnClickListener {
@@ -53,6 +73,20 @@ class MainAvengersAdapter : ListAdapter<Avenger, MainAvengersAdapter.AvengersVie
             binding.avenger = avenger
             binding.executePendingBindings()
         }
+    }
+
+    inner class YouViewHolder(binding: ItemYouBinding) : CharacterViewHolder(binding) {
+
+        init {
+            binding.root.setOnClickListener {
+                onItemYouClicked.invoke()
+            }
+        }
+    }
+
+    private enum class ItemViewType(val viewType: Int) {
+        HERO(0),
+        YOU(1),
     }
 
     companion object {

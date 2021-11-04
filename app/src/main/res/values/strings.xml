@@ -10,6 +10,7 @@
     <string name="stream_channel_header_active">Active %s</string>
     <string name="stream_channel_header_active_now">just now</string>
 
+    <string name="you">You? 🦄</string>
     <string name="tab_live">Live</string>
     <string name="tab_chat">Chat</string>
     <string name="tab_mention">Mentions</string>
