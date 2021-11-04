@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="io.stream.avengerschat.view.main.guest.GuestViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,6 +64,7 @@
                         android:layout_marginHorizontal="26dp"
                         android:layout_marginTop="24dp"
                         android:backgroundTint="@color/colorPrimary"
+                        android:enabled="@{vm.enabled}"
                         android:gravity="center"
                         android:hint="@string/enter_edit_your_name"
                         android:textColor="@color/stream_ui_black"
@@ -72,6 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="36dp"
                         android:backgroundTint="@color/colorPrimary"
+                        android:enabled="@{vm.enabled}"
                         android:text="@string/join"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"

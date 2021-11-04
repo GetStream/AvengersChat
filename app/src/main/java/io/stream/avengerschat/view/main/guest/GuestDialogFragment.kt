@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main.you
+package io.stream.avengerschat.view.main.guest
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,20 +22,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import com.skydoves.bundler.bundleNonNull
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentYouBinding
+import io.stream.avengerschat.databinding.DialogFragmentGuestBinding
 import io.stream.avengerschat.extensions.isValidForId
 import io.stream.avengerschat.model.Avenger
 import io.stream.avengerschat.view.home.HomeActivity
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class YouDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentYouBinding>(R.layout.dialog_fragment_you) {
+class GuestDialogFragment :
+    BindingBottomSheetDialogFragment<DialogFragmentGuestBinding>(R.layout.dialog_fragment_guest) {
 
-    private val viewModel: YouViewModel by viewModels()
+    private val viewModel: GuestViewModel by viewModels()
     private val avenger: Avenger by bundleNonNull(EXTRA_AVENGER)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +52,9 @@ class YouDialogFragment :
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        return binding.root
+        return binding {
+            vm = viewModel
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,8 +63,17 @@ class YouDialogFragment :
         binding.join.setOnClickListener {
             val name = binding.nameEditText.text.toString()
             if (name.isValidForId) {
-                val newAvenger =
-                    viewModel.createGuestAvenger(avenger, name, getString(R.string.greeting, name))
+                viewModel.submitName(name)
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.tokenFlow.collect {
+                val newAvenger = viewModel.createGuestAvenger(
+                    avenger = avenger,
+                    quote = getString(R.string.greeting),
+                    token = it
+                )
                 HomeActivity.startActivity(binding.transformationLayout, newAvenger)
                 dismissAllowingStateLoss()
             }
@@ -70,7 +84,7 @@ class YouDialogFragment :
         const val TAG = "YouDialogFragment"
         private const val EXTRA_AVENGER = "EXTRA_AVENGER"
 
-        fun create(avenger: Avenger) = YouDialogFragment().apply {
+        fun create(avenger: Avenger) = GuestDialogFragment().apply {
             arguments = bundleOf(EXTRA_AVENGER to avenger)
         }
     }

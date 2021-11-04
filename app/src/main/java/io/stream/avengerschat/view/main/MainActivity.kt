@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
 import io.stream.avengerschat.databinding.ActivityMainBinding
 import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.view.main.you.YouDialogFragment
+import io.stream.avengerschat.view.main.guest.GuestDialogFragment
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -41,6 +41,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private val onItemYouClicked: (Avenger) -> Unit = {
-        YouDialogFragment.create(it).show(supportFragmentManager, YouDialogFragment.TAG)
+        GuestDialogFragment.create(it).show(supportFragmentManager, GuestDialogFragment.TAG)
     }
 }
