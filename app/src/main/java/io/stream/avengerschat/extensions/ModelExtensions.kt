@@ -37,7 +37,11 @@ internal const val EXTRA_NAME = "name"
 @PublishedApi
 internal const val EXTRA_IMAGE = "image"
 
+@PublishedApi
 internal const val EXTRA_TEAM = "team"
+
+@PublishedApi
+internal const val emptyString: String = ""
 
 val Avenger.extraData: MutableMap<String, Any>
     inline get() = mutableMapOf(
@@ -83,4 +87,4 @@ fun User.lastActive(context: Context): String? =
 private fun Date.isInLastMinute(): Boolean = (Date().time - 60000 < time)
 
 val ChatClient.currentUserId
-    inline get() = getCurrentUser()?.id ?: ""
+    inline get() = getCurrentUser()?.id ?: emptyString
