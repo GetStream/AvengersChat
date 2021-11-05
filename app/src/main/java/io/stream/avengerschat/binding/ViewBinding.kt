@@ -38,7 +38,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.skydoves.androidveil.VeilLayout
 import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.ui.avatar.AvatarView
 import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
 import io.stream.avengerschat.R
 import io.stream.avengerschat.extensions.color
@@ -125,12 +124,6 @@ object ViewBinding {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor = color
         }
-    }
-
-    @JvmStatic
-    @BindingAdapter("onlineIndicator")
-    fun bindOnlineIndicator(avatarView: AvatarView, user: User?) {
-        user?.let { avatarView.setUserData(it) }
     }
 
     @JvmStatic
