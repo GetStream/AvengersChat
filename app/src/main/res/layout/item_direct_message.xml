@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/margin_tiny"
             app:layout_constraintStart_toStartOf="@id/marginStart"
             app:layout_constraintTop_toTopOf="parent"
-            app:onlineIndicator="@{user}"
+            app:userData="@{user}"
             app:streamUiAvatarBorderWidth="0dp"
             app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
             app:streamUiAvatarOnlineIndicatorEnabled="true"
