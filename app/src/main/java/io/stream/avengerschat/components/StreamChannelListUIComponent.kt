@@ -32,13 +32,12 @@ import io.stream.avengerschat.R
 class StreamChannelListUIComponent constructor(
     override val lifecycleOwner: LifecycleOwner
 ) : StreamUIComponent {
-    private val threadSafetyMode: LazyThreadSafetyMode = LazyThreadSafetyMode.NONE
 
-    private val factory by lazy(threadSafetyMode) {
+    private val factory by lazy(LazyThreadSafetyMode.NONE) {
         ChannelListViewModelFactory()
     }
 
-    private val channelListViewModel: ChannelListViewModel by lazy(threadSafetyMode) {
+    private val channelListViewModel: ChannelListViewModel by lazy(LazyThreadSafetyMode.NONE) {
         factory.create(ChannelListViewModel::class.java)
     }
 

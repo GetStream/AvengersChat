@@ -43,18 +43,16 @@ class StreamMessageListUIComponent constructor(
 
     private var messageId: String? = null
 
-    private val threadSafetyMode: LazyThreadSafetyMode = LazyThreadSafetyMode.NONE
-
-    private val factory by lazy(threadSafetyMode) {
+    private val factory by lazy(LazyThreadSafetyMode.NONE) {
         MessageListViewModelFactory(cid = cid)
     }
-    private val messageListHeaderViewModel: MessageListHeaderViewModel by lazy(threadSafetyMode) {
+    private val messageListHeaderViewModel: MessageListHeaderViewModel by lazy(LazyThreadSafetyMode.NONE) {
         factory.create(MessageListHeaderViewModel::class.java)
     }
-    val messageListViewModel: MessageListViewModel by lazy(threadSafetyMode) {
+    val messageListViewModel: MessageListViewModel by lazy(LazyThreadSafetyMode.NONE) {
         factory.create(MessageListViewModel::class.java)
     }
-    private val messageInputViewModel: MessageInputViewModel by lazy(threadSafetyMode) {
+    private val messageInputViewModel: MessageInputViewModel by lazy(LazyThreadSafetyMode.NONE) {
         factory.create(MessageInputViewModel::class.java)
     }
 
