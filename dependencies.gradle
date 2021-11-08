@@ -13,7 +13,7 @@ ext.versions = [
         kotlin              : '1.5.30',
 
         // support library
-        materialVersion     : '1.4.0',
+        materialVersion     : '1.5.0-alpha05',
         constraintVersion   : '2.1.1',
 
         // jetpack components
@@ -33,7 +33,7 @@ ext.versions = [
         startupVersion      : '1.1.0',
 
         // di
-        hiltCoreVersion     : '2.39.1',
+        hiltCoreVersion     : '2.40',
         hiltVersion         : '1.0.0',
 
         // network
@@ -59,7 +59,7 @@ ext.versions = [
         // custom views
         androidVeilVersion  : '1.1.1',
         discreteScrollview  : '1.4.9',
-        transformationLayout: '1.0.8',
+        transformationLayout: '1.1.1',
 
         // debugging
         timberVersion       : '5.0.0',
