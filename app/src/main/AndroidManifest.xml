@@ -24,9 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".view.home.HomeActivity"
             android:exported="true" />
+
+        <activity android:name=".view.push.PushHandlerActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
