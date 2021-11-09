@@ -1,9 +1,8 @@
-## Avengers Chat Tutorial
+# Avengers Chat Tutorials
 
-<p align="center">
+<p align="left">
 <img src="/previews/turotial0.png" />
 </p>
-
 
 
 If you'd like to learn about more this project, reading these tutorials would be very helpful!
