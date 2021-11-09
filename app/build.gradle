@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 apply from: "$rootDir/dependencies.gradle"
@@ -73,7 +75,7 @@ dependencies {
     implementation "io.getstream:stream-chat-android-pushprovider-firebase:$versions.streamChatUIVersion"
 
     // binding
-    implementation ("com.github.skydoves:bindables:$versions.bindablesVersion") {
+    implementation("com.github.skydoves:bindables:$versions.bindablesVersion") {
         exclude group: "com.google.android.material"
     }
 
@@ -114,6 +116,10 @@ dependencies {
     implementation "com.github.skydoves:transformationlayout:$versions.transformationLayout"
     implementation "com.github.skydoves:androidveil:$versions.androidVeilVersion"
     implementation "com.yarolegovich:discrete-scrollview:$versions.discreteScrollview"
+
+    implementation platform("com.google.firebase:firebase-bom:$versions.firebaseVersion")
+    implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-analytics"
 
     // debugging
     implementation "com.jakewharton.timber:timber:$versions.timberVersion"
