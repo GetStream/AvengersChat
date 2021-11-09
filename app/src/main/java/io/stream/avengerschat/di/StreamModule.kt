@@ -17,6 +17,7 @@
 package io.stream.avengerschat.di
 
 import android.content.Context
+import com.google.firebase.FirebaseApp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,8 +25,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.logger.ChatLogLevel
+import io.getstream.chat.android.client.notifications.handler.NotificationConfig
+import io.getstream.chat.android.client.notifications.handler.NotificationHandler
+import io.getstream.chat.android.client.notifications.handler.NotificationHandlerFactory
 import io.getstream.chat.android.livedata.ChatDomain
+import io.getstream.chat.android.pushprovider.firebase.FirebasePushDeviceGenerator
 import io.stream.avengerschat.R
+import io.stream.avengerschat.view.push.PushHandlerActivity
 import javax.inject.Singleton
 
 @Module
@@ -35,7 +41,9 @@ object StreamModule {
     @Provides
     @Singleton
     fun provideStreamChatClient(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
+        notificationConfig: NotificationConfig,
+        notificationHandler: NotificationHandler
     ): ChatClient {
         /**
          * initialize a global instance of the [ChatClient].
@@ -45,6 +53,7 @@ object StreamModule {
         val chatClient: ChatClient =
             ChatClient.Builder(context.getString(R.string.stream_api_key), context)
                 .logLevel(ChatLogLevel.ALL)
+                .notifications(notificationConfig, notificationHandler)
                 .build()
 
         /**
@@ -64,5 +73,32 @@ object StreamModule {
     @Singleton
     fun provideStreamChatDomain(): ChatDomain {
         return ChatDomain.instance()
+    }
+
+    @Provides
+    @Singleton
+    fun createNotificationConfig(): NotificationConfig {
+        return NotificationConfig(
+            pushDeviceGenerators = listOf(
+                FirebasePushDeviceGenerator()
+            )
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun createNotificationHandler(
+        @ApplicationContext context: Context
+    ): NotificationHandler {
+        FirebaseApp.initializeApp(context)
+        return NotificationHandlerFactory.createNotificationHandler(
+            context = context,
+            newMessageIntent = { _: String, channelType: String, channelId: String ->
+                PushHandlerActivity.getIntent(
+                    context = context,
+                    channelId = "$channelType:$channelId"
+                )
+            }
+        )
     }
 }
