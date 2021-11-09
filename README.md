@@ -22,6 +22,10 @@ AvengersChat is a demo application based on modern Android tech stacks and Strea
 <img src="/previews/preview2.gif" width="32%"/>
 </p>
 
+## Tutorials
+If you'd like to learn more about this project, check out the [tutorials](https://github.com/GetStream/AvengersChat/blob/main/TUTORIAL.md)!
+- [Building an Avengers Chat Application for Android (part 1)](https://getstream.io/blog/android-avengers-chat-app-part-1/)
+
 ## Download
 Go to the [Releases](https://github.com/skydoves/AvengersChat/releases) to download the latest APK.
 
