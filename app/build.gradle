@@ -70,6 +70,7 @@ dependencies {
 
     // stream chat core + UI SDK
     implementation "io.getstream:stream-chat-android-ui-components:$versions.streamChatUIVersion"
+    implementation "io.getstream:stream-chat-android-pushprovider-firebase:$versions.streamChatUIVersion"
 
     // binding
     implementation ("com.github.skydoves:bindables:$versions.bindablesVersion") {
