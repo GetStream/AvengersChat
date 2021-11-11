@@ -119,6 +119,7 @@ dependencies {
 
     implementation platform("com.google.firebase:firebase-bom:$versions.firebaseVersion")
     implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-messaging"
     implementation "com.google.firebase:firebase-analytics"
 
     // debugging
