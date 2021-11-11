@@ -62,13 +62,6 @@ class HomeViewModel @AssistedInject constructor(
         Timber.d("injection HomeViewModel")
     }
 
-    override fun onCleared() {
-        super.onCleared()
-
-        // disconnects user login status.
-        homeRepository.disconnectUser()
-    }
-
     @dagger.assisted.AssistedFactory
     interface AssistedFactory {
         fun create(avenger: Avenger): HomeViewModel
