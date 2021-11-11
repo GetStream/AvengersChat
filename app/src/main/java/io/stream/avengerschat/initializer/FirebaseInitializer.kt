@@ -14,25 +14,19 @@
  * limitations under the License.
  */
 
-@file:Suppress("unused")
-
 package io.stream.avengerschat.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import io.stream.avengerschat.view.custom.StreamGlobalStyles
+import com.google.firebase.FirebaseApp
 import timber.log.Timber
 
-class StreamGlobalStyleInitializer : Initializer<Unit> {
+class FirebaseInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
-        StreamGlobalStyles.initializeReactionsGlobalStyles(context)
-        Timber.d("StreamGlobalStyleInitializer is initialized")
+        FirebaseApp.initializeApp(context)
+        Timber.d("TimberInitializer is initialized")
     }
 
-    override fun dependencies(): List<Class<out Initializer<*>>> =
-        listOf(
-            TimberInitializer::class.java,
-            FirebaseInitializer::class.java,
-        )
+    override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
 }
