@@ -22,17 +22,14 @@ import android.content.Context
 import androidx.startup.Initializer
 import io.stream.avengerschat.view.custom.StreamGlobalStyles
 import timber.log.Timber
-
 class StreamGlobalStyleInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
-        StreamGlobalStyles.initializeReactionsGlobalStyles(context)
         Timber.d("StreamGlobalStyleInitializer is initialized")
+
+        StreamGlobalStyles.initializeReactionsGlobalStyles(context)
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> =
-        listOf(
-            TimberInitializer::class.java,
-            FirebaseInitializer::class.java,
-        )
+        listOf(TimberInitializer::class.java)
 }

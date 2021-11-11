@@ -78,7 +78,7 @@ object StreamModule {
 
     @Provides
     @Singleton
-    fun createNotificationConfig(): NotificationConfig {
+    fun provideNotificationConfig(): NotificationConfig {
         return NotificationConfig(
             pushDeviceGenerators = listOf(
                 FirebasePushDeviceGenerator()
@@ -88,7 +88,7 @@ object StreamModule {
 
     @Provides
     @Singleton
-    fun createNotificationHandler(
+    fun provideNotificationHandler(
         @ApplicationContext context: Context
     ): NotificationHandler {
         return NotificationHandlerFactory.createNotificationHandler(

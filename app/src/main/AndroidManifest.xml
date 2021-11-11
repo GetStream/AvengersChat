@@ -25,11 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".view.home.HomeActivity"
-            android:exported="true" />
-
-        <activity android:name=".view.push.PushHandlerActivity" />
+        <activity android:name=".view.home.HomeActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

@@ -24,8 +24,9 @@ import timber.log.Timber
 class FirebaseInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
+        Timber.d("FirebaseInitializer is initialized")
+
         FirebaseApp.initializeApp(context)
-        Timber.d("TimberInitializer is initialized")
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
