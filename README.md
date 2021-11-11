@@ -88,9 +88,9 @@ AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for im
 Anyone can contribute to our open source project! Please kindly read this [Contributing Guideline](https://github.com/skydoves/AvengersChat/blob/main/CONTRIBUTING.md) before contributing to our project. 😎
 - [x] Modify a user profile image.
 - [x] Login with a new guest user.
+- [x] Push notifications for new messages.
 - [ ] Create group chats by selecting users.
 - [ ] Access user info dialog everywhere.
-- [ ] Push notifications for new messages.
 - [ ] Add unit test cases for all business logic.
 
 ## Chat screenshots
