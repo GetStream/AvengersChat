@@ -22,6 +22,7 @@ import android.content.Context
 import androidx.startup.Initializer
 import io.stream.avengerschat.view.custom.StreamGlobalStyles
 import timber.log.Timber
+
 class StreamGlobalStyleInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
@@ -31,5 +32,8 @@ class StreamGlobalStyleInitializer : Initializer<Unit> {
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> =
-        listOf(TimberInitializer::class.java)
+        listOf(
+            TimberInitializer::class.java,
+            StreamChatInitializer::class.java,
+        )
 }

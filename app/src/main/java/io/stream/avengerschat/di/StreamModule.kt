@@ -16,23 +16,13 @@
 
 package io.stream.avengerschat.di
 
-import android.content.Context
-import android.content.Intent
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.logger.ChatLogLevel
-import io.getstream.chat.android.client.notifications.handler.NotificationConfig
-import io.getstream.chat.android.client.notifications.handler.NotificationHandler
-import io.getstream.chat.android.client.notifications.handler.NotificationHandlerFactory
 import io.getstream.chat.android.livedata.ChatDomain
-import io.getstream.chat.android.pushprovider.firebase.FirebasePushDeviceGenerator
-import io.stream.avengerschat.BuildConfig
-import io.stream.avengerschat.R
-import io.stream.avengerschat.view.main.MainActivity
+import io.stream.avengerschat.initializer.StreamChatInitializer
 import javax.inject.Singleton
 
 @Module
@@ -41,63 +31,19 @@ object StreamModule {
 
     @Provides
     @Singleton
-    fun provideStreamChatClient(
-        @ApplicationContext context: Context,
-        notificationConfig: NotificationConfig,
-        notificationHandler: NotificationHandler
-    ): ChatClient {
+    fun provideStreamChatClient(): ChatClient {
         /**
-         * initialize a global instance of the [ChatClient].
-         * The ChatClient is the main entry point for all low-level operations on chat.
-         * e.g, connect/disconnect user to the server, send/update/pin message, etc.
+         * Provides an instance of the [ChatClient] which is initialized in [StreamChatInitializer].
          */
-        val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
-        val chatClient: ChatClient =
-            ChatClient.Builder(context.getString(R.string.stream_api_key), context)
-                .notifications(notificationConfig, notificationHandler)
-                .logLevel(logLevel)
-                .build()
-
-        /**
-         * initialize a global instance of the [ChatDomain].
-         * The ChatDomain is the main entry point for all livedata & offline operations on chat.
-         * e.g, querying available channel lists, querying users, etc.
-         */
-        ChatDomain.Builder(chatClient, context)
-            .offlineEnabled()
-            .build()
-
-        return chatClient
+        return ChatClient.instance()
     }
 
     @Provides
     @Singleton
     fun provideStreamChatDomain(): ChatDomain {
+        /**
+         * Provides an instance of the [ChatDomain] which is initialized in [StreamChatInitializer].
+         */
         return ChatDomain.instance()
-    }
-
-    @Provides
-    @Singleton
-    fun provideNotificationConfig(): NotificationConfig {
-        return NotificationConfig(
-            pushDeviceGenerators = listOf(
-                FirebasePushDeviceGenerator()
-            )
-        )
-    }
-
-    @Provides
-    @Singleton
-    fun provideNotificationHandler(
-        @ApplicationContext context: Context
-    ): NotificationHandler {
-        return NotificationHandlerFactory.createNotificationHandler(
-            context = context,
-            newMessageIntent = { _: String, _: String, _: String ->
-                Intent(context, MainActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
-            }
-        )
     }
 }
