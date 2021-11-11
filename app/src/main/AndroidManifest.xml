@@ -24,9 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.home.HomeActivity"
-            android:exported="true" />
+
+        <activity android:name=".view.home.HomeActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -37,6 +36,14 @@
                 android:name="io.stream.avengerschat.initializer.StreamGlobalStyleInitializer"
                 android:value="androidx.startup" />
         </provider>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stream" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>

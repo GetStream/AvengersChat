@@ -21,6 +21,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import io.getstream.chat.android.client.ChatClient
+import io.stream.avengerschat.extensions.EXTRA_IMAGE
 import kotlinx.parcelize.Parcelize
 
 @Entity
@@ -37,7 +39,11 @@ data class Avenger(
     @field:Json(name = "poster") val poster: String,
 ) : Parcelable {
 
-    fun getProfileImage(): String {
+    fun getProfileImage(): String? {
+        val currentUser = ChatClient.instance().getCurrentUser()
+        if (id == currentUser?.id) {
+            return currentUser.extraData[EXTRA_IMAGE] as? String
+        }
         return "https://getstream.imgix.net/images/random_svg/${name.first().uppercase()}.png"
     }
 }

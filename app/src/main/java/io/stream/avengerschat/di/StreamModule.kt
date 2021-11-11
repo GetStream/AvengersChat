@@ -16,16 +16,13 @@
 
 package io.stream.avengerschat.di
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.livedata.ChatDomain
-import io.stream.avengerschat.R
+import io.stream.avengerschat.initializer.StreamChatInitializer
 import javax.inject.Singleton
 
 @Module
@@ -34,35 +31,19 @@ object StreamModule {
 
     @Provides
     @Singleton
-    fun provideStreamChatClient(
-        @ApplicationContext context: Context
-    ): ChatClient {
+    fun provideStreamChatClient(): ChatClient {
         /**
-         * initialize a global instance of the [ChatClient].
-         * The ChatClient is the main entry point for all low-level operations on chat.
-         * e.g, connect/disconnect user to the server, send/update/pin message, etc.
+         * Provides an instance of the [ChatClient] which is initialized in [StreamChatInitializer].
          */
-        val chatClient: ChatClient =
-            ChatClient.Builder(context.getString(R.string.stream_api_key), context)
-                .logLevel(ChatLogLevel.ALL)
-                .build()
-
-        /**
-         * initialize a global instance of the [ChatDomain].
-         * The ChatDomain is the main entry point for all livedata & offline operations on chat.
-         * e.g, querying available channel lists, querying users, etc.
-         */
-        ChatDomain
-            .Builder(chatClient, context)
-            .offlineEnabled()
-            .build()
-
-        return chatClient
+        return ChatClient.instance()
     }
 
     @Provides
     @Singleton
     fun provideStreamChatDomain(): ChatDomain {
+        /**
+         * Provides an instance of the [ChatDomain] which is initialized in [StreamChatInitializer].
+         */
         return ChatDomain.instance()
     }
 }

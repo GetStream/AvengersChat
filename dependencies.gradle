@@ -7,6 +7,7 @@ ext.versions = [
         // gradle plugins
         gradleBuildTool     : '7.0.2',
         spotlessGradle      : '5.15.0',
+        googleService       : '4.3.10',
         ktlint              : '0.40.0',
 
         // kotlin
@@ -60,6 +61,10 @@ ext.versions = [
         androidVeilVersion  : '1.1.1',
         discreteScrollview  : '1.4.9',
         transformationLayout: '1.1.1',
+
+        // firebase
+        firebaseGradle      : '2.8.0',
+        firebaseVersion     : '29.0.0',
 
         // debugging
         timberVersion       : '5.0.0',

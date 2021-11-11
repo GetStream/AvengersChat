@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157133798506",
+    "project_id": "avengerschat-d269d",
+    "storage_bucket": "avengerschat-d269d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157133798506:android:9772086eb2915de4ce9e13",
+        "android_client_info": {
+          "package_name": "io.stream.avengerschat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157133798506-lu82tsov543ovhhl0heg0l8sfagq0693.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7FFLy-0sYV-Wkb0G4l8Vir1-HnZJsnFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157133798506-lu82tsov543ovhhl0heg0l8sfagq0693.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

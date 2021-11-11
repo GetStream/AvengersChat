@@ -47,6 +47,9 @@ class HomeRepository @Inject constructor(
      */
     @WorkerThread
     fun connectUser(avenger: Avenger) = flow {
+        // disconnect a user if already connected.
+        disconnectUser(avenger)
+
         val user = User(
             id = avenger.id,
             extraData = avenger.extraData
@@ -58,10 +61,14 @@ class HomeRepository @Inject constructor(
     }.flowOn(dispatcher)
 
     /**
-     * Disconnect a current connected user from the Stream client server.
+     * Check and disconnect the current user
+     * if there's already connected user to the Stream client server.
      */
-    fun disconnectUser() {
-        chatClient.disconnect()
+    private fun disconnectUser(avenger: Avenger) {
+        val currentUser = chatClient.getCurrentUser()
+        if (currentUser != null && avenger.id == currentUser.id) {
+            chatClient.disconnect()
+        }
     }
 
     /**
