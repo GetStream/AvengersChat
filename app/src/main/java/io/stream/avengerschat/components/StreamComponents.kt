@@ -17,4 +17,4 @@
 package io.stream.avengerschat.components
 
 @DslMarker
-annotation class StreamComponentHighlighter
+annotation class StreamComponents

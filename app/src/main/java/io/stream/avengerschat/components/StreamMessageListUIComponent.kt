@@ -54,7 +54,7 @@ class StreamMessageListUIComponent constructor(
         factory.create(MessageInputViewModel::class.java)
     }
 
-    @StreamComponentHighlighter
+    @StreamComponents
     override fun bindLayout(view: View) {
         // binds Stream UI components to the ViewModels.
         val messageListHeaderView =
@@ -90,7 +90,7 @@ class StreamMessageListUIComponent constructor(
     }
 }
 
-@StreamComponentHighlighter
+@StreamComponents
 @Suppress("UNCHECKED_CAST")
 fun <T : StreamUIComponent> LifecycleOwner.streamMessageListComponent(
     messageIdProvider: (() -> String)? = null,

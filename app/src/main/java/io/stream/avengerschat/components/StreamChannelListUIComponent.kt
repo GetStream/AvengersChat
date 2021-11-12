@@ -41,7 +41,7 @@ class StreamChannelListUIComponent constructor(
         factory.create(ChannelListViewModel::class.java)
     }
 
-    @StreamComponentHighlighter
+    @StreamComponents
     override fun bindLayout(view: View) {
         val channelListView =
             view.findViewById<ChannelListView>(R.id.channelListView)
@@ -51,7 +51,7 @@ class StreamChannelListUIComponent constructor(
     }
 }
 
-@StreamComponentHighlighter
+@StreamComponents
 fun LifecycleOwner.streamChannelListComponent(): Lazy<StreamUIComponent> {
     return lazy(LazyThreadSafetyMode.NONE) {
         StreamChannelListUIComponent(lifecycleOwner = this)

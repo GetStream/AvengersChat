@@ -27,5 +27,6 @@ interface StreamUIComponent {
 
     val lifecycleOwner: LifecycleOwner
 
+    @StreamComponents
     fun bindLayout(view: View)
 }
