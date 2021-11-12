@@ -27,7 +27,6 @@ import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.components.StreamMessageListUIComponent
 import io.stream.avengerschat.components.streamMessageListComponent
 import io.stream.avengerschat.databinding.FragmentMessageListBinding
 import io.stream.avengerschat.extensions.addOnBackPressedDispatcher
@@ -39,7 +38,7 @@ class MessageListFragment :
 
     private val args: MessageListFragmentArgs by navArgs()
     private val homeViewModel: HomeViewModel by activityViewModels()
-    private val streamMessageListComponent: StreamMessageListUIComponent by streamMessageListComponent()
+    private val streamMessageListComponent by viewLifecycleOwner.streamMessageListComponent()
 
     override fun onCreateView(
         inflater: LayoutInflater,

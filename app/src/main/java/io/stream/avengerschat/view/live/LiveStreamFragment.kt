@@ -25,7 +25,6 @@ import androidx.navigation.fragment.navArgs
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.components.StreamMessageListUIComponent
 import io.stream.avengerschat.components.streamMessageListComponent
 import io.stream.avengerschat.databinding.FragmentLiveStreamBinding
 import io.stream.avengerschat.view.home.HomeViewModel
@@ -36,7 +35,7 @@ class LiveStreamFragment :
 
     private val args: LiveStreamFragmentArgs by navArgs()
     private val homeViewModel: HomeViewModel by activityViewModels()
-    private val streamMessageListComponent: StreamMessageListUIComponent by streamMessageListComponent()
+    private val streamMessageListComponent by viewLifecycleOwner.streamMessageListComponent()
 
     override fun onCreateView(
         inflater: LayoutInflater,

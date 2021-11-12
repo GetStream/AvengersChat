@@ -25,7 +25,6 @@ import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.stream.avengerschat.R
-import io.stream.avengerschat.components.StreamChannelListUIComponent
 import io.stream.avengerschat.components.streamChannelListComponent
 import io.stream.avengerschat.databinding.FragmentChannelListBinding
 import io.stream.avengerschat.view.dm.DirectMessageDialogFragment
@@ -37,7 +36,7 @@ class ChannelListFragment :
     BindingFragment<FragmentChannelListBinding>(R.layout.fragment_channel_list) {
 
     private val viewModel: HomeViewModel by activityViewModels()
-    private val streamChannelListUIComponent: StreamChannelListUIComponent by streamChannelListComponent()
+    private val streamChannelListUIComponent by viewLifecycleOwner.streamChannelListComponent()
 
     override fun onCreateView(
         inflater: LayoutInflater,
