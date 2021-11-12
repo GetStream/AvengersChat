@@ -31,6 +31,9 @@ import io.stream.avengerschat.R
 import io.stream.avengerschat.view.main.MainActivity
 import timber.log.Timber
 
+/**
+ * StreamChatInitializer initializes all Stream Client components.
+ */
 class StreamChatInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
@@ -58,6 +61,9 @@ class StreamChatInitializer : Initializer<Unit> {
             .build()
     }
 
+    /**
+     * Creates [NotificationConfig] that configures push notifications.
+     */
     private fun createNotificationConfig(): NotificationConfig {
         return NotificationConfig(
             pushDeviceGenerators = listOf(
@@ -66,6 +72,10 @@ class StreamChatInitializer : Initializer<Unit> {
         )
     }
 
+    /**
+     * Creates [NotificationHandler] that handles new push notifications and
+     * customizes an intent the user triggers when clicking on a notification.
+     */
     private fun createNotificationHandler(
         context: Context
     ): NotificationHandler {
