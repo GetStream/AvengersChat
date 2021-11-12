@@ -36,12 +36,10 @@ import io.stream.avengerschat.R
  * [Stream Message List](https://getstream.io/chat/docs/sdk/android/ui/components/message-list/)
  */
 class StreamMessageListUIComponent constructor(
-    override val lifecycleOwner: LifecycleOwner
+    override val lifecycleOwner: LifecycleOwner,
+    val cid: String,
+    val messageId: String? = null
 ) : StreamUIComponent {
-
-    private lateinit var cid: String
-
-    private var messageId: String? = null
 
     private val factory by lazy(LazyThreadSafetyMode.NONE) {
         MessageListViewModelFactory(cid = cid)
@@ -56,21 +54,8 @@ class StreamMessageListUIComponent constructor(
         factory.create(MessageInputViewModel::class.java)
     }
 
-    /**
-     * initializes the channel id and message-id for connecting a specific channel.
-     */
-    @StreamComponentHighlighter
-    fun initIds(cid: String, messageId: String? = null) {
-        this.cid = cid
-        this.messageId = messageId
-    }
-
     @StreamComponentHighlighter
     override fun bindLayout(view: View) {
-        if (!::cid.isInitialized) {
-            throw UninitializedPropertyAccessException("cid must be initialized before to bind layout.")
-        }
-
         // binds Stream UI components to the ViewModels.
         val messageListHeaderView =
             view.findViewById<MessageListHeaderView>(R.id.messageListHeaderView)
@@ -101,13 +86,21 @@ class StreamMessageListUIComponent constructor(
                 }
             }
         }
-        messageListView.setMessageEditHandler(messageInputViewModel::postMessageToEdit)
+        messageListView?.setMessageEditHandler(messageInputViewModel::postMessageToEdit)
     }
 }
 
 @StreamComponentHighlighter
-fun LifecycleOwner.streamMessageListComponent(): Lazy<StreamMessageListUIComponent> {
+@Suppress("UNCHECKED_CAST")
+fun <T : StreamUIComponent> LifecycleOwner.streamMessageListComponent(
+    messageIdProvider: (() -> String)? = null,
+    cidProvider: () -> String,
+): Lazy<T> {
     return lazy(LazyThreadSafetyMode.NONE) {
-        StreamMessageListUIComponent(lifecycleOwner = this)
+        StreamMessageListUIComponent(
+            lifecycleOwner = this,
+            messageId = messageIdProvider?.invoke(),
+            cid = cidProvider.invoke(),
+        ) as T
     }
 }
