@@ -52,7 +52,7 @@ class StreamChannelListUIComponent constructor(
 }
 
 @StreamComponentHighlighter
-fun LifecycleOwner.streamChannelListComponent(): Lazy<StreamChannelListUIComponent> {
+fun LifecycleOwner.streamChannelListComponent(): Lazy<StreamUIComponent> {
     return lazy(LazyThreadSafetyMode.NONE) {
         StreamChannelListUIComponent(lifecycleOwner = this)
     }
