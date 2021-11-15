@@ -64,7 +64,7 @@ class HomeRepository @Inject constructor(
      * Check and disconnect the current user
      * if there's already connected user to the Stream client server.
      */
-    private fun disconnectUser(avenger: Avenger) {
+    fun disconnectUser(avenger: Avenger) {
         val currentUser = chatClient.getCurrentUser()
         if (currentUser != null && avenger.id == currentUser.id) {
             chatClient.disconnect()
