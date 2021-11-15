@@ -63,7 +63,7 @@ class ChannelListFragment :
             }
 
             channelListHeaderView.setOnActionButtonClickListener {
-                DirectMessageDialogFragment().show(
+                DirectMessageDialogFragment.create().show(
                     parentFragmentManager,
                     DirectMessageDialogFragment.TAG
                 )

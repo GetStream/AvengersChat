@@ -67,5 +67,7 @@ class DirectMessageDialogFragment :
 
     companion object {
         const val TAG = "DirectMessageDialogFragment"
+
+        fun create(): DirectMessageDialogFragment = DirectMessageDialogFragment()
     }
 }
