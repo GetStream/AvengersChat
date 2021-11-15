@@ -111,8 +111,8 @@ If you find some funny moments on this demo application, feel free to join and s
 
 <img src="https://user-images.githubusercontent.com/24237865/141415477-d1af2b48-2498-4ff0-8fdf-95dff092e317.png" align="right" width="22%"/>
 
-## Character Credits
-All copyrights of the hero characters, concepets and phrases that used for this open source projects belong to [Marvel Studios](https://www.marvel.com/).
+## Content Credits
+All copyrights of the contents, concepts, and phrases that are used in this open-source project belong to [Marvel Studios](https://www.marvel.com/).
 
 ## Find this repository useful? 💙
 Support it by joining __[stargazers](https://github.com/skydoves/AvengersChat/stargazers)__ for this repository. :star: <br>
