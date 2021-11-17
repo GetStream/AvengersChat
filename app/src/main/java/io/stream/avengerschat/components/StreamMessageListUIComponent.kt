@@ -42,7 +42,7 @@ class StreamMessageListUIComponent constructor(
 ) : StreamUIComponent {
 
     private val factory by lazy(LazyThreadSafetyMode.NONE) {
-        MessageListViewModelFactory(cid = cid)
+        MessageListViewModelFactory(cid = cid, messageId = messageId)
     }
     private val messageListHeaderViewModel: MessageListHeaderViewModel by lazy(LazyThreadSafetyMode.NONE) {
         factory.create(MessageListHeaderViewModel::class.java)
