@@ -58,7 +58,7 @@ ext.versions = [
         bundlerVersion      : '1.0.4',
 
         // custom views
-        androidVeilVersion  : '1.1.1',
+        androidVeilVersion  : '1.1.2',
         discreteScrollview  : '1.4.9',
         transformationLayout: '1.1.1',
 

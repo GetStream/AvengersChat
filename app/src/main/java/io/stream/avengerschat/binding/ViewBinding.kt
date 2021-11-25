@@ -77,7 +77,6 @@ object ViewBinding {
             .target(view)
             .lifecycle(view.findViewTreeLifecycleOwner())
             .listener(
-                onCancel = { veilLayout.unVeil() },
                 onError = { _, _ -> veilLayout.unVeil() },
                 onSuccess = { _, _ -> veilLayout.unVeil() }
             )
