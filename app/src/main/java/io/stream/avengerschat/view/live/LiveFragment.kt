@@ -44,6 +44,7 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
         super.onCreateView(inflater, container, savedInstanceState)
         return binding {
             adapter = LiveAdapter(::navigateToStream)
+            adapterStreamDev = LiveStreamDevelopersAdapter(::navigateToStream)
             lifecycleOwner = viewLifecycleOwner
             vm = homeViewModel
         }.root

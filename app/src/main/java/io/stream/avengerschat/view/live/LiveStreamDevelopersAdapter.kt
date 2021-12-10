@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
 import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.ItemLiveBinding
+import io.stream.avengerschat.databinding.ItemStreamDevelopersChannelBinding
 import io.stream.avengerschat.extensions.adapterPositionOrNull
 import io.stream.avengerschat.model.LiveRoomInfo
 
@@ -39,14 +39,14 @@ class LiveStreamDevelopersAdapter constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
-        return LiveViewHolder(parent.binding(R.layout.item_live))
+        return LiveViewHolder(parent.binding(R.layout.item_stream_developers_channel))
     }
 
     override fun onBindViewHolder(holder: LiveViewHolder, position: Int) {
         holder.bindLiveRoomInfo(getItem(position))
     }
 
-    inner class LiveViewHolder(private val binding: ItemLiveBinding) :
+    inner class LiveViewHolder(private val binding: ItemStreamDevelopersChannelBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {

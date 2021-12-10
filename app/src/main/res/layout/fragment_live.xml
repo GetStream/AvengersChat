@@ -13,6 +13,10 @@
             name="adapter"
             type="io.stream.avengerschat.view.live.LiveAdapter" />
 
+        <variable
+            name="adapterStreamDev"
+            type="io.stream.avengerschat.view.live.LiveStreamDevelopersAdapter" />
+
         <import type="io.stream.avengerschat.network.Api" />
     </data>
 
@@ -49,11 +53,11 @@
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:userData="@{vm.user}"
                 app:streamUiAvatarBorderWidth="0dp"
                 app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
                 app:streamUiAvatarOnlineIndicatorEnabled="true"
-                app:streamUiAvatarOnlineIndicatorPosition="topRight" />
+                app:streamUiAvatarOnlineIndicatorPosition="topRight"
+                app:userData="@{vm.user}" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/gradation"
@@ -186,6 +190,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/live"
                 tools:listitem="@layout/item_live" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/stream_developers_channel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/stream_developers_channel"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/stream_ui_black"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/liveRecyclerView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liveStreamDevelopersRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_medium"
+                android:adapter="@{adapterStreamDev}"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stream_developers_channel"
+                tools:listitem="@layout/item_stream_developers_channel" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
