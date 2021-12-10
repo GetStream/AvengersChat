@@ -2,6 +2,8 @@
     <string name="app_name">Avengers Chat</string>
     <string name="choose_your_hero">Choose your hero</string>
     <string name="live">Live</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="stream_developers_channel">Stream Developers Channel</string>
     <string name="live_featured">Featured Live</string>
     <string name="direct_message">Direct Message</string>
     <string name="join">Join</string>
