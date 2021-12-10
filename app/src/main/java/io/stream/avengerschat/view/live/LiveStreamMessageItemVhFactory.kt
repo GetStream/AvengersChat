@@ -30,7 +30,7 @@ import io.stream.avengerschat.extensions.localDate
  * A custom item ViewHolderFactory for customizing the [MessageListItemViewType.PLAIN_TEXT]
  * of the message item.
  */
-class LivestreamMessageItemVhFactory private constructor() : MessageListItemViewHolderFactory() {
+class LiveStreamMessageItemVhFactory private constructor() : MessageListItemViewHolderFactory() {
 
     override fun createViewHolder(
         parentView: ViewGroup,
@@ -64,6 +64,6 @@ class LivestreamMessageItemVhFactory private constructor() : MessageListItemView
     }
 
     companion object {
-        fun create(): LivestreamMessageItemVhFactory = LivestreamMessageItemVhFactory()
+        fun create(): LiveStreamMessageItemVhFactory = LiveStreamMessageItemVhFactory()
     }
 }

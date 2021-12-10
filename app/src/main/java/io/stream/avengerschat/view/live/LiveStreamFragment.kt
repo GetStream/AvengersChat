@@ -57,7 +57,7 @@ class LiveStreamFragment :
 
         // initializes and bind layouts to Stream message list UI components.
         streamMessageListComponent.bindLayout(binding.root)
-        binding.messageListView.setMessageViewHolderFactory(LivestreamMessageItemVhFactory.create())
+        binding.messageListView.setMessageViewHolderFactory(LiveStreamMessageItemVhFactory.create())
     }
 
     override fun onResume() {
