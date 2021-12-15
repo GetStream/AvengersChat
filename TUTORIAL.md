@@ -16,4 +16,4 @@ If you'd like to learn about more this project, reading these tutorials would be
 ## Stream Developers Youtube Channel
 - [Stream Avengers Chat Part 1 - Home Screen](https://www.youtube.com/watch?v=BsyHrHTn4CA)
 > This is part one of a three-part tutorial, where you will learn to build an Avengers Chat application for Android. In this part, we build the Home Screen.
-- Part 2 is coming soon!
+- [Stream Avengers Chat Part 2 - Channel List Activity](https://youtu.be/0lIED0j9t4I)

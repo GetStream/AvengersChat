@@ -31,7 +31,8 @@ class LiveStreamDevelopersAdapter constructor(
 ) : ListAdapter<LiveRoomInfo, LiveStreamDevelopersAdapter.LiveViewHolder>(DIFF_CALLBACK) {
 
     private val channelList: List<LiveRoomInfo> = listOf(
-        LiveRoomInfo("livestream:stream_avengers_chat_part1", "BsyHrHTn4CA")
+        LiveRoomInfo("livestream:stream_avengers_chat_part1", "BsyHrHTn4CA"),
+        LiveRoomInfo("livestream:stream_avengers_chat_part2", "0lIED0j9t4I"),
     )
 
     init {

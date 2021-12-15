@@ -31,6 +31,7 @@ If you'd like to learn more about this project, check out the [tutorials](https:
 
 ### Youtube Videos
 - [Stream Avengers Chat Part 1 - Home Screen](https://www.youtube.com/watch?v=BsyHrHTn4CA)
+- [Stream Avengers Chat Part 2 - Channel List Activity](https://youtu.be/0lIED0j9t4I)
 
 ## Download
 Go to the [Releases](https://github.com/skydoves/AvengersChat/releases) to download the latest APK.
