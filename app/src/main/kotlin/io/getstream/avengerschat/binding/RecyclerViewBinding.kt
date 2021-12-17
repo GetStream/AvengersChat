@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.binding
+package io.getstream.avengerschat.binding
 
 import android.view.View
 import androidx.databinding.BindingAdapter
