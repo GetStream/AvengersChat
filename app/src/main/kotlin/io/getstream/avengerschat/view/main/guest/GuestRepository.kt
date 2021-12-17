@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main.guest
+package io.getstream.avengerschat.view.main.guest
 
 import androidx.annotation.WorkerThread
 import io.getstream.chat.android.client.ChatClient

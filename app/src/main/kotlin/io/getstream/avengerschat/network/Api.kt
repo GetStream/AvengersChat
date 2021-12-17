@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.network
+package io.getstream.avengerschat.network
 
 object Api {
     private const val YOUTUBE_THUMBNAIL_URL = "https://img.youtube.com/vi/"

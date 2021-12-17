@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.model
+package io.getstream.avengerschat.model
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import io.getstream.avengerschat.extensions.EXTRA_IMAGE
 import io.getstream.chat.android.client.ChatClient
-import io.stream.avengerschat.extensions.EXTRA_IMAGE
 import kotlinx.parcelize.Parcelize
 
 @Entity

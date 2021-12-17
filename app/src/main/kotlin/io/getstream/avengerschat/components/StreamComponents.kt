@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.components
+package io.getstream.avengerschat.components
 
 @DslMarker
 annotation class StreamComponents

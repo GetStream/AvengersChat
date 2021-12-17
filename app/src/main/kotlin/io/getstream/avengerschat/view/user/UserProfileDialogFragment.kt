@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.user
+package io.getstream.avengerschat.view.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,9 +23,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentUserProfileBinding
-import io.stream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.DialogFragmentUserProfileBinding
+import io.getstream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
 class UserProfileDialogFragment :

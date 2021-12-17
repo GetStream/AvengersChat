@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.components
+package io.getstream.avengerschat.components
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner

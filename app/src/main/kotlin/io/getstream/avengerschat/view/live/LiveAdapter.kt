@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.live
+package io.getstream.avengerschat.view.live
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.ItemLiveBinding
-import io.stream.avengerschat.extensions.adapterPositionOrNull
-import io.stream.avengerschat.model.LiveRoomInfo
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.ItemLiveBinding
+import io.getstream.avengerschat.extensions.adapterPositionOrNull
+import io.getstream.avengerschat.model.LiveRoomInfo
 
 class LiveAdapter constructor(
     private val onItemClicked: (LiveRoomInfo) -> Unit

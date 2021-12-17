@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.initializer
+package io.getstream.avengerschat.initializer
 
 import android.content.Context
 import android.content.Intent
 import androidx.startup.Initializer
+import io.getstream.avengerschat.BuildConfig
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.view.main.MainActivity
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.client.notifications.handler.NotificationConfig
@@ -26,9 +29,6 @@ import io.getstream.chat.android.client.notifications.handler.NotificationHandle
 import io.getstream.chat.android.client.notifications.handler.NotificationHandlerFactory
 import io.getstream.chat.android.livedata.ChatDomain
 import io.getstream.chat.android.pushprovider.firebase.FirebasePushDeviceGenerator
-import io.stream.avengerschat.BuildConfig
-import io.stream.avengerschat.R
-import io.stream.avengerschat.view.main.MainActivity
 import timber.log.Timber
 
 /**

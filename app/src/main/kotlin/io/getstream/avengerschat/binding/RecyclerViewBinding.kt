@@ -21,16 +21,16 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yarolegovich.discretescrollview.DiscreteScrollView
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
+import io.getstream.avengerschat.extensions.adapterPositionOrNull
+import io.getstream.avengerschat.extensions.parsedColor
+import io.getstream.avengerschat.extensions.startCircularReveal
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.LiveRoomInfo
+import io.getstream.avengerschat.view.custom.StreamGlobalStyles
+import io.getstream.avengerschat.view.dm.DirectMessageAdapter
+import io.getstream.avengerschat.view.live.LiveAdapter
+import io.getstream.avengerschat.view.main.MainAvengersAdapter
 import io.getstream.chat.android.client.models.User
-import io.stream.avengerschat.extensions.adapterPositionOrNull
-import io.stream.avengerschat.extensions.parsedColor
-import io.stream.avengerschat.extensions.startCircularReveal
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.model.LiveRoomInfo
-import io.stream.avengerschat.view.custom.StreamGlobalStyles
-import io.stream.avengerschat.view.dm.DirectMessageAdapter
-import io.stream.avengerschat.view.live.LiveAdapter
-import io.stream.avengerschat.view.main.MainAvengersAdapter
 
 object RecyclerViewBinding {
     @JvmStatic

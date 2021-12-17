@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.di
+package io.getstream.avengerschat.di
 
 import dagger.Module
 import dagger.Provides

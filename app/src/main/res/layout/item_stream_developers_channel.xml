@@ -7,9 +7,9 @@
 
         <variable
             name="info"
-            type="io.stream.avengerschat.model.LiveRoomInfo" />
+            type="io.getstream.avengerschat.model.LiveRoomInfo" />
 
-        <import type="io.stream.avengerschat.network.Api" />
+        <import type="io.getstream.avengerschat.network.Api" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main.guest
+package io.getstream.avengerschat.view.main.guest
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,12 +26,12 @@ import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import com.skydoves.bundler.bundleNonNull
 import dagger.hilt.android.AndroidEntryPoint
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentGuestBinding
-import io.stream.avengerschat.extensions.isValidForId
-import io.stream.avengerschat.extensions.toast
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.view.home.HomeActivity
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.DialogFragmentGuestBinding
+import io.getstream.avengerschat.extensions.isValidForId
+import io.getstream.avengerschat.extensions.toast
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.view.home.HomeActivity
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

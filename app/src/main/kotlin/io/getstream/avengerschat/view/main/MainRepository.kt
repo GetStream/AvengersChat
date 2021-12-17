@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main
+package io.getstream.avengerschat.view.main
 
 import androidx.annotation.WorkerThread
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
 import com.skydoves.sandwich.onException
 import com.skydoves.sandwich.suspendOnSuccess
-import io.stream.avengerschat.network.MarvelService
-import io.stream.avengerschat.persistence.AvengersDao
+import io.getstream.avengerschat.network.MarvelService
+import io.getstream.avengerschat.persistence.AvengersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

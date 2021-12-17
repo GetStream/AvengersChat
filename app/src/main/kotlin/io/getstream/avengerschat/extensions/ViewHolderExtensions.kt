@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.extensions
+package io.getstream.avengerschat.extensions
 
 import androidx.recyclerview.widget.RecyclerView
 

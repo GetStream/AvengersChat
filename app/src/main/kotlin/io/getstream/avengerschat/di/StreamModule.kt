@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.di
+package io.getstream.avengerschat.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.getstream.avengerschat.initializer.StreamChatInitializer
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.livedata.ChatDomain
-import io.stream.avengerschat.initializer.StreamChatInitializer
 import javax.inject.Singleton
 
 @Module

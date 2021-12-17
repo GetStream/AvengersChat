@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.initializer
+package io.getstream.avengerschat.initializer
 
 import android.content.Context
 import androidx.startup.Initializer

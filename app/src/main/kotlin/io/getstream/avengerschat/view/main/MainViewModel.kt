@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main
+package io.getstream.avengerschat.view.main
 
 import androidx.annotation.VisibleForTesting
 import androidx.databinding.Bindable
@@ -23,7 +23,7 @@ import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.stream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.Avenger
 import timber.log.Timber
 import javax.inject.Inject
 

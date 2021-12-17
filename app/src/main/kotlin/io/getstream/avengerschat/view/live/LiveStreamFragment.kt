@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.live
+package io.getstream.avengerschat.view.live
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,11 +24,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.stream.avengerschat.R
-import io.stream.avengerschat.components.StreamUIComponent
-import io.stream.avengerschat.components.streamMessageListComponent
-import io.stream.avengerschat.databinding.FragmentLiveStreamBinding
-import io.stream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.components.StreamUIComponent
+import io.getstream.avengerschat.components.streamMessageListComponent
+import io.getstream.avengerschat.databinding.FragmentLiveStreamBinding
+import io.getstream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
 class LiveStreamFragment :

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.mention
+package io.getstream.avengerschat.view.mention
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,10 +24,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.FragmentMentionsBinding
 import io.getstream.chat.android.ui.mention.list.viewmodel.MentionListViewModel
 import io.getstream.chat.android.ui.mention.list.viewmodel.bindView
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.FragmentMentionsBinding
 
 @AndroidEntryPoint
 class MentionsFragment : BindingFragment<FragmentMentionsBinding>(R.layout.fragment_mentions) {

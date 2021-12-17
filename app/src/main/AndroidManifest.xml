@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="io.stream.avengerschat">
+    package="io.getstream.avengerschat">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -29,11 +29,11 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="io.stream.avengerschat.androidx-startup"
+            android:authorities="io.getstream.avengerschat.androidx-startup"
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="io.stream.avengerschat.initializer.StreamGlobalStyleInitializer"
+                android:name="io.getstream.avengerschat.initializer.StreamGlobalStyleInitializer"
                 android:value="androidx.startup" />
         </provider>
 

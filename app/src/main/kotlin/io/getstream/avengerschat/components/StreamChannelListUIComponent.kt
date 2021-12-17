@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.components
+package io.getstream.avengerschat.components
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import io.getstream.avengerschat.R
 import io.getstream.chat.android.ui.channel.list.ChannelListView
 import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
 import io.getstream.chat.android.ui.channel.list.viewmodel.bindView
 import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListViewModelFactory
-import io.stream.avengerschat.R
 
 /**
  * Stream channel list UI component.

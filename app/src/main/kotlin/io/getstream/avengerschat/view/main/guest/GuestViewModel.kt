@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main.guest
+package io.getstream.avengerschat.view.main.guest
 
 import androidx.databinding.Bindable
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.stream.avengerschat.extensions.emptyString
-import io.stream.avengerschat.model.Avenger
+import io.getstream.avengerschat.extensions.emptyString
+import io.getstream.avengerschat.model.Avenger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filter

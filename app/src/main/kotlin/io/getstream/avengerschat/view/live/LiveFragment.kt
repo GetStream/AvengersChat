@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.live
+package io.getstream.avengerschat.view.live
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,12 +24,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.FragmentLiveBinding
-import io.stream.avengerschat.extensions.liveRoomInfo
-import io.stream.avengerschat.model.LiveRoomInfo
-import io.stream.avengerschat.view.home.HomeViewModel
-import io.stream.avengerschat.view.user.UserProfileDialogFragment
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.FragmentLiveBinding
+import io.getstream.avengerschat.extensions.liveRoomInfo
+import io.getstream.avengerschat.model.LiveRoomInfo
+import io.getstream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.view.user.UserProfileDialogFragment
 
 @AndroidEntryPoint
 class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live) {

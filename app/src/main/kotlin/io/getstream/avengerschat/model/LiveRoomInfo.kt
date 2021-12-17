@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.model
+package io.getstream.avengerschat.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

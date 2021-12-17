@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.dm
+package io.getstream.avengerschat.view.dm
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,9 +25,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.DialogFragmentDirectMessageBinding
 import io.getstream.chat.android.client.models.User
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.DialogFragmentDirectMessageBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

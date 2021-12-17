@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main
+package io.getstream.avengerschat.view.main
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
@@ -22,12 +22,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.ItemAvengerBinding
-import io.stream.avengerschat.databinding.ItemGuestBinding
-import io.stream.avengerschat.extensions.adapterPositionOrNull
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.view.home.HomeActivity
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.ItemAvengerBinding
+import io.getstream.avengerschat.databinding.ItemGuestBinding
+import io.getstream.avengerschat.extensions.adapterPositionOrNull
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.view.home.HomeActivity
 
 class MainAvengersAdapter constructor(
     private val onItemYouClicked: (Avenger) -> Unit

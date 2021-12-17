@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.di
+package io.getstream.avengerschat.di
 
 import android.content.Context
 import android.os.Build
@@ -29,8 +29,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.stream.avengerschat.network.HttpRequestInterceptor
-import io.stream.avengerschat.network.MarvelService
+import io.getstream.avengerschat.network.HttpRequestInterceptor
+import io.getstream.avengerschat.network.MarvelService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

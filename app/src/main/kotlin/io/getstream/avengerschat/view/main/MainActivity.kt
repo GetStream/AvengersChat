@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.main
+package io.getstream.avengerschat.view.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.skydoves.bindables.BindingActivity
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import dagger.hilt.android.AndroidEntryPoint
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.ActivityMainBinding
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.view.main.guest.GuestDialogFragment
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.ActivityMainBinding
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.view.main.guest.GuestDialogFragment
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {

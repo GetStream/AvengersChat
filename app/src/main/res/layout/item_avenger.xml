@@ -7,7 +7,7 @@
 
         <variable
             name="avenger"
-            type="io.stream.avengerschat.model.Avenger" />
+            type="io.getstream.avengerschat.model.Avenger" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

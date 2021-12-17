@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.di
+package io.getstream.avengerschat.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import io.getstream.avengerschat.network.MarvelService
+import io.getstream.avengerschat.persistence.AvengersDao
+import io.getstream.avengerschat.view.dm.DirectMessageRepository
+import io.getstream.avengerschat.view.home.HomeRepository
+import io.getstream.avengerschat.view.main.MainRepository
+import io.getstream.avengerschat.view.user.UserProfileEditRepository
 import io.getstream.chat.android.client.ChatClient
-import io.stream.avengerschat.network.MarvelService
-import io.stream.avengerschat.persistence.AvengersDao
-import io.stream.avengerschat.view.dm.DirectMessageRepository
-import io.stream.avengerschat.view.home.HomeRepository
-import io.stream.avengerschat.view.main.MainRepository
-import io.stream.avengerschat.view.user.UserProfileEditRepository
 import kotlinx.coroutines.CoroutineDispatcher
 
 @Module

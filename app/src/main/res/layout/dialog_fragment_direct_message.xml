@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.dm.DirectMessageViewModel" />
+            type="io.getstream.avengerschat.view.dm.DirectMessageViewModel" />
 
         <variable
             name="adapter"
-            type="io.stream.avengerschat.view.dm.DirectMessageAdapter" />
+            type="io.getstream.avengerschat.view.dm.DirectMessageAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

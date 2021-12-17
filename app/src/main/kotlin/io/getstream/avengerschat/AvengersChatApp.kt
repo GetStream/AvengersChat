@@ -16,7 +16,7 @@
 
 @file:Suppress("unused")
 
-package io.stream.avengerschat
+package io.getstream.avengerschat
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

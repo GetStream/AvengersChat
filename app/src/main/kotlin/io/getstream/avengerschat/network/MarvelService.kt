@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.network
+package io.getstream.avengerschat.network
 
 import com.skydoves.sandwich.ApiResponse
-import io.stream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.Avenger
 import retrofit2.http.GET
 
 interface MarvelService {

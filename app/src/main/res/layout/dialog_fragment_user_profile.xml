@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.home.HomeViewModel" />
+            type="io.getstream.avengerschat.view.home.HomeViewModel" />
 
         <import type="android.content.Context" />
 
-        <import type="io.stream.avengerschat.extensions.ModelExtensionsKt" />
+        <import type="io.getstream.avengerschat.extensions.ModelExtensionsKt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

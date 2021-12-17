@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.dm
+package io.getstream.avengerschat.view.dm
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.databinding.ItemDirectMessageBinding
+import io.getstream.avengerschat.extensions.adapterPositionOrNull
+import io.getstream.avengerschat.extensions.lastActive
 import io.getstream.chat.android.client.models.User
-import io.stream.avengerschat.R
-import io.stream.avengerschat.databinding.ItemDirectMessageBinding
-import io.stream.avengerschat.extensions.adapterPositionOrNull
-import io.stream.avengerschat.extensions.lastActive
 
 class DirectMessageAdapter constructor(
     private val onItemClicked: (User) -> Unit

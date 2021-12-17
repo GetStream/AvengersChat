@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.custom
+package io.getstream.avengerschat.view.custom
 
 import android.content.Context
 import androidx.annotation.ColorInt
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.extensions.drawable
 import io.getstream.chat.android.ui.ChatUI
 import io.getstream.chat.android.ui.StyleTransformer
 import io.getstream.chat.android.ui.SupportedReactions
 import io.getstream.chat.android.ui.TransformStyle
-import io.stream.avengerschat.R
-import io.stream.avengerschat.extensions.drawable
 
 /**
  * StreamGlobalStyles unify the styles of the Stream UI components by using the

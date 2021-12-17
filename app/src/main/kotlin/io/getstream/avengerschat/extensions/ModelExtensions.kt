@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.extensions
+package io.getstream.avengerschat.extensions
 
 import android.content.Context
 import android.graphics.Color
 import android.text.format.DateUtils
 import com.getstream.sdk.chat.adapter.MessageListItem
 import com.getstream.sdk.chat.utils.DateFormatter
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.LiveRoomInfo
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.User
-import io.stream.avengerschat.R
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.model.LiveRoomInfo
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.ZoneId

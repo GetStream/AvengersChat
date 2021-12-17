@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.persistence
+package io.getstream.avengerschat.persistence
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import io.stream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.Avenger
 
 @Dao
 interface AvengersDao {

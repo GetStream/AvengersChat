@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.initializer
+package io.getstream.avengerschat.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import io.stream.avengerschat.BuildConfig
+import io.getstream.avengerschat.BuildConfig
 import timber.log.Timber
 
 class TimberInitializer : Initializer<Unit> {

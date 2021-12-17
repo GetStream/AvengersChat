@@ -37,12 +37,12 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.skydoves.androidveil.VeilLayout
+import io.getstream.avengerschat.R
+import io.getstream.avengerschat.extensions.color
+import io.getstream.avengerschat.extensions.drawable
+import io.getstream.avengerschat.extensions.setBadgeNumber
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
-import io.stream.avengerschat.R
-import io.stream.avengerschat.extensions.color
-import io.stream.avengerschat.extensions.drawable
-import io.stream.avengerschat.extensions.setBadgeNumber
 
 object ViewBinding {
     @JvmStatic

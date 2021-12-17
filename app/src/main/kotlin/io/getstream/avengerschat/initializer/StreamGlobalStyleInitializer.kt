@@ -16,11 +16,11 @@
 
 @file:Suppress("unused")
 
-package io.stream.avengerschat.initializer
+package io.getstream.avengerschat.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import io.stream.avengerschat.view.custom.StreamGlobalStyles
+import io.getstream.avengerschat.view.custom.StreamGlobalStyles
 import timber.log.Timber
 
 class StreamGlobalStyleInitializer : Initializer<Unit> {

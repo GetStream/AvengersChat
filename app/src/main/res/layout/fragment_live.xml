@@ -7,17 +7,17 @@
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.home.HomeViewModel" />
+            type="io.getstream.avengerschat.view.home.HomeViewModel" />
 
         <variable
             name="adapter"
-            type="io.stream.avengerschat.view.live.LiveAdapter" />
+            type="io.getstream.avengerschat.view.live.LiveAdapter" />
 
         <variable
             name="adapterStreamDev"
-            type="io.stream.avengerschat.view.live.LiveStreamDevelopersAdapter" />
+            type="io.getstream.avengerschat.view.live.LiveStreamDevelopersAdapter" />
 
-        <import type="io.stream.avengerschat.network.Api" />
+        <import type="io.getstream.avengerschat.network.Api" />
     </data>
 
     <androidx.core.widget.NestedScrollView

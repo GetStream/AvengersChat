@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.user
+package io.getstream.avengerschat.view.user
 
 import androidx.annotation.WorkerThread
+import io.getstream.avengerschat.extensions.extraData
+import io.getstream.avengerschat.model.Avenger
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.call.await
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
-import io.stream.avengerschat.extensions.extraData
-import io.stream.avengerschat.model.Avenger
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

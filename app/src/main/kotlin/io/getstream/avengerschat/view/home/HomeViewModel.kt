@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.home
+package io.getstream.avengerschat.view.home
 
 import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
@@ -26,12 +26,12 @@ import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import io.getstream.avengerschat.extensions.parsedColor
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.LiveRoomInfo
 import io.getstream.chat.android.client.models.ConnectionData
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.livedata.ChatDomain
-import io.stream.avengerschat.extensions.parsedColor
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.model.LiveRoomInfo
 import timber.log.Timber
 
 class HomeViewModel @AssistedInject constructor(

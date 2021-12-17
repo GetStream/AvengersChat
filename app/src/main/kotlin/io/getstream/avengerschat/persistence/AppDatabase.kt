@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.persistence
+package io.getstream.avengerschat.persistence
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import io.stream.avengerschat.model.Avenger
+import io.getstream.avengerschat.model.Avenger
 
 @Database(entities = [Avenger::class], version = 1, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {

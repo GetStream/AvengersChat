@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.view.home
+package io.getstream.avengerschat.view.home
 
 import androidx.annotation.WorkerThread
+import io.getstream.avengerschat.extensions.extraData
+import io.getstream.avengerschat.extensions.liveRoomInfo
+import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.persistence.AvengersDao
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.call.await
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
-import io.stream.avengerschat.extensions.extraData
-import io.stream.avengerschat.extensions.liveRoomInfo
-import io.stream.avengerschat.model.Avenger
-import io.stream.avengerschat.persistence.AvengersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

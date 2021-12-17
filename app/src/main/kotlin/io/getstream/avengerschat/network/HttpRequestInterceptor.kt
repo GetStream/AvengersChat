@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.stream.avengerschat.network
+package io.getstream.avengerschat.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
