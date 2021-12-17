@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.home.HomeViewModel" />
+            type="io.getstream.avengerschat.view.home.HomeViewModel" />
 
         <variable
             name="video"

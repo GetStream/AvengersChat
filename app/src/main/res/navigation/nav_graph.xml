@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_live"
-        android:name="io.stream.avengerschat.view.live.LiveFragment"
+        android:name="io.getstream.avengerschat.view.live.LiveFragment"
         tools:layout="@layout/fragment_live">
 
         <action
@@ -31,17 +31,17 @@
 
     <fragment
         android:id="@+id/fragment_live_stream"
-        android:name="io.stream.avengerschat.view.live.LiveStreamFragment"
+        android:name="io.getstream.avengerschat.view.live.LiveStreamFragment"
         tools:layout="@layout/fragment_live_stream">
 
         <argument
             android:name="info"
-            app:argType="io.stream.avengerschat.model.LiveRoomInfo" />
+            app:argType="io.getstream.avengerschat.model.LiveRoomInfo" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_channel_list"
-        android:name="io.stream.avengerschat.view.chat.ChannelListFragment"
+        android:name="io.getstream.avengerschat.view.chat.ChannelListFragment"
         tools:layout="@layout/fragment_channel_list">
 
         <action
@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/fragment_message_list"
-        android:name="io.stream.avengerschat.view.chat.MessageListFragment"
+        android:name="io.getstream.avengerschat.view.chat.MessageListFragment"
         tools:layout="@layout/fragment_message_list">
 
         <action
@@ -80,7 +80,7 @@
 
     <fragment
         android:id="@+id/fragment_mentions"
-        android:name="io.stream.avengerschat.view.mention.MentionsFragment"
+        android:name="io.getstream.avengerschat.view.mention.MentionsFragment"
         tools:layout="@layout/fragment_mentions">
 
         <action
@@ -95,7 +95,7 @@
 
     <fragment
         android:id="@+id/fragment_direct_message"
-        android:name="io.stream.avengerschat.view.dm.DirectMessageDialogFragment"
+        android:name="io.getstream.avengerschat.view.dm.DirectMessageDialogFragment"
         tools:layout="@layout/dialog_fragment_direct_message">
 
         <action
@@ -110,12 +110,12 @@
 
     <fragment
         android:id="@+id/fragment_user_profile"
-        android:name="io.stream.avengerschat.view.user.UserProfileDialogFragment"
+        android:name="io.getstream.avengerschat.view.user.UserProfileDialogFragment"
         tools:layout="@layout/dialog_fragment_user_profile" />
 
     <fragment
         android:id="@+id/fragment_user_profile_edit"
-        android:name="io.stream.avengerschat.view.user.UserProfileEditDialogFragment"
+        android:name="io.getstream.avengerschat.view.user.UserProfileEditDialogFragment"
         tools:layout="@layout/dialog_fragment_user_profile_edit" />
 
 </navigation>

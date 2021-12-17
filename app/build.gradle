@@ -14,7 +14,7 @@ apply from: "$rootDir/dependencies.gradle"
 android {
     compileSdk versions.compileSdk
     defaultConfig {
-        applicationId "io.stream.avengerschat"
+        applicationId "io.getstream.avengerschat"
         minSdk versions.minSdk
         targetSdk versions.compileSdk
         versionCode versions.versionCode

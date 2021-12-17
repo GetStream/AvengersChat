@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.user.UserProfileEditViewModel" />
+            type="io.getstream.avengerschat.view.user.UserProfileEditViewModel" />
 
         <variable
             name="homeVm"
-            type="io.stream.avengerschat.view.home.HomeViewModel" />
+            type="io.getstream.avengerschat.view.home.HomeViewModel" />
 
         <import type="android.webkit.URLUtil" />
     </data>

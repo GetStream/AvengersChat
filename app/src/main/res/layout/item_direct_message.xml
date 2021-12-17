@@ -11,7 +11,7 @@
 
         <import type="android.content.Context" />
 
-        <import type="io.stream.avengerschat.extensions.ModelExtensionsKt" />
+        <import type="io.getstream.avengerschat.extensions.ModelExtensionsKt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

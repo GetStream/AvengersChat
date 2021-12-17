@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="io.stream.avengerschat.view.main.MainViewModel" />
+            type="io.getstream.avengerschat.view.main.MainViewModel" />
 
         <variable
             name="adapter"
-            type="io.stream.avengerschat.view.main.MainAvengersAdapter" />
+            type="io.getstream.avengerschat.view.main.MainAvengersAdapter" />
 
     </data>
 
