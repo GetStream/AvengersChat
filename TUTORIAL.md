@@ -20,3 +20,5 @@ If you'd like to learn about more this project, reading these tutorials would be
 > This is part one of a three-part tutorial, where you will learn to build an Avengers Chat application for Android. In this part, we build the Home Screen.
 - [Stream Avengers Chat Part 2 - Channel List Activity](https://youtu.be/0lIED0j9t4I)
 > This is part two of a three-part tutorial, where you will learn to build an Avengers Chat application for Android. In this part, we build the Channel List Activity.
+- [Stream Avengers Chat Part 3 - Message List Activity](https://youtu.be/HedwkZz5aww)
+> This is the Final Part of the Stream Avengers Chat Tutorial. In this video, we will finish our project by building the Message List Activity where we can chat with other Avengers.
