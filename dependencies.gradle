@@ -25,7 +25,7 @@ ext.versions = [
         archCompomentVersion: '2.1.0',
 
         // stream chat SDK
-        streamChatUIVersion : '4.25.0',
+        streamChatUIVersion : '4.27.0',
 
         // binding
         bindablesVersion    : '1.0.9',
