@@ -58,11 +58,9 @@ android {
 dependencies {
     // android supports
     implementation "com.google.android.material:material:$versions.materialVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintVersion"
 
     // jetpack components
     implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$versions.navigationVersion"
@@ -85,7 +83,6 @@ dependencies {
     // hilt
     implementation "com.google.dagger:hilt-android:$versions.hiltCoreVersion"
     kapt "com.google.dagger:hilt-compiler:$versions.hiltCoreVersion"
-    kapt "androidx.hilt:hilt-compiler:$versions.hiltVersion"
 
     // network
     implementation "com.github.skydoves:sandwich:$versions.sandwichVersion"
