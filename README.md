@@ -42,7 +42,7 @@ Go to the [Releases](https://github.com/skydoves/AvengersChat/releases) to downl
 
 ## Stream Chat SDK
 AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for implementing messaging systems.
-- [Chat Messaging Tutorial](https://getstream.io/tutorials/android-chat/) - Basic tutorials for getting started by building a simple messaging app.
+- [Chat Messaging Tutorial](https://getstream.io/tutorials/android-chat/?utm_source=Github&utm_campaign=Devrel_oss&utm_medium=avengerschat) - Basic tutorials for getting started by building a simple messaging app.
 - [Stream Chat Android repository](https://github.com/GetStream/stream-chat-android) - Official Android SDK for Stream Chat.
 - [Chat Client Documentation](https://getstream.io/chat/docs/android/?language=kotlin) - Full documentation of the Chat client for requesting API calls. 
 - [UI Components Documentation](https://getstream.io/chat/docs/sdk/android/) - Full documentation of the Stream UI Components.
