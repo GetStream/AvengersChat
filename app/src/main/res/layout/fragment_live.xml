@@ -57,7 +57,7 @@
                 app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
                 app:streamUiAvatarOnlineIndicatorEnabled="true"
                 app:streamUiAvatarOnlineIndicatorPosition="topRight"
-                app:userData="@{vm.user}" />
+                app:user="@{vm.user}" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/gradation"

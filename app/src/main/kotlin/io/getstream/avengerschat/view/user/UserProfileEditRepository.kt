@@ -17,7 +17,6 @@
 package io.getstream.avengerschat.view.user
 
 import androidx.annotation.WorkerThread
-import io.getstream.avengerschat.extensions.extraData
 import io.getstream.avengerschat.model.Avenger
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.call.await
@@ -45,7 +44,8 @@ class UserProfileEditRepository @Inject constructor(
     fun updateUser(avenger: Avenger, newProfileUrl: String) = flow {
         val user = User(
             id = avenger.id,
-            extraData = avenger.extraData(newProfileUrl)
+            name = avenger.name,
+            image = newProfileUrl
         )
         val result = chatClient.updateUser(user).await()
         result.onSuccessSuspend {

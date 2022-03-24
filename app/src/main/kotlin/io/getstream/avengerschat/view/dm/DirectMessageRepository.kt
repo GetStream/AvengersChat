@@ -71,7 +71,8 @@ class DirectMessageRepository @Inject constructor(
     fun joinNewChannel(user: User) = flow {
         val result = chatClient.createChannel(
             channelType = STREAM_CHANNEL_TYPE_MESSAGING,
-            members = listOf(user.id, chatClient.currentUserId),
+            channelId = user.id,
+            memberIds = listOf(user.id, chatClient.currentUserId),
             extraData = mapOf()
         ).await()
         result.onSuccessSuspend {

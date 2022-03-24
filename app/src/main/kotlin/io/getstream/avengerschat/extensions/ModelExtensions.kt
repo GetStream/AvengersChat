@@ -32,25 +32,7 @@ import org.threeten.bp.ZoneId
 import java.util.Date
 
 @PublishedApi
-internal const val EXTRA_NAME = "name"
-
-@PublishedApi
-internal const val EXTRA_IMAGE = "image"
-
-@PublishedApi
 internal const val EXTRA_TEAM = "team"
-
-val Avenger.extraData: MutableMap<String, Any>
-    inline get() = mutableMapOf(
-        EXTRA_NAME to name
-    )
-
-fun Avenger.extraData(newProfileUrl: String): MutableMap<String, Any> {
-    return mutableMapOf(
-        EXTRA_NAME to name,
-        EXTRA_IMAGE to newProfileUrl
-    )
-}
 
 val Avenger.parsedColor: Int
     inline get() = Color.parseColor(color)
