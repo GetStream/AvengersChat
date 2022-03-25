@@ -17,7 +17,6 @@
 package io.getstream.avengerschat.view.home
 
 import androidx.databinding.Bindable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.skydoves.bindables.BindingViewModel
@@ -29,14 +28,16 @@ import dagger.assisted.AssistedInject
 import io.getstream.avengerschat.extensions.parsedColor
 import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.model.LiveRoomInfo
+import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.ConnectionData
 import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.livedata.ChatDomain
+import io.getstream.chat.android.offline.extensions.globalState
+import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 
 class HomeViewModel @AssistedInject constructor(
     private val homeRepository: HomeRepository,
-    chatDomain: ChatDomain,
+    chatClient: ChatClient,
     @Assisted val avenger: Avenger,
 ) : BindingViewModel() {
 
@@ -54,9 +55,9 @@ class HomeViewModel @AssistedInject constructor(
     @get:Bindable
     var visibleBottomNav: Boolean by bindingProperty(true)
 
-    val user: LiveData<User?> = chatDomain.user
+    val user: StateFlow<User?> = chatClient.globalState.user
 
-    val totalUnreadCount: LiveData<Int> = chatDomain.totalUnreadCount
+    val totalUnreadCount: StateFlow<Int> = chatClient.globalState.totalUnreadCount
 
     init {
         Timber.d("injection HomeViewModel")

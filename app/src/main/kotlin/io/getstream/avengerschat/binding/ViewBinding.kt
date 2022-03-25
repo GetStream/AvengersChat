@@ -42,6 +42,7 @@ import io.getstream.avengerschat.extensions.color
 import io.getstream.avengerschat.extensions.drawable
 import io.getstream.avengerschat.extensions.setBadgeNumber
 import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.ui.avatar.AvatarView
 import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
 
 object ViewBinding {
@@ -152,6 +153,12 @@ object ViewBinding {
             .build()
 
         youTubePlayerView.initialize(playListener, false, playerOptions)
+    }
+
+    @JvmStatic
+    @BindingAdapter("user")
+    fun bindUser(avatarView: AvatarView, user: User?) {
+        user?.let { avatarView.setUserData(it) }
     }
 
     @JvmStatic
