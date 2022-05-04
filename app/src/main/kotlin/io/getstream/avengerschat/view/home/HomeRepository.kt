@@ -17,7 +17,6 @@
 package io.getstream.avengerschat.view.home
 
 import androidx.annotation.WorkerThread
-import io.getstream.avengerschat.extensions.extraData
 import io.getstream.avengerschat.extensions.liveRoomInfo
 import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.persistence.AvengersDao
@@ -52,7 +51,8 @@ class HomeRepository @Inject constructor(
 
         val user = User(
             id = avenger.id,
-            extraData = avenger.extraData
+            name = avenger.name,
+            image = avenger.getProfileImage()
         )
         val result = chatClient.connectUser(user, avenger.token).await()
         result.onSuccessSuspend {

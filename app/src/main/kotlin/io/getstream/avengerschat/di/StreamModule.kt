@@ -22,7 +22,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.getstream.avengerschat.initializer.StreamChatInitializer
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.livedata.ChatDomain
 import javax.inject.Singleton
 
 @Module
@@ -36,14 +35,5 @@ object StreamModule {
          * Provides an instance of the [ChatClient] which is initialized in [StreamChatInitializer].
          */
         return ChatClient.instance()
-    }
-
-    @Provides
-    @Singleton
-    fun provideStreamChatDomain(): ChatDomain {
-        /**
-         * Provides an instance of the [ChatDomain] which is initialized in [StreamChatInitializer].
-         */
-        return ChatDomain.instance()
     }
 }

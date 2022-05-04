@@ -27,7 +27,9 @@ import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.client.notifications.handler.NotificationConfig
 import io.getstream.chat.android.client.notifications.handler.NotificationHandler
 import io.getstream.chat.android.client.notifications.handler.NotificationHandlerFactory
-import io.getstream.chat.android.livedata.ChatDomain
+import io.getstream.chat.android.offline.model.message.attachments.UploadAttachmentsNetworkType
+import io.getstream.chat.android.offline.plugin.configuration.Config
+import io.getstream.chat.android.offline.plugin.factory.StreamOfflinePluginFactory
 import io.getstream.chat.android.pushprovider.firebase.FirebasePushDeviceGenerator
 import timber.log.Timber
 
@@ -39,25 +41,26 @@ class StreamChatInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         Timber.d("StreamChatInitializer is initialized")
 
+        val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
+        val offlinePluginFactory = StreamOfflinePluginFactory(
+            config = Config(
+                backgroundSyncEnabled = true,
+                userPresence = true,
+                persistenceEnabled = true,
+                uploadAttachmentsNetworkType = UploadAttachmentsNetworkType.NOT_ROAMING,
+            ),
+            appContext = context,
+        )
+
         /**
          * initialize a global instance of the [ChatClient].
          * The ChatClient is the main entry point for all low-level operations on chat.
          * e.g, connect/disconnect user to the server, send/update/pin message, etc.
          */
-        val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
-        val chatClient: ChatClient =
-            ChatClient.Builder(context.getString(R.string.stream_api_key), context)
-                .notifications(createNotificationConfig(), createNotificationHandler(context))
-                .logLevel(logLevel)
-                .build()
-
-        /**
-         * initialize a global instance of the [ChatDomain].
-         * The ChatDomain is the main entry point for all livedata & offline operations on chat.
-         * e.g, querying available channel lists, querying users, etc.
-         */
-        ChatDomain.Builder(chatClient, context)
-            .offlineEnabled()
+        ChatClient.Builder(context.getString(R.string.stream_api_key), context)
+            .notifications(createNotificationConfig(), createNotificationHandler(context))
+            .withPlugin(offlinePluginFactory)
+            .logLevel(logLevel)
             .build()
     }
 
