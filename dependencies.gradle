@@ -1,6 +1,6 @@
 ext.versions = [
         minSdk              : 21,
-        compileSdk          : 31,
+        compileSdk          : 32,
         versionCode         : 6,
         versionName         : '1.0.5',
 
@@ -11,7 +11,7 @@ ext.versions = [
         ktlint              : '0.40.0',
 
         // kotlin
-        kotlin              : '1.6.10',
+        kotlin              : '1.6.21',
 
         // support library
         materialVersion     : '1.5.0',
@@ -25,16 +25,16 @@ ext.versions = [
         archCompomentVersion: '2.1.0',
 
         // stream chat SDK
-        streamChatUIVersion : '5.1.0',
+        streamChatUIVersion : '5.3.1',
 
         // binding
-        bindablesVersion    : '1.0.9',
+        bindablesVersion    : '1.1.0',
 
         // startup
         startupVersion      : '1.1.1',
 
         // di
-        hiltCoreVersion     : '2.40.5',
+        hiltCoreVersion     : '2.42',
 
         // network
         retrofitVersion     : '2.9.0',
