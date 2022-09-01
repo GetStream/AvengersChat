@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Stream.IO, Inc. All Rights Reserved.
+ * Copyright 2022 Stream.IO, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,7 @@ import coil.Coil
 import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
-import coil.util.CoilUtils
-import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,12 +41,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(
-        @ApplicationContext context: Context
-    ): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpRequestInterceptor())
-            .cache(CoilUtils.createDefaultCache(context))
             .build()
     }
 
@@ -60,11 +56,11 @@ object NetworkModule {
         return ImageLoader.Builder(context)
             .crossfade(true)
             .okHttpClient { okHttpClient }
-            .componentRegistry {
+            .components {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    add(ImageDecoderDecoder(context))
+                    add(ImageDecoderDecoder.Factory())
                 } else {
-                    add(GifDecoder())
+                    add(GifDecoder.Factory())
                 }
             }
             .build().apply { Coil.setImageLoader(this) }
@@ -77,7 +73,7 @@ object NetworkModule {
             .client(okHttpClient)
             .baseUrl("https://gist.githubusercontent.com/skydoves/933a70b21d7c96e8a8fdbe31ca72dada/raw/454f107f2c5f32c13823f7a6fd5031900f280d7c/")
             .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
+            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()
     }
 
