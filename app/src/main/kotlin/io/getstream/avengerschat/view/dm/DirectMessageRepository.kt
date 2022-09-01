@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Stream.IO, Inc. All Rights Reserved.
+ * Copyright 2022 Stream.IO, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import io.getstream.avengerschat.network.Api.STREAM_USER_ROLE
 import io.getstream.avengerschat.network.Api.STREAM_USER_ROLE_ADMIN
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.api.models.QueryUsersRequest
-import io.getstream.chat.android.client.call.await
 import io.getstream.chat.android.client.models.Filters
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend

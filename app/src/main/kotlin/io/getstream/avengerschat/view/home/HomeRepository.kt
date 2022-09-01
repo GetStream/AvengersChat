@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Stream.IO, Inc. All Rights Reserved.
+ * Copyright 2022 Stream.IO, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import io.getstream.avengerschat.extensions.liveRoomInfo
 import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.persistence.AvengersDao
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.call.await
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
 import kotlinx.coroutines.CoroutineDispatcher
@@ -67,7 +66,7 @@ class HomeRepository @Inject constructor(
     fun disconnectUser(avenger: Avenger) {
         val currentUser = chatClient.getCurrentUser()
         if (currentUser != null && avenger.id == currentUser.id) {
-            chatClient.disconnect()
+            chatClient.disconnect(false).enqueue()
         }
     }
 

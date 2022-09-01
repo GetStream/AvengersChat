@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Stream.IO, Inc. All Rights Reserved.
+ * Copyright 2022 Stream.IO, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ class HomeViewModel @AssistedInject constructor(
     @get:Bindable
     var visibleBottomNav: Boolean by bindingProperty(true)
 
-    val user: StateFlow<User?> = chatClient.globalState.user
+    val user: StateFlow<User?> = chatClient.clientState.user
 
     val totalUnreadCount: StateFlow<Int> = chatClient.globalState.totalUnreadCount
 

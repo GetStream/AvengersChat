@@ -123,4 +123,4 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$versions.timberVersion"
 }
 
-apply from: "$rootDir/spotless.gradle"
+apply from: "$rootDir/spotless/spotless.gradle"
