@@ -25,8 +25,8 @@ import androidx.lifecycle.LifecycleOwner
  */
 interface StreamUIComponent {
 
-    val lifecycleOwner: LifecycleOwner
+  val lifecycleOwner: LifecycleOwner
 
-    @StreamComponents
-    fun bindLayout(view: View)
+  @StreamComponents
+  fun bindLayout(view: View)
 }

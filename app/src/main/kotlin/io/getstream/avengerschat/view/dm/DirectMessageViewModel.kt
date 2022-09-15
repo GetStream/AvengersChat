@@ -26,16 +26,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DirectMessageViewModel @Inject constructor(
-    private val directMessageRepository: DirectMessageRepository
+  private val directMessageRepository: DirectMessageRepository
 ) : BindingViewModel() {
 
-    @get:Bindable
-    val queriedAvengers: List<User>?
-        by directMessageRepository.queryAvengers().asBindingProperty(null)
+  @get:Bindable
+  val queriedAvengers: List<User>?
+    by directMessageRepository.queryAvengers().asBindingProperty(null)
 
-    init {
-        Timber.d("injection DirectMessageViewMode")
-    }
+  init {
+    Timber.d("injection DirectMessageViewMode")
+  }
 
-    fun joinNewChannel(user: User) = directMessageRepository.joinNewChannel(user)
+  fun joinNewChannel(user: User) = directMessageRepository.joinNewChannel(user)
 }

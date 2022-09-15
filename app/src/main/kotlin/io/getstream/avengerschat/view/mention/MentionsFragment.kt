@@ -32,32 +32,32 @@ import io.getstream.chat.android.ui.mention.list.viewmodel.bindView
 @AndroidEntryPoint
 class MentionsFragment : BindingFragment<FragmentMentionsBinding>(R.layout.fragment_mentions) {
 
-    private val viewModel: MentionListViewModel by viewModels()
+  private val viewModel: MentionListViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding.root
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding {
+      // initializes and bind layouts to Stream mention list UI components.
+      viewModel.bindView(mentionsListView, viewLifecycleOwner)
+
+      mentionsListView.setMentionSelectedListener { message ->
+        findNavController().navigate(
+          MentionsFragmentDirections.actionToFragmentMessageList(
+            message.cid,
+            message.id
+          )
+        )
+      }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding {
-            // initializes and bind layouts to Stream mention list UI components.
-            viewModel.bindView(mentionsListView, viewLifecycleOwner)
-
-            mentionsListView.setMentionSelectedListener { message ->
-                findNavController().navigate(
-                    MentionsFragmentDirections.actionToFragmentMessageList(
-                        message.cid,
-                        message.id
-                    )
-                )
-            }
-        }
-    }
+  }
 }

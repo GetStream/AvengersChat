@@ -27,51 +27,51 @@ import io.getstream.avengerschat.extensions.adapterPositionOrNull
 import io.getstream.avengerschat.model.LiveRoomInfo
 
 class LiveStreamDevelopersAdapter constructor(
-    private val onItemClicked: (LiveRoomInfo) -> Unit
+  private val onItemClicked: (LiveRoomInfo) -> Unit
 ) : ListAdapter<LiveRoomInfo, LiveStreamDevelopersAdapter.LiveViewHolder>(DIFF_CALLBACK) {
 
-    private val channelList: List<LiveRoomInfo> = listOf(
-        LiveRoomInfo("livestream:stream_avengers_chat_part1", "BsyHrHTn4CA"),
-        LiveRoomInfo("livestream:stream_avengers_chat_part2", "0lIED0j9t4I"),
-    )
+  private val channelList: List<LiveRoomInfo> = listOf(
+    LiveRoomInfo("livestream:stream_avengers_chat_part1", "BsyHrHTn4CA"),
+    LiveRoomInfo("livestream:stream_avengers_chat_part2", "0lIED0j9t4I")
+  )
+
+  init {
+    submitList(channelList)
+  }
+
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
+    return LiveViewHolder(parent.binding(R.layout.item_stream_developers_channel))
+  }
+
+  override fun onBindViewHolder(holder: LiveViewHolder, position: Int) {
+    holder.bindLiveRoomInfo(getItem(position))
+  }
+
+  inner class LiveViewHolder(private val binding: ItemStreamDevelopersChannelBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
     init {
-        submitList(channelList)
+      binding.root.setOnClickListener {
+        val position = adapterPositionOrNull ?: return@setOnClickListener
+        onItemClicked.invoke(getItem(position))
+      }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
-        return LiveViewHolder(parent.binding(R.layout.item_stream_developers_channel))
+    fun bindLiveRoomInfo(liveRoomInfo: LiveRoomInfo) {
+      binding.info = liveRoomInfo
+      binding.executePendingBindings()
     }
+  }
 
-    override fun onBindViewHolder(holder: LiveViewHolder, position: Int) {
-        holder.bindLiveRoomInfo(getItem(position))
+  companion object {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LiveRoomInfo>() {
+      override fun areItemsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
+        return oldItem.cid == newItem.cid
+      }
+
+      override fun areContentsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
+        return oldItem == newItem
+      }
     }
-
-    inner class LiveViewHolder(private val binding: ItemStreamDevelopersChannelBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPositionOrNull ?: return@setOnClickListener
-                onItemClicked.invoke(getItem(position))
-            }
-        }
-
-        fun bindLiveRoomInfo(liveRoomInfo: LiveRoomInfo) {
-            binding.info = liveRoomInfo
-            binding.executePendingBindings()
-        }
-    }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LiveRoomInfo>() {
-            override fun areItemsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
-                return oldItem.cid == newItem.cid
-            }
-
-            override fun areContentsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
+  }
 }

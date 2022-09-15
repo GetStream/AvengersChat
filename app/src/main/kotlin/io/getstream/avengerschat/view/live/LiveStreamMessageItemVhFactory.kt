@@ -32,38 +32,38 @@ import io.getstream.chat.android.ui.message.list.adapter.MessageListItemViewType
  */
 class LiveStreamMessageItemVhFactory private constructor() : MessageListItemViewHolderFactory() {
 
-    override fun createViewHolder(
-        parentView: ViewGroup,
-        viewType: Int
-    ): BaseMessageItemViewHolder<out MessageListItem> {
-        return when (viewType) {
-            MessageListItemViewType.PLAIN_TEXT -> PlainTextViewHolder(parentView)
-            else -> super.createViewHolder(parentView, viewType)
-        }
+  override fun createViewHolder(
+    parentView: ViewGroup,
+    viewType: Int
+  ): BaseMessageItemViewHolder<out MessageListItem> {
+    return when (viewType) {
+      MessageListItemViewType.PLAIN_TEXT -> PlainTextViewHolder(parentView)
+      else -> super.createViewHolder(parentView, viewType)
     }
+  }
 
-    private class PlainTextViewHolder(
-        parentView: ViewGroup,
-        private val binding: ItemLiveMessageBinding = ItemLiveMessageBinding.inflate(
-            LayoutInflater.from(parentView.context),
-            parentView,
-            false
-        ),
-    ) : BaseMessageItemViewHolder<MessageListItem.MessageItem>(binding.root) {
+  private class PlainTextViewHolder(
+    parentView: ViewGroup,
+    private val binding: ItemLiveMessageBinding = ItemLiveMessageBinding.inflate(
+      LayoutInflater.from(parentView.context),
+      parentView,
+      false
+    )
+  ) : BaseMessageItemViewHolder<MessageListItem.MessageItem>(binding.root) {
 
-        override fun bindData(
-            data: MessageListItem.MessageItem,
-            diff: MessageListItemPayloadDiff?
-        ) {
-            binding.apply {
-                this.data = data
-                localDate = data.localDate(root.context)
-                executePendingBindings()
-            }
-        }
+    override fun bindData(
+      data: MessageListItem.MessageItem,
+      diff: MessageListItemPayloadDiff?
+    ) {
+      binding.apply {
+        this.data = data
+        localDate = data.localDate(root.context)
+        executePendingBindings()
+      }
     }
+  }
 
-    companion object {
-        fun create(): LiveStreamMessageItemVhFactory = LiveStreamMessageItemVhFactory()
-    }
+  companion object {
+    fun create(): LiveStreamMessageItemVhFactory = LiveStreamMessageItemVhFactory()
+  }
 }

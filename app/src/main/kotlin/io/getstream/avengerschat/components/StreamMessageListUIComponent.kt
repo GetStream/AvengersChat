@@ -36,71 +36,71 @@ import io.getstream.chat.android.ui.message.list.viewmodel.factory.MessageListVi
  * [Stream Message List](https://getstream.io/chat/docs/sdk/android/ui/components/message-list/)
  */
 class StreamMessageListUIComponent constructor(
-    override val lifecycleOwner: LifecycleOwner,
-    val cid: String,
-    val messageId: String? = null
+  override val lifecycleOwner: LifecycleOwner,
+  val cid: String,
+  val messageId: String? = null
 ) : StreamUIComponent {
 
-    private val factory by lazy(LazyThreadSafetyMode.NONE) {
-        MessageListViewModelFactory(cid = cid, messageId = messageId)
+  private val factory by lazy(LazyThreadSafetyMode.NONE) {
+    MessageListViewModelFactory(cid = cid, messageId = messageId)
+  }
+  private val messageListHeaderViewModel: MessageListHeaderViewModel by lazy(LazyThreadSafetyMode.NONE) {
+    factory.create(MessageListHeaderViewModel::class.java)
+  }
+  val messageListViewModel: MessageListViewModel by lazy(LazyThreadSafetyMode.NONE) {
+    factory.create(MessageListViewModel::class.java)
+  }
+  private val messageInputViewModel: MessageInputViewModel by lazy(LazyThreadSafetyMode.NONE) {
+    factory.create(MessageInputViewModel::class.java)
+  }
+
+  @StreamComponents
+  override fun bindLayout(view: View) {
+    // binds Stream UI components to the ViewModels.
+    val messageListHeaderView =
+      view.findViewById<MessageListHeaderView>(R.id.messageListHeaderView)
+    messageListHeaderView?.let {
+      messageListHeaderViewModel.bindView(it, lifecycleOwner)
     }
-    private val messageListHeaderViewModel: MessageListHeaderViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        factory.create(MessageListHeaderViewModel::class.java)
+    val messageListView =
+      view.findViewById<MessageListView>(R.id.messageListView)
+    messageListView?.let {
+      messageListViewModel.bindView(it, lifecycleOwner)
     }
-    val messageListViewModel: MessageListViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        factory.create(MessageListViewModel::class.java)
-    }
-    private val messageInputViewModel: MessageInputViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        factory.create(MessageInputViewModel::class.java)
+    val messageInputView =
+      view.findViewById<MessageInputView>(R.id.messageInputView)
+    messageInputView?.let {
+      messageInputViewModel.bindView(it, lifecycleOwner)
     }
 
-    @StreamComponents
-    override fun bindLayout(view: View) {
-        // binds Stream UI components to the ViewModels.
-        val messageListHeaderView =
-            view.findViewById<MessageListHeaderView>(R.id.messageListHeaderView)
-        messageListHeaderView?.let {
-            messageListHeaderViewModel.bindView(it, lifecycleOwner)
+    // observe thread modes states.
+    messageListViewModel.mode.observe(lifecycleOwner) {
+      when (it) {
+        is MessageListViewModel.Mode.Thread -> {
+          messageListHeaderViewModel.setActiveThread(it.parentMessage)
+          messageInputViewModel.setActiveThread(it.parentMessage)
         }
-        val messageListView =
-            view.findViewById<MessageListView>(R.id.messageListView)
-        messageListView?.let {
-            messageListViewModel.bindView(it, lifecycleOwner)
+        is MessageListViewModel.Mode.Normal -> {
+          messageListHeaderViewModel.resetThread()
+          messageInputViewModel.resetThread()
         }
-        val messageInputView =
-            view.findViewById<MessageInputView>(R.id.messageInputView)
-        messageInputView?.let {
-            messageInputViewModel.bindView(it, lifecycleOwner)
-        }
-
-        // observe thread modes states.
-        messageListViewModel.mode.observe(lifecycleOwner) {
-            when (it) {
-                is MessageListViewModel.Mode.Thread -> {
-                    messageListHeaderViewModel.setActiveThread(it.parentMessage)
-                    messageInputViewModel.setActiveThread(it.parentMessage)
-                }
-                is MessageListViewModel.Mode.Normal -> {
-                    messageListHeaderViewModel.resetThread()
-                    messageInputViewModel.resetThread()
-                }
-            }
-        }
-        messageListView?.setMessageEditHandler(messageInputViewModel::postMessageToEdit)
+      }
     }
+    messageListView?.setMessageEditHandler(messageInputViewModel::postMessageToEdit)
+  }
 }
 
 @StreamComponents
 @Suppress("UNCHECKED_CAST")
 fun <T : StreamUIComponent> LifecycleOwner.streamMessageListComponent(
-    messageIdProvider: (() -> String)? = null,
-    cidProvider: () -> String,
+  messageIdProvider: (() -> String)? = null,
+  cidProvider: () -> String
 ): Lazy<T> {
-    return lazy(LazyThreadSafetyMode.NONE) {
-        StreamMessageListUIComponent(
-            lifecycleOwner = this,
-            messageId = messageIdProvider?.invoke(),
-            cid = cidProvider.invoke(),
-        ) as T
-    }
+  return lazy(LazyThreadSafetyMode.NONE) {
+    StreamMessageListUIComponent(
+      lifecycleOwner = this,
+      messageId = messageIdProvider?.invoke(),
+      cid = cidProvider.invoke()
+    ) as T
+  }
 }

@@ -31,69 +31,69 @@ import io.getstream.chat.android.ui.TransformStyle
  */
 object StreamGlobalStyles {
 
-    init {
-        TransformStyle.channelActionsDialogStyleTransformer =
-            StyleTransformer { channelActionsDialogStyle ->
-                channelActionsDialogStyle.copy(
-                    leaveGroupEnabled = false
-                )
-            }
+  init {
+    TransformStyle.channelActionsDialogStyleTransformer =
+      StyleTransformer { channelActionsDialogStyle ->
+        channelActionsDialogStyle.copy(
+          leaveGroupEnabled = false
+        )
+      }
+  }
+
+  /**
+   * updates and unifies the Stream UI components color themes.
+   */
+  fun updatePrimaryColorGlobalStyles(@ColorInt color: Int) {
+    TransformStyle.channelListStyleTransformer =
+      StyleTransformer { channelListStyle ->
+        channelListStyle.copy(
+          indicatorReadIcon = channelListStyle.indicatorReadIcon.apply {
+            setTint(color)
+          }
+        )
+      }
+
+    TransformStyle.messageListItemStyleTransformer =
+      StyleTransformer { messageListItemStyle ->
+        messageListItemStyle.copy(
+          messageBackgroundColorMine = color,
+          dateSeparatorBackgroundColor = color,
+          textStyleDateSeparator = messageListItemStyle.textStyleDateSeparator,
+          textStyleUserName = messageListItemStyle.textStyleUserName.copy(
+            color = color
+          ),
+          iconIndicatorRead = messageListItemStyle.iconIndicatorRead.apply {
+            setTint(color)
+          }
+        )
+      }
+
+    TransformStyle.messageInputStyleTransformer =
+      StyleTransformer { messageInputStyle ->
+        messageInputStyle.copy(
+          sendButtonEnabledIcon = messageInputStyle.sendButtonEnabledIcon.apply {
+            setTint(color)
+          }
+        )
+      }
+  }
+
+  /**
+   * updates and unifies the Stream UI components reaction data.
+   */
+  fun initializeReactionsGlobalStyles(context: Context) {
+    val supportedReactionsData = reactions.mapValues {
+      val drawable = context.drawable(it.value)
+      SupportedReactions.ReactionDrawable(drawable, drawable)
     }
+    ChatUI.supportedReactions = SupportedReactions(context, supportedReactionsData)
+  }
 
-    /**
-     * updates and unifies the Stream UI components color themes.
-     */
-    fun updatePrimaryColorGlobalStyles(@ColorInt color: Int) {
-        TransformStyle.channelListStyleTransformer =
-            StyleTransformer { channelListStyle ->
-                channelListStyle.copy(
-                    indicatorReadIcon = channelListStyle.indicatorReadIcon.apply {
-                        setTint(color)
-                    },
-                )
-            }
-
-        TransformStyle.messageListItemStyleTransformer =
-            StyleTransformer { messageListItemStyle ->
-                messageListItemStyle.copy(
-                    messageBackgroundColorMine = color,
-                    dateSeparatorBackgroundColor = color,
-                    textStyleDateSeparator = messageListItemStyle.textStyleDateSeparator,
-                    textStyleUserName = messageListItemStyle.textStyleUserName.copy(
-                        color = color
-                    ),
-                    iconIndicatorRead = messageListItemStyle.iconIndicatorRead.apply {
-                        setTint(color)
-                    }
-                )
-            }
-
-        TransformStyle.messageInputStyleTransformer =
-            StyleTransformer { messageInputStyle ->
-                messageInputStyle.copy(
-                    sendButtonEnabledIcon = messageInputStyle.sendButtonEnabledIcon.apply {
-                        setTint(color)
-                    }
-                )
-            }
-    }
-
-    /**
-     * updates and unifies the Stream UI components reaction data.
-     */
-    fun initializeReactionsGlobalStyles(context: Context) {
-        val supportedReactionsData = reactions.mapValues {
-            val drawable = context.drawable(it.value)
-            SupportedReactions.ReactionDrawable(drawable, drawable)
-        }
-        ChatUI.supportedReactions = SupportedReactions(context, supportedReactionsData)
-    }
-
-    private val reactions: Map<String, Int> = mapOf(
-        "like" to R.drawable.thumbsup,
-        "love" to R.drawable.love,
-        "smile" to R.drawable.smile,
-        "joy" to R.drawable.joy,
-        "wink" to R.drawable.wink
-    )
+  private val reactions: Map<String, Int> = mapOf(
+    "like" to R.drawable.thumbsup,
+    "love" to R.drawable.love,
+    "smile" to R.drawable.smile,
+    "joy" to R.drawable.joy,
+    "wink" to R.drawable.wink
+  )
 }

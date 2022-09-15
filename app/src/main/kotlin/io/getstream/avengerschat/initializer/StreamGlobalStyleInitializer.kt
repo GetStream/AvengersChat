@@ -25,15 +25,15 @@ import timber.log.Timber
 
 class StreamGlobalStyleInitializer : Initializer<Unit> {
 
-    override fun create(context: Context) {
-        Timber.d("StreamGlobalStyleInitializer is initialized")
+  override fun create(context: Context) {
+    Timber.d("StreamGlobalStyleInitializer is initialized")
 
-        StreamGlobalStyles.initializeReactionsGlobalStyles(context)
-    }
+    StreamGlobalStyles.initializeReactionsGlobalStyles(context)
+  }
 
-    override fun dependencies(): List<Class<out Initializer<*>>> =
-        listOf(
-            TimberInitializer::class.java,
-            StreamChatInitializer::class.java,
-        )
+  override fun dependencies(): List<Class<out Initializer<*>>> =
+    listOf(
+      TimberInitializer::class.java,
+      StreamChatInitializer::class.java
+    )
 }

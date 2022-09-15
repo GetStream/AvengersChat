@@ -34,38 +34,38 @@ import io.getstream.avengerschat.view.user.UserProfileDialogFragment
 @AndroidEntryPoint
 class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live) {
 
-    private val homeViewModel: HomeViewModel by activityViewModels()
+  private val homeViewModel: HomeViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            adapter = LiveAdapter(::navigateToStream)
-            adapterStreamDev = LiveStreamDevelopersAdapter(::navigateToStream)
-            lifecycleOwner = viewLifecycleOwner
-            vm = homeViewModel
-        }.root
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      adapter = LiveAdapter(::navigateToStream)
+      adapterStreamDev = LiveStreamDevelopersAdapter(::navigateToStream)
+      lifecycleOwner = viewLifecycleOwner
+      vm = homeViewModel
+    }.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding.featuredLiveVideo.setOnClickListener {
+      navigateToStream(homeViewModel.avenger.liveRoomInfo)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.featuredLiveVideo.setOnClickListener {
-            navigateToStream(homeViewModel.avenger.liveRoomInfo)
-        }
-
-        binding.avatar.setOnClickListener {
-            UserProfileDialogFragment.create()
-                .show(parentFragmentManager, UserProfileDialogFragment.TAG)
-        }
+    binding.avatar.setOnClickListener {
+      UserProfileDialogFragment.create()
+        .show(parentFragmentManager, UserProfileDialogFragment.TAG)
     }
+  }
 
-    private fun navigateToStream(liveRoomInfo: LiveRoomInfo) {
-        findNavController().navigate(
-            LiveFragmentDirections.actionToFragmentLiveStream(liveRoomInfo)
-        )
-    }
+  private fun navigateToStream(liveRoomInfo: LiveRoomInfo) {
+    findNavController().navigate(
+      LiveFragmentDirections.actionToFragmentLiveStream(liveRoomInfo)
+    )
+  }
 }

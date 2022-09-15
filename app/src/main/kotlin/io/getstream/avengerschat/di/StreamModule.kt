@@ -28,12 +28,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object StreamModule {
 
-    @Provides
-    @Singleton
-    fun provideStreamChatClient(): ChatClient {
-        /**
-         * Provides an instance of the [ChatClient] which is initialized in [StreamChatInitializer].
-         */
-        return ChatClient.instance()
-    }
+  @Provides
+  @Singleton
+  fun provideStreamChatClient(): ChatClient {
+    /**
+     * Provides an instance of the [ChatClient] which is initialized in [StreamChatInitializer].
+     */
+    return ChatClient.instance()
+  }
 }

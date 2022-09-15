@@ -32,42 +32,42 @@ import kotlinx.coroutines.flow.flatMapLatest
 import timber.log.Timber
 
 class UserProfileEditViewModel @AssistedInject constructor(
-    private val userProfileEditRepository: UserProfileEditRepository,
-    @Assisted private val avenger: Avenger,
+  private val userProfileEditRepository: UserProfileEditRepository,
+  @Assisted private val avenger: Avenger
 ) : BindingViewModel() {
 
-    @get:Bindable
-    var sendEnabled: Boolean by bindingProperty(false)
+  @get:Bindable
+  var sendEnabled: Boolean by bindingProperty(false)
 
-    @get:Bindable
-    var profileUrl: String? by bindingProperty(null)
+  @get:Bindable
+  var profileUrl: String? by bindingProperty(null)
 
-    private val _sendUrlSateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    val sendUrlSateFlow: StateFlow<Boolean> = _sendUrlSateFlow
-    val updatedUser = sendUrlSateFlow.filter { it && profileUrl != null }.flatMapLatest {
-        userProfileEditRepository.updateUser(avenger, profileUrl!!)
+  private val _sendUrlSateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
+  val sendUrlSateFlow: StateFlow<Boolean> = _sendUrlSateFlow
+  val updatedUser = sendUrlSateFlow.filter { it && profileUrl != null }.flatMapLatest {
+    userProfileEditRepository.updateUser(avenger, profileUrl!!)
+  }
+
+  init {
+    Timber.d("injection UserProfileEditViewModel")
+  }
+
+  fun sendUrl() = _sendUrlSateFlow.tryEmit(URLUtil.isNetworkUrl(profileUrl))
+
+  @dagger.assisted.AssistedFactory
+  interface AssistedFactory {
+    fun create(avenger: Avenger): UserProfileEditViewModel
+  }
+
+  companion object {
+    fun provideFactory(
+      assistedFactory: AssistedFactory,
+      avenger: Avenger
+    ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+      @Suppress("UNCHECKED_CAST")
+      override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return assistedFactory.create(avenger) as T
+      }
     }
-
-    init {
-        Timber.d("injection UserProfileEditViewModel")
-    }
-
-    fun sendUrl() = _sendUrlSateFlow.tryEmit(URLUtil.isNetworkUrl(profileUrl))
-
-    @dagger.assisted.AssistedFactory
-    interface AssistedFactory {
-        fun create(avenger: Avenger): UserProfileEditViewModel
-    }
-
-    companion object {
-        fun provideFactory(
-            assistedFactory: AssistedFactory,
-            avenger: Avenger
-        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return assistedFactory.create(avenger) as T
-            }
-        }
-    }
+  }
 }

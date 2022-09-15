@@ -32,30 +32,30 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GuestViewModel @Inject constructor(
-    private val guestRepository: GuestRepository
+  private val guestRepository: GuestRepository
 ) : BindingViewModel() {
 
-    private val nameStateFlow: MutableStateFlow<String> = MutableStateFlow(emptyString)
+  private val nameStateFlow: MutableStateFlow<String> = MutableStateFlow(emptyString)
 
-    val tokenFlow: Flow<String> = nameStateFlow.filter { it != emptyString }
-        .flatMapLatest { guestRepository.fetchGuestToken(it) }
+  val tokenFlow: Flow<String> = nameStateFlow.filter { it != emptyString }
+    .flatMapLatest { guestRepository.fetchGuestToken(it) }
 
-    @get:Bindable
-    val enabled: Boolean by nameStateFlow.map { it == emptyString }.asBindingProperty(true)
+  @get:Bindable
+  val enabled: Boolean by nameStateFlow.map { it == emptyString }.asBindingProperty(true)
 
-    init {
-        Timber.d("injection YouViewModel")
-    }
+  init {
+    Timber.d("injection YouViewModel")
+  }
 
-    fun submitName(name: String) = nameStateFlow.tryEmit(name)
+  fun submitName(name: String) = nameStateFlow.tryEmit(name)
 
-    fun createGuestAvenger(avenger: Avenger, token: String, quote: String): Avenger {
-        val name = nameStateFlow.value
-        return avenger.copy(
-            id = name,
-            name = name,
-            token = token,
-            quote = quote
-        )
-    }
+  fun createGuestAvenger(avenger: Avenger, token: String, quote: String): Avenger {
+    val name = nameStateFlow.value
+    return avenger.copy(
+      id = name,
+      name = name,
+      token = token,
+      quote = quote
+    )
+  }
 }

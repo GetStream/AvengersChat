@@ -27,42 +27,42 @@ import io.getstream.avengerschat.extensions.adapterPositionOrNull
 import io.getstream.avengerschat.model.LiveRoomInfo
 
 class LiveAdapter constructor(
-    private val onItemClicked: (LiveRoomInfo) -> Unit
+  private val onItemClicked: (LiveRoomInfo) -> Unit
 ) : ListAdapter<LiveRoomInfo, LiveAdapter.LiveViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
-        return LiveViewHolder(parent.binding(R.layout.item_live))
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LiveViewHolder {
+    return LiveViewHolder(parent.binding(R.layout.item_live))
+  }
+
+  override fun onBindViewHolder(holder: LiveViewHolder, position: Int) {
+    holder.bindLiveRoomInfo(getItem(position))
+  }
+
+  inner class LiveViewHolder(private val binding: ItemLiveBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+
+    init {
+      binding.root.setOnClickListener {
+        val position = adapterPositionOrNull ?: return@setOnClickListener
+        onItemClicked.invoke(getItem(position))
+      }
     }
 
-    override fun onBindViewHolder(holder: LiveViewHolder, position: Int) {
-        holder.bindLiveRoomInfo(getItem(position))
+    fun bindLiveRoomInfo(liveRoomInfo: LiveRoomInfo) {
+      binding.info = liveRoomInfo
+      binding.executePendingBindings()
     }
+  }
 
-    inner class LiveViewHolder(private val binding: ItemLiveBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+  companion object {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LiveRoomInfo>() {
+      override fun areItemsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
+        return oldItem.cid == newItem.cid
+      }
 
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPositionOrNull ?: return@setOnClickListener
-                onItemClicked.invoke(getItem(position))
-            }
-        }
-
-        fun bindLiveRoomInfo(liveRoomInfo: LiveRoomInfo) {
-            binding.info = liveRoomInfo
-            binding.executePendingBindings()
-        }
+      override fun areContentsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
+        return oldItem == newItem
+      }
     }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LiveRoomInfo>() {
-            override fun areItemsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
-                return oldItem.cid == newItem.cid
-            }
-
-            override fun areContentsTheSame(oldItem: LiveRoomInfo, newItem: LiveRoomInfo): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
+  }
 }

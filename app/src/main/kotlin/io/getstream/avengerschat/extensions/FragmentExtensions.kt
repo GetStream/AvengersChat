@@ -21,8 +21,8 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 
 fun Fragment.addOnBackPressedDispatcher(onBackPressed: OnBackPressedCallback.() -> Unit) {
-    requireActivity().onBackPressedDispatcher.addCallback(
-        owner = viewLifecycleOwner,
-        onBackPressed = onBackPressed
-    )
+  requireActivity().onBackPressedDispatcher.addCallback(
+    owner = viewLifecycleOwner,
+    onBackPressed = onBackPressed
+  )
 }

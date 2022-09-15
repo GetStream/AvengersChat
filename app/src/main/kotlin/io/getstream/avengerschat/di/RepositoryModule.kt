@@ -34,41 +34,41 @@ import kotlinx.coroutines.CoroutineDispatcher
 @InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-    @Provides
-    @ViewModelScoped
-    fun provideMainRepository(
-        marvelService: MarvelService,
-        avengersDao: AvengersDao,
-        dispatcher: CoroutineDispatcher
-    ): MainRepository {
-        return MainRepository(marvelService, avengersDao, dispatcher)
-    }
+  @Provides
+  @ViewModelScoped
+  fun provideMainRepository(
+    marvelService: MarvelService,
+    avengersDao: AvengersDao,
+    dispatcher: CoroutineDispatcher
+  ): MainRepository {
+    return MainRepository(marvelService, avengersDao, dispatcher)
+  }
 
-    @Provides
-    @ViewModelScoped
-    fun provideHomeRepository(
-        chatClient: ChatClient,
-        avengersDao: AvengersDao,
-        dispatcher: CoroutineDispatcher
-    ): HomeRepository {
-        return HomeRepository(chatClient, avengersDao, dispatcher)
-    }
+  @Provides
+  @ViewModelScoped
+  fun provideHomeRepository(
+    chatClient: ChatClient,
+    avengersDao: AvengersDao,
+    dispatcher: CoroutineDispatcher
+  ): HomeRepository {
+    return HomeRepository(chatClient, avengersDao, dispatcher)
+  }
 
-    @Provides
-    @ViewModelScoped
-    fun provideDirecMessageRepository(
-        chatClient: ChatClient,
-        dispatcher: CoroutineDispatcher
-    ): DirectMessageRepository {
-        return DirectMessageRepository(chatClient, dispatcher)
-    }
+  @Provides
+  @ViewModelScoped
+  fun provideDirecMessageRepository(
+    chatClient: ChatClient,
+    dispatcher: CoroutineDispatcher
+  ): DirectMessageRepository {
+    return DirectMessageRepository(chatClient, dispatcher)
+  }
 
-    @Provides
-    @ViewModelScoped
-    fun provideUserProfileEditRepository(
-        chatClient: ChatClient,
-        dispatcher: CoroutineDispatcher
-    ): UserProfileEditRepository {
-        return UserProfileEditRepository(chatClient, dispatcher)
-    }
+  @Provides
+  @ViewModelScoped
+  fun provideUserProfileEditRepository(
+    chatClient: ChatClient,
+    dispatcher: CoroutineDispatcher
+  ): UserProfileEditRepository {
+    return UserProfileEditRepository(chatClient, dispatcher)
+  }
 }

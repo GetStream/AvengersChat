@@ -30,30 +30,30 @@ import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListVi
  * [Stream Channel List](https://getstream.io/chat/docs/sdk/android/ui/components/channel-list-screen/)
  */
 class StreamChannelListUIComponent constructor(
-    override val lifecycleOwner: LifecycleOwner
+  override val lifecycleOwner: LifecycleOwner
 ) : StreamUIComponent {
 
-    private val factory by lazy(LazyThreadSafetyMode.NONE) {
-        ChannelListViewModelFactory()
-    }
+  private val factory by lazy(LazyThreadSafetyMode.NONE) {
+    ChannelListViewModelFactory()
+  }
 
-    private val channelListViewModel: ChannelListViewModel by lazy(LazyThreadSafetyMode.NONE) {
-        factory.create(ChannelListViewModel::class.java)
-    }
+  private val channelListViewModel: ChannelListViewModel by lazy(LazyThreadSafetyMode.NONE) {
+    factory.create(ChannelListViewModel::class.java)
+  }
 
-    @StreamComponents
-    override fun bindLayout(view: View) {
-        val channelListView =
-            view.findViewById<ChannelListView>(R.id.channelListView)
-        channelListView?.let {
-            channelListViewModel.bindView(it, lifecycleOwner)
-        }
+  @StreamComponents
+  override fun bindLayout(view: View) {
+    val channelListView =
+      view.findViewById<ChannelListView>(R.id.channelListView)
+    channelListView?.let {
+      channelListViewModel.bindView(it, lifecycleOwner)
     }
+  }
 }
 
 @StreamComponents
 fun LifecycleOwner.streamChannelListComponent(): Lazy<StreamUIComponent> {
-    return lazy(LazyThreadSafetyMode.NONE) {
-        StreamChannelListUIComponent(lifecycleOwner = this)
-    }
+  return lazy(LazyThreadSafetyMode.NONE) {
+    StreamChannelListUIComponent(lifecycleOwner = this)
+  }
 }

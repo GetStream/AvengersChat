@@ -38,60 +38,60 @@ import timber.log.Timber
  */
 class StreamChatInitializer : Initializer<Unit> {
 
-    override fun create(context: Context) {
-        Timber.d("StreamChatInitializer is initialized")
+  override fun create(context: Context) {
+    Timber.d("StreamChatInitializer is initialized")
 
-        val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
-        val offlinePluginFactory = StreamOfflinePluginFactory(
-            config = Config(
-                backgroundSyncEnabled = true,
-                userPresence = true,
-                persistenceEnabled = true,
-                uploadAttachmentsNetworkType = UploadAttachmentsNetworkType.NOT_ROAMING,
-            ),
-            appContext = context,
-        )
-
-        /**
-         * initialize a global instance of the [ChatClient].
-         * The ChatClient is the main entry point for all low-level operations on chat.
-         * e.g, connect/disconnect user to the server, send/update/pin message, etc.
-         */
-        ChatClient.Builder(context.getString(R.string.stream_api_key), context)
-            .notifications(createNotificationConfig(), createNotificationHandler(context))
-            .withPlugin(offlinePluginFactory)
-            .logLevel(logLevel)
-            .build()
-    }
+    val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
+    val offlinePluginFactory = StreamOfflinePluginFactory(
+      config = Config(
+        backgroundSyncEnabled = true,
+        userPresence = true,
+        persistenceEnabled = true,
+        uploadAttachmentsNetworkType = UploadAttachmentsNetworkType.NOT_ROAMING
+      ),
+      appContext = context
+    )
 
     /**
-     * Creates [NotificationConfig] that configures push notifications.
+     * initialize a global instance of the [ChatClient].
+     * The ChatClient is the main entry point for all low-level operations on chat.
+     * e.g, connect/disconnect user to the server, send/update/pin message, etc.
      */
-    private fun createNotificationConfig(): NotificationConfig {
-        return NotificationConfig(
-            pushDeviceGenerators = listOf(
-                FirebasePushDeviceGenerator()
-            )
-        )
-    }
+    ChatClient.Builder(context.getString(R.string.stream_api_key), context)
+      .notifications(createNotificationConfig(), createNotificationHandler(context))
+      .withPlugin(offlinePluginFactory)
+      .logLevel(logLevel)
+      .build()
+  }
 
-    /**
-     * Creates [NotificationHandler] that handles new push notifications and
-     * customizes an intent the user triggers when clicking on a notification.
-     */
-    private fun createNotificationHandler(
-        context: Context
-    ): NotificationHandler {
-        return NotificationHandlerFactory.createNotificationHandler(
-            context = context,
-            newMessageIntent = { _: String, _: String, _: String ->
-                Intent(context, MainActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
-            }
-        )
-    }
+  /**
+   * Creates [NotificationConfig] that configures push notifications.
+   */
+  private fun createNotificationConfig(): NotificationConfig {
+    return NotificationConfig(
+      pushDeviceGenerators = listOf(
+        FirebasePushDeviceGenerator()
+      )
+    )
+  }
 
-    override fun dependencies(): List<Class<out Initializer<*>>> =
-        listOf(FirebaseInitializer::class.java)
+  /**
+   * Creates [NotificationHandler] that handles new push notifications and
+   * customizes an intent the user triggers when clicking on a notification.
+   */
+  private fun createNotificationHandler(
+    context: Context
+  ): NotificationHandler {
+    return NotificationHandlerFactory.createNotificationHandler(
+      context = context,
+      newMessageIntent = { _: String, _: String, _: String ->
+        Intent(context, MainActivity::class.java).apply {
+          flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+      }
+    )
+  }
+
+  override fun dependencies(): List<Class<out Initializer<*>>> =
+    listOf(FirebaseInitializer::class.java)
 }

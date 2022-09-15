@@ -35,47 +35,47 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class DirectMessageRepository @Inject constructor(
-    private val chatClient: ChatClient,
-    private val dispatcher: CoroutineDispatcher
+  private val chatClient: ChatClient,
+  private val dispatcher: CoroutineDispatcher
 ) {
 
-    init {
-        Timber.d("injection DirectMessageRepository")
-    }
+  init {
+    Timber.d("injection DirectMessageRepository")
+  }
 
-    /**
-     * requests query to the Stream Client server for getting a filtered list of Avengers.
-     */
-    @WorkerThread
-    fun queryAvengers() = flow {
-        val usersRequest = QueryUsersRequest(
-            filter = Filters.and(
-                Filters.ne(STREAM_USER_ID, chatClient.currentUserId),
-                Filters.ne(STREAM_USER_ROLE, STREAM_USER_ROLE_ADMIN),
-                Filters.exists(EXTRA_TEAM),
-            ),
-            offset = 0,
-            limit = 20,
-        )
-        val result = chatClient.queryUsers(usersRequest).await()
-        result.onSuccessSuspend {
-            emit(result.data())
-        }
-    }.flowOn(dispatcher)
-
-    /**
-     * requests to create a new channel if there is no existing or joins if there is an existing channel.
-     */
-    @WorkerThread
-    fun joinNewChannel(user: User) = flow {
-        val result = chatClient.createChannel(
-            channelType = STREAM_CHANNEL_TYPE_MESSAGING,
-            channelId = user.id,
-            memberIds = listOf(user.id, chatClient.currentUserId),
-            extraData = mapOf()
-        ).await()
-        result.onSuccessSuspend {
-            emit(result.data().cid)
-        }
+  /**
+   * requests query to the Stream Client server for getting a filtered list of Avengers.
+   */
+  @WorkerThread
+  fun queryAvengers() = flow {
+    val usersRequest = QueryUsersRequest(
+      filter = Filters.and(
+        Filters.ne(STREAM_USER_ID, chatClient.currentUserId),
+        Filters.ne(STREAM_USER_ROLE, STREAM_USER_ROLE_ADMIN),
+        Filters.exists(EXTRA_TEAM)
+      ),
+      offset = 0,
+      limit = 20
+    )
+    val result = chatClient.queryUsers(usersRequest).await()
+    result.onSuccessSuspend {
+      emit(result.data())
     }
+  }.flowOn(dispatcher)
+
+  /**
+   * requests to create a new channel if there is no existing or joins if there is an existing channel.
+   */
+  @WorkerThread
+  fun joinNewChannel(user: User) = flow {
+    val result = chatClient.createChannel(
+      channelType = STREAM_CHANNEL_TYPE_MESSAGING,
+      channelId = user.id,
+      memberIds = listOf(user.id, chatClient.currentUserId),
+      extraData = mapOf()
+    ).await()
+    result.onSuccessSuspend {
+      emit(result.data().cid)
+    }
+  }
 }

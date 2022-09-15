@@ -32,41 +32,41 @@ import io.getstream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
 class LiveStreamFragment :
-    BindingFragment<FragmentLiveStreamBinding>(R.layout.fragment_live_stream) {
+  BindingFragment<FragmentLiveStreamBinding>(R.layout.fragment_live_stream) {
 
-    private val args: LiveStreamFragmentArgs by navArgs()
-    private val homeViewModel: HomeViewModel by activityViewModels()
-    private val streamMessageListComponent: StreamUIComponent by streamMessageListComponent(
-        cidProvider = { args.info.cid }
-    )
+  private val args: LiveStreamFragmentArgs by navArgs()
+  private val homeViewModel: HomeViewModel by activityViewModels()
+  private val streamMessageListComponent: StreamUIComponent by streamMessageListComponent(
+    cidProvider = { args.info.cid }
+  )
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            video = args.info.video
-            vm = homeViewModel
-        }.root
-    }
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      video = args.info.video
+      vm = homeViewModel
+    }.root
+  }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
 
-        // initializes and bind layouts to Stream message list UI components.
-        streamMessageListComponent.bindLayout(binding.root)
-        binding.messageListView.setMessageViewHolderFactory(LiveStreamMessageItemVhFactory.create())
-    }
+    // initializes and bind layouts to Stream message list UI components.
+    streamMessageListComponent.bindLayout(binding.root)
+    binding.messageListView.setMessageViewHolderFactory(LiveStreamMessageItemVhFactory.create())
+  }
 
-    override fun onResume() {
-        super.onResume()
-        homeViewModel.visibleBottomNav = false
-    }
+  override fun onResume() {
+    super.onResume()
+    homeViewModel.visibleBottomNav = false
+  }
 
-    override fun onPause() {
-        super.onPause()
-        homeViewModel.visibleBottomNav = true
-    }
+  override fun onPause() {
+    super.onPause()
+    homeViewModel.visibleBottomNav = true
+  }
 }

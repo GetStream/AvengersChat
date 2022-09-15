@@ -33,32 +33,32 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object PersistenceModule {
 
-    @Provides
-    @Singleton
-    fun provideMoshi(): Moshi {
-        return Moshi.Builder()
-            .addLast(KotlinJsonAdapterFactory())
-            .build()
-    }
+  @Provides
+  @Singleton
+  fun provideMoshi(): Moshi {
+    return Moshi.Builder()
+      .addLast(KotlinJsonAdapterFactory())
+      .build()
+  }
 
-    @Provides
-    @Singleton
-    fun provideAppDatabase(
-        application: Application
-    ): AppDatabase {
-        return Room
-            .databaseBuilder(
-                application,
-                AppDatabase::class.java,
-                application.getString(R.string.database)
-            )
-            .fallbackToDestructiveMigration()
-            .build()
-    }
+  @Provides
+  @Singleton
+  fun provideAppDatabase(
+    application: Application
+  ): AppDatabase {
+    return Room
+      .databaseBuilder(
+        application,
+        AppDatabase::class.java,
+        application.getString(R.string.database)
+      )
+      .fallbackToDestructiveMigration()
+      .build()
+  }
 
-    @Provides
-    @Singleton
-    fun provideAvengersDao(appDatabase: AppDatabase): AvengersDao {
-        return appDatabase.avengersDao()
-    }
+  @Provides
+  @Singleton
+  fun provideAvengersDao(appDatabase: AppDatabase): AvengersDao {
+    return appDatabase.avengersDao()
+  }
 }

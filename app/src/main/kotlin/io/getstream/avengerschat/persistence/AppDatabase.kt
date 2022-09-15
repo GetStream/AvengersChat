@@ -23,5 +23,5 @@ import io.getstream.avengerschat.model.Avenger
 @Database(entities = [Avenger::class], version = 1, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun avengersDao(): AvengersDao
+  abstract fun avengersDao(): AvengersDao
 }

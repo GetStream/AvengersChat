@@ -33,41 +33,41 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DirectMessageDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentDirectMessageBinding>(R.layout.dialog_fragment_direct_message) {
+  BindingBottomSheetDialogFragment<DialogFragmentDirectMessageBinding>(R.layout.dialog_fragment_direct_message) {
 
-    private val viewModel: DirectMessageViewModel by viewModels()
+  private val viewModel: DirectMessageViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  }
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      adapter = DirectMessageAdapter(onItemClicked)
+      vm = viewModel
+    }.root
+  }
+
+  private val onItemClicked: (User) -> Unit = {
+    viewLifecycleOwner.lifecycleScope.launch {
+      viewModel.joinNewChannel(it).collect {
+        findNavController().navigate(
+          DirectMessageDialogFragmentDirections.actionToFragmentMessageList(it, null)
+        )
+        dismissAllowingStateLoss()
+      }
     }
+  }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            adapter = DirectMessageAdapter(onItemClicked)
-            vm = viewModel
-        }.root
-    }
+  companion object {
+    const val TAG = "DirectMessageDialogFragment"
 
-    private val onItemClicked: (User) -> Unit = {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.joinNewChannel(it).collect {
-                findNavController().navigate(
-                    DirectMessageDialogFragmentDirections.actionToFragmentMessageList(it, null)
-                )
-                dismissAllowingStateLoss()
-            }
-        }
-    }
-
-    companion object {
-        const val TAG = "DirectMessageDialogFragment"
-
-        fun create(): DirectMessageDialogFragment = DirectMessageDialogFragment()
-    }
+    fun create(): DirectMessageDialogFragment = DirectMessageDialogFragment()
+  }
 }

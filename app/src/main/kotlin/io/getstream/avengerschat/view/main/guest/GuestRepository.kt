@@ -26,27 +26,27 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class GuestRepository @Inject constructor(
-    val chatClient: ChatClient,
-    private val dispatcher: CoroutineDispatcher,
+  val chatClient: ChatClient,
+  private val dispatcher: CoroutineDispatcher
 ) {
 
-    init {
-        Timber.d("injection GuestRepository")
+  init {
+    Timber.d("injection GuestRepository")
+  }
+
+  /**
+   * Connects a guest user using the given user name to the Stream client server.
+   * This connection will keep maintained until be disconnected.
+   */
+  @WorkerThread
+  fun fetchGuestToken(name: String) = flow {
+    // connect a guest user.
+    chatClient.connectGuestUser(name, name).await()
+
+    // fetch a guest token.
+    val result = chatClient.getGuestToken(name, name).await()
+    result.onSuccessSuspend {
+      emit(result.data().token)
     }
-
-    /**
-     * Connects a guest user using the given user name to the Stream client server.
-     * This connection will keep maintained until be disconnected.
-     */
-    @WorkerThread
-    fun fetchGuestToken(name: String) = flow {
-        // connect a guest user.
-        chatClient.connectGuestUser(name, name).await()
-
-        // fetch a guest token.
-        val result = chatClient.getGuestToken(name, name).await()
-        result.onSuccessSuspend {
-            emit(result.data().token)
-        }
-    }.flowOn(dispatcher)
+  }.flowOn(dispatcher)
 }

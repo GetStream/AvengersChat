@@ -21,6 +21,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class LiveRoomInfo constructor(
-    val cid: String,
-    val video: String,
+  val cid: String,
+  val video: String
 ) : Parcelable

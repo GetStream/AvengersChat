@@ -33,34 +33,34 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
 
-    @Inject
-    internal lateinit var detailViewModelFactory: HomeViewModel.AssistedFactory
+  @Inject
+  internal lateinit var detailViewModelFactory: HomeViewModel.AssistedFactory
 
-    private val viewModel: HomeViewModel by viewModels {
-        HomeViewModel.provideFactory(detailViewModelFactory, avenger)
+  private val viewModel: HomeViewModel by viewModels {
+    HomeViewModel.provideFactory(detailViewModelFactory, avenger)
+  }
+
+  private val avenger: Avenger by bundleNonNull(EXTRA_AVENGER)
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    onTransformationEndContainerApplyParams(this)
+    super.onCreate(savedInstanceState)
+    binding {
+      fragmentManager = supportFragmentManager
+      lifecycleOwner = this@HomeActivity
+      vm = viewModel
     }
+  }
 
-    private val avenger: Avenger by bundleNonNull(EXTRA_AVENGER)
+  companion object {
+    private const val EXTRA_AVENGER = "EXTRA_AVENGER"
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        onTransformationEndContainerApplyParams(this)
-        super.onCreate(savedInstanceState)
-        binding {
-            fragmentManager = supportFragmentManager
-            lifecycleOwner = this@HomeActivity
-            vm = viewModel
-        }
+    fun startActivity(
+      transformationLayout: TransformationLayout,
+      avenger: Avenger
+    ) = transformationLayout.context.intentOf<HomeActivity> {
+      putExtra(EXTRA_AVENGER to avenger)
+      TransformationCompat.startActivity(transformationLayout, intent)
     }
-
-    companion object {
-        private const val EXTRA_AVENGER = "EXTRA_AVENGER"
-
-        fun startActivity(
-            transformationLayout: TransformationLayout,
-            avenger: Avenger
-        ) = transformationLayout.context.intentOf<HomeActivity> {
-            putExtra(EXTRA_AVENGER to avenger)
-            TransformationCompat.startActivity(transformationLayout, intent)
-        }
-    }
+  }
 }

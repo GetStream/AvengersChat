@@ -28,21 +28,22 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class Avenger(
-    @field:Json(name = "id") @PrimaryKey val id: String,
-    @field:Json(name = "name") val name: String,
-    @field:Json(name = "token") val token: String,
-    @field:Json(name = "color") val color: String,
-    @field:Json(name = "quote") val quote: String,
-    @field:Json(name = "video") val video: String,
-    @field:Json(name = "livecid") val livecid: String,
-    @field:Json(name = "poster") val poster: String,
+  @field:Json(name = "id") @PrimaryKey
+  val id: String,
+  @field:Json(name = "name") val name: String,
+  @field:Json(name = "token") val token: String,
+  @field:Json(name = "color") val color: String,
+  @field:Json(name = "quote") val quote: String,
+  @field:Json(name = "video") val video: String,
+  @field:Json(name = "livecid") val livecid: String,
+  @field:Json(name = "poster") val poster: String
 ) : Parcelable {
 
-    fun getProfileImage(): String {
-        val currentUser = ChatClient.instance().getCurrentUser()
-        if (id == currentUser?.id) {
-            return currentUser.image
-        }
-        return "https://getstream.imgix.net/images/random_svg/${name.first().uppercase()}.png"
+  fun getProfileImage(): String {
+    val currentUser = ChatClient.instance().getCurrentUser()
+    if (id == currentUser?.id) {
+      return currentUser.image
     }
+    return "https://getstream.imgix.net/images/random_svg/${name.first().uppercase()}.png"
+  }
 }
