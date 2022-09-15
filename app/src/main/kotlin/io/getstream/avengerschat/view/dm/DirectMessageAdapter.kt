@@ -28,43 +28,43 @@ import io.getstream.avengerschat.extensions.lastActive
 import io.getstream.chat.android.client.models.User
 
 class DirectMessageAdapter constructor(
-    private val onItemClicked: (User) -> Unit
+  private val onItemClicked: (User) -> Unit
 ) : ListAdapter<User, DirectMessageAdapter.DirectMessageViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DirectMessageViewHolder {
-        return DirectMessageViewHolder(parent.binding(R.layout.item_direct_message))
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DirectMessageViewHolder {
+    return DirectMessageViewHolder(parent.binding(R.layout.item_direct_message))
+  }
+
+  override fun onBindViewHolder(holder: DirectMessageViewHolder, position: Int) {
+    holder.bindUser(getItem(position))
+  }
+
+  inner class DirectMessageViewHolder(private val binding: ItemDirectMessageBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+
+    init {
+      binding.root.setOnClickListener {
+        val position = adapterPositionOrNull ?: return@setOnClickListener
+        onItemClicked.invoke(getItem(position))
+      }
     }
 
-    override fun onBindViewHolder(holder: DirectMessageViewHolder, position: Int) {
-        holder.bindUser(getItem(position))
+    fun bindUser(user: User) {
+      binding.user = user
+      binding.lastActiveTextView.text = user.lastActive(binding.root.context)
+      binding.executePendingBindings()
     }
+  }
 
-    inner class DirectMessageViewHolder(private val binding: ItemDirectMessageBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+  companion object {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<User>() {
+      override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+        return oldItem.id == newItem.id
+      }
 
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPositionOrNull ?: return@setOnClickListener
-                onItemClicked.invoke(getItem(position))
-            }
-        }
-
-        fun bindUser(user: User) {
-            binding.user = user
-            binding.lastActiveTextView.text = user.lastActive(binding.root.context)
-            binding.executePendingBindings()
-        }
+      override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+        return oldItem == newItem
+      }
     }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<User>() {
-            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
+  }
 }

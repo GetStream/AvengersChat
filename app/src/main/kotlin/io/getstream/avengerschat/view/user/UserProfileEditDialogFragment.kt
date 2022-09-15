@@ -37,64 +37,64 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class UserProfileEditDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
+  BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
 
-    private val homeViewModel: HomeViewModel by activityViewModels()
+  private val homeViewModel: HomeViewModel by activityViewModels()
 
-    @Inject
-    internal lateinit var editModelFactory: UserProfileEditViewModel.AssistedFactory
-    private val editViewModel: UserProfileEditViewModel by viewModels {
-        UserProfileEditViewModel.provideFactory(editModelFactory, homeViewModel.avenger)
+  @Inject
+  internal lateinit var editModelFactory: UserProfileEditViewModel.AssistedFactory
+  private val editViewModel: UserProfileEditViewModel by viewModels {
+    UserProfileEditViewModel.provideFactory(editModelFactory, homeViewModel.avenger)
+  }
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  }
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      homeVm = homeViewModel
+      vm = editViewModel
+    }.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding {
+      profileEditText.doOnUrlTextChanged {
+        editViewModel.sendEnabled = it
+      }
+
+      enter.setOnClickListener {
+        root.hideSoftInputFromWindow()
+        val editable = profileEditText.text
+        editViewModel.profileUrl = editable.toString()
+        editable?.clear()
+      }
+
+      update.setOnClickListener {
+        editViewModel.sendUrl()
+      }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+    lifecycleScope.launch {
+      editViewModel.updatedUser.collect {
+        requireContext().toast(R.string.edit_profile_updated)
+        dismissAllowingStateLoss()
+      }
     }
+  }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            homeVm = homeViewModel
-            vm = editViewModel
-        }.root
-    }
+  companion object {
+    const val TAG = "UserInfoDialogEditFragment"
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding {
-            profileEditText.doOnUrlTextChanged {
-                editViewModel.sendEnabled = it
-            }
-
-            enter.setOnClickListener {
-                root.hideSoftInputFromWindow()
-                val editable = profileEditText.text
-                editViewModel.profileUrl = editable.toString()
-                editable?.clear()
-            }
-
-            update.setOnClickListener {
-                editViewModel.sendUrl()
-            }
-        }
-
-        lifecycleScope.launch {
-            editViewModel.updatedUser.collect {
-                requireContext().toast(R.string.edit_profile_updated)
-                dismissAllowingStateLoss()
-            }
-        }
-    }
-
-    companion object {
-        const val TAG = "UserInfoDialogEditFragment"
-
-        fun create() = UserProfileEditDialogFragment()
-    }
+    fun create() = UserProfileEditDialogFragment()
+  }
 }

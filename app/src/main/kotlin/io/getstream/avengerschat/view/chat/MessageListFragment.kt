@@ -35,50 +35,50 @@ import io.getstream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
 class MessageListFragment :
-    BindingFragment<FragmentMessageListBinding>(R.layout.fragment_message_list) {
+  BindingFragment<FragmentMessageListBinding>(R.layout.fragment_message_list) {
 
-    private val args: MessageListFragmentArgs by navArgs()
-    private val homeViewModel: HomeViewModel by activityViewModels()
-    private val streamMessageListComponent: StreamMessageListUIComponent by streamMessageListComponent(
-        cidProvider = { args.cid }
-    )
+  private val args: MessageListFragmentArgs by navArgs()
+  private val homeViewModel: HomeViewModel by activityViewModels()
+  private val streamMessageListComponent: StreamMessageListUIComponent by streamMessageListComponent(
+    cidProvider = { args.cid }
+  )
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            lifecycleOwner = viewLifecycleOwner
-            vm = homeViewModel
-        }.root
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      lifecycleOwner = viewLifecycleOwner
+      vm = homeViewModel
+    }.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    addOnBackPressedDispatcher { backHandler.invoke() }
+
+    binding {
+      // initializes and bind layouts to Stream message list UI components.
+      streamMessageListComponent.bindLayout(root)
+      messageListHeaderView.setBackButtonClickListener(backHandler)
     }
+  }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+  override fun onResume() {
+    super.onResume()
+    homeViewModel.visibleBottomNav = false
+  }
 
-        addOnBackPressedDispatcher { backHandler.invoke() }
+  override fun onPause() {
+    super.onPause()
+    homeViewModel.visibleBottomNav = true
+  }
 
-        binding {
-            // initializes and bind layouts to Stream message list UI components.
-            streamMessageListComponent.bindLayout(root)
-            messageListHeaderView.setBackButtonClickListener(backHandler)
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        homeViewModel.visibleBottomNav = false
-    }
-
-    override fun onPause() {
-        super.onPause()
-        homeViewModel.visibleBottomNav = true
-    }
-
-    private val backHandler = {
-        findNavController().popBackStack()
-        streamMessageListComponent.messageListViewModel.onEvent(MessageListViewModel.Event.BackButtonPressed)
-    }
+  private val backHandler = {
+    findNavController().popBackStack()
+    streamMessageListComponent.messageListViewModel.onEvent(MessageListViewModel.Event.BackButtonPressed)
+  }
 }

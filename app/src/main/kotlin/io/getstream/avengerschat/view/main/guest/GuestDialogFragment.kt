@@ -37,58 +37,58 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GuestDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentGuestBinding>(R.layout.dialog_fragment_guest) {
+  BindingBottomSheetDialogFragment<DialogFragmentGuestBinding>(R.layout.dialog_fragment_guest) {
 
-    private val viewModel: GuestViewModel by viewModels()
-    private val avenger: Avenger by bundleNonNull(EXTRA_AVENGER)
+  private val viewModel: GuestViewModel by viewModels()
+  private val avenger: Avenger by bundleNonNull(EXTRA_AVENGER)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  }
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      vm = viewModel
+    }.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding.join.setOnClickListener {
+      val name = binding.nameEditText.text.toString()
+      if (name.isValidForId) {
+        viewModel.submitName(name)
+      } else {
+        requireContext().toast(R.string.enter_edit_your_name_error)
+      }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            vm = viewModel
-        }.root
+    lifecycleScope.launch {
+      viewModel.tokenFlow.collect {
+        val newAvenger = viewModel.createGuestAvenger(
+          avenger = avenger,
+          quote = getString(R.string.greeting),
+          token = it
+        )
+        HomeActivity.startActivity(binding.transformationLayout, newAvenger)
+        dismissAllowingStateLoss()
+      }
     }
+  }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+  companion object {
+    const val TAG = "GuestRepository"
+    private const val EXTRA_AVENGER = "EXTRA_AVENGER"
 
-        binding.join.setOnClickListener {
-            val name = binding.nameEditText.text.toString()
-            if (name.isValidForId) {
-                viewModel.submitName(name)
-            } else {
-                requireContext().toast(R.string.enter_edit_your_name_error)
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.tokenFlow.collect {
-                val newAvenger = viewModel.createGuestAvenger(
-                    avenger = avenger,
-                    quote = getString(R.string.greeting),
-                    token = it
-                )
-                HomeActivity.startActivity(binding.transformationLayout, newAvenger)
-                dismissAllowingStateLoss()
-            }
-        }
+    fun create(avenger: Avenger) = GuestDialogFragment().apply {
+      arguments = bundleOf(EXTRA_AVENGER to avenger)
     }
-
-    companion object {
-        const val TAG = "GuestRepository"
-        private const val EXTRA_AVENGER = "EXTRA_AVENGER"
-
-        fun create(avenger: Avenger) = GuestDialogFragment().apply {
-            arguments = bundleOf(EXTRA_AVENGER to avenger)
-        }
-    }
+  }
 }

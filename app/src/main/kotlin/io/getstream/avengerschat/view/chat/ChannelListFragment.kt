@@ -34,48 +34,49 @@ import io.getstream.avengerschat.view.user.UserProfileDialogFragment
 
 @AndroidEntryPoint
 class ChannelListFragment :
-    BindingFragment<FragmentChannelListBinding>(R.layout.fragment_channel_list) {
+  BindingFragment<FragmentChannelListBinding>(R.layout.fragment_channel_list) {
 
-    private val viewModel: HomeViewModel by activityViewModels()
-    private val streamChannelListUIComponent: StreamUIComponent by streamChannelListComponent()
+  private val viewModel: HomeViewModel by activityViewModels()
+  private val streamChannelListUIComponent: StreamUIComponent by streamChannelListComponent()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            lifecycleOwner = viewLifecycleOwner
-            vm = viewModel
-        }.root
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      lifecycleOwner = viewLifecycleOwner
+      vm = viewModel
+    }.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding {
+      streamChannelListUIComponent.bindLayout(root)
+
+      channelListHeaderView.setOnUserAvatarClickListener {
+        UserProfileDialogFragment.create()
+          .show(parentFragmentManager, UserProfileDialogFragment.TAG)
+      }
+
+      channelListHeaderView.setOnActionButtonClickListener {
+        DirectMessageDialogFragment.create().show(
+          parentFragmentManager,
+          DirectMessageDialogFragment.TAG
+        )
+      }
+
+      channelListView.setChannelItemClickListener { channel ->
+        findNavController().navigate(
+          ChannelListFragmentDirections.actionToFragmentMessageList(
+            channel.cid,
+            null
+          )
+        )
+      }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding {
-            streamChannelListUIComponent.bindLayout(root)
-
-            channelListHeaderView.setOnUserAvatarClickListener {
-                UserProfileDialogFragment.create()
-                    .show(parentFragmentManager, UserProfileDialogFragment.TAG)
-            }
-
-            channelListHeaderView.setOnActionButtonClickListener {
-                DirectMessageDialogFragment.create().show(
-                    parentFragmentManager,
-                    DirectMessageDialogFragment.TAG
-                )
-            }
-
-            channelListView.setChannelItemClickListener { channel ->
-                findNavController().navigate(
-                    ChannelListFragmentDirections.actionToFragmentMessageList(
-                        channel.cid, null
-                    )
-                )
-            }
-        }
-    }
+  }
 }

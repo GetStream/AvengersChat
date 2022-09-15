@@ -35,35 +35,35 @@ import java.util.Date
 internal const val EXTRA_TEAM = "team"
 
 val Avenger.parsedColor: Int
-    inline get() = Color.parseColor(color)
+  inline get() = Color.parseColor(color)
 
 val Avenger.liveRoomInfo: LiveRoomInfo
-    inline get() = LiveRoomInfo(cid = livecid, video = video)
+  inline get() = LiveRoomInfo(cid = livecid, video = video)
 
 fun MessageListItem.MessageItem.localDate(context: Context): String {
-    val formatter = DateFormatter.from(context)
-    val date = message.createdAt ?: message.createdLocallyAt
-    return formatter.formatDate(date?.let(::toLocalDateTime))
+  val formatter = DateFormatter.from(context)
+  val date = message.createdAt ?: message.createdLocallyAt
+  return formatter.formatDate(date?.let(::toLocalDateTime))
 }
 
 private fun toLocalDateTime(date: Date): LocalDateTime {
-    return Instant.ofEpochMilli(date.time)
-        .atZone(ZoneId.systemDefault())
-        .toLocalDateTime()
+  return Instant.ofEpochMilli(date.time)
+    .atZone(ZoneId.systemDefault())
+    .toLocalDateTime()
 }
 
 fun User.lastActive(context: Context): String? =
-    lastActive?.let {
-        context.getString(
-            R.string.stream_channel_header_active,
-            when {
-                it.isInLastMinute() -> context.getString(R.string.stream_channel_header_active_now)
-                else -> DateUtils.getRelativeTimeSpanString(it.time).toString()
-            }
-        )
-    }
+  lastActive?.let {
+    context.getString(
+      R.string.stream_channel_header_active,
+      when {
+        it.isInLastMinute() -> context.getString(R.string.stream_channel_header_active_now)
+        else -> DateUtils.getRelativeTimeSpanString(it.time).toString()
+      }
+    )
+  }
 
 private fun Date.isInLastMinute(): Boolean = (Date().time - 60000 < time)
 
 val ChatClient.currentUserId
-    inline get() = getCurrentUser()?.id ?: emptyString
+  inline get() = getCurrentUser()?.id ?: emptyString

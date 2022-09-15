@@ -29,22 +29,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    mainRepository: MainRepository
+  mainRepository: MainRepository
 ) : BindingViewModel() {
 
-    @get:Bindable
-    var errorMessage: String? by bindingProperty(null)
-        private set
+  @get:Bindable
+  var errorMessage: String? by bindingProperty(null)
+    private set
 
-    @VisibleForTesting
-    internal val avengersFlow = mainRepository.loadAvengers(
-        onError = { errorMessage = it }
-    )
+  @VisibleForTesting
+  internal val avengersFlow = mainRepository.loadAvengers(
+    onError = { errorMessage = it }
+  )
 
-    @get:Bindable
-    val avengers: List<Avenger>? by avengersFlow.asBindingProperty(viewModelScope, null)
+  @get:Bindable
+  val avengers: List<Avenger>? by avengersFlow.asBindingProperty(viewModelScope, null)
 
-    init {
-        Timber.d("injection MainViewModel")
-    }
+  init {
+    Timber.d("injection MainViewModel")
+  }
 }

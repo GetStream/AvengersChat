@@ -30,38 +30,42 @@ import io.getstream.avengerschat.R
 import kotlin.math.hypot
 
 fun View.startCircularReveal(@ColorInt color: Int) {
-    val cx = 0
-    val cy = left
-    val finalRadius = hypot(width.toDouble(), height.toDouble())
-    if (isAttachedToWindow) {
-        ViewAnimationUtils.createCircularReveal(
-            this, cx, cy, 0f, finalRadius.toFloat()
-        ).apply {
-            DrawableCompat.setTint(background, color)
-            isVisible = true
-            duration = 450
-            start()
-        }
+  val cx = 0
+  val cy = left
+  val finalRadius = hypot(width.toDouble(), height.toDouble())
+  if (isAttachedToWindow) {
+    ViewAnimationUtils.createCircularReveal(
+      this,
+      cx,
+      cy,
+      0f,
+      finalRadius.toFloat()
+    ).apply {
+      DrawableCompat.setTint(background, color)
+      isVisible = true
+      duration = 450
+      start()
     }
+  }
 }
 
 fun BottomNavigationView.setBadgeNumber(@IdRes menuItemId: Int, badgeNumber: Int) {
-    getOrCreateBadge(menuItemId).apply {
-        horizontalOffset = -context.dimensionPixelSize(R.dimen.badge_horizontal_offset)
-        verticalOffset = context.dimensionPixelSize(R.dimen.badge_vertical_offset)
-        backgroundColor = context.color(io.getstream.chat.android.ui.R.color.stream_ui_accent_red)
-        isVisible = badgeNumber > 0
-        number = badgeNumber
-    }
+  getOrCreateBadge(menuItemId).apply {
+    horizontalOffset = -context.dimensionPixelSize(R.dimen.badge_horizontal_offset)
+    verticalOffset = context.dimensionPixelSize(R.dimen.badge_vertical_offset)
+    backgroundColor = context.color(io.getstream.chat.android.ui.R.color.stream_ui_accent_red)
+    isVisible = badgeNumber > 0
+    number = badgeNumber
+  }
 }
 
 inline fun AppCompatEditText.doOnUrlTextChanged(crossinline block: (Boolean) -> Unit) {
-    doAfterTextChanged {
-        val url = it.toString()
-        block(URLUtil.isNetworkUrl(url))
-    }
+  doAfterTextChanged {
+    val url = it.toString()
+    block(URLUtil.isNetworkUrl(url))
+  }
 }
 
 fun View.hideSoftInputFromWindow() {
-    context.getInputMethodManager().hideSoftInputFromWindow(this.windowToken, 0)
+  context.getInputMethodManager().hideSoftInputFromWindow(this.windowToken, 0)
 }

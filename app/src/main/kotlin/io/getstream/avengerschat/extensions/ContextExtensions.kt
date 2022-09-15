@@ -28,19 +28,19 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 
 fun Context.color(@ColorRes resource: Int): Int {
-    return ContextCompat.getColor(this, resource)
+  return ContextCompat.getColor(this, resource)
 }
 
 fun Context.dimensionPixelSize(@DimenRes id: Int): Int {
-    return resources.getDimensionPixelSize(id)
+  return resources.getDimensionPixelSize(id)
 }
 
 fun Context.drawable(@DrawableRes resource: Int): Drawable {
-    return ResourcesCompat.getDrawable(resources, resource, null)!!
+  return ResourcesCompat.getDrawable(resources, resource, null)!!
 }
 
 fun Context.getInputMethodManager() =
-    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+  getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
 fun Context.toast(@StringRes resource: Int) =
-    Toast.makeText(this, resource, Toast.LENGTH_SHORT).show()
+  Toast.makeText(this, resource, Toast.LENGTH_SHORT).show()

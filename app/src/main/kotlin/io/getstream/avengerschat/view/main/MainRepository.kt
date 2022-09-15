@@ -30,38 +30,38 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
-    private val marvelService: MarvelService,
-    private val avengersDao: AvengersDao,
-    private val dispatcher: CoroutineDispatcher
+  private val marvelService: MarvelService,
+  private val avengersDao: AvengersDao,
+  private val dispatcher: CoroutineDispatcher
 ) {
 
-    init {
-        Timber.d("injection MainRepository")
-    }
+  init {
+    Timber.d("injection MainRepository")
+  }
 
-    /**
-     * loads avengers via fetching from network or getting from a local database.
-     */
-    @WorkerThread
-    fun loadAvengers(
-        onError: (String) -> Unit
-    ) = flow {
-        val avengers = avengersDao.getAvengers()
-        if (avengers.isEmpty()) {
-            val response = marvelService.fetchAvengers()
-            response.suspendOnSuccess {
-                avengersDao.insertAvengers(data)
-                emit(data)
-                Timber.d("suspendOnSuccess: $data")
-            }.onError {
-                onError(message())
-                Timber.d("onError: ${message()}")
-            }.onException {
-                onError(message())
-                Timber.d("OnException: ${message()}")
-            }
-        } else {
-            emit(avengers)
-        }
-    }.flowOn(dispatcher)
+  /**
+   * loads avengers via fetching from network or getting from a local database.
+   */
+  @WorkerThread
+  fun loadAvengers(
+    onError: (String) -> Unit
+  ) = flow {
+    val avengers = avengersDao.getAvengers()
+    if (avengers.isEmpty()) {
+      val response = marvelService.fetchAvengers()
+      response.suspendOnSuccess {
+        avengersDao.insertAvengers(data)
+        emit(data)
+        Timber.d("suspendOnSuccess: $data")
+      }.onError {
+        onError(message())
+        Timber.d("onError: ${message()}")
+      }.onException {
+        onError(message())
+        Timber.d("OnException: ${message()}")
+      }
+    } else {
+      emit(avengers)
+    }
+  }.flowOn(dispatcher)
 }

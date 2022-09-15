@@ -19,4 +19,4 @@ package io.getstream.avengerschat.extensions
 import androidx.recyclerview.widget.RecyclerView
 
 val RecyclerView.ViewHolder.adapterPositionOrNull: Int?
-    inline get() = bindingAdapterPosition.takeIf { it != RecyclerView.NO_POSITION }
+  inline get() = bindingAdapterPosition.takeIf { it != RecyclerView.NO_POSITION }

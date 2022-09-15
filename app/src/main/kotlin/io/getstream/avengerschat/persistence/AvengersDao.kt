@@ -25,12 +25,12 @@ import io.getstream.avengerschat.model.Avenger
 @Dao
 interface AvengersDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAvengers(posters: List<Avenger>)
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun insertAvengers(posters: List<Avenger>)
 
-    @Query("SELECT * FROM Avenger WHERE id = :id_")
-    suspend fun getAvenger(id_: String): Avenger
+  @Query("SELECT * FROM Avenger WHERE id = :id_")
+  suspend fun getAvenger(id_: String): Avenger
 
-    @Query("SELECT * FROM Avenger")
-    suspend fun getAvengers(): List<Avenger>
+  @Query("SELECT * FROM Avenger")
+  suspend fun getAvengers(): List<Avenger>
 }

@@ -28,9 +28,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DispatcherModule {
 
-    @Provides
-    @Singleton
-    fun provideIODispatcher(): CoroutineDispatcher {
-        return Dispatchers.IO
-    }
+  @Provides
+  @Singleton
+  fun provideIODispatcher(): CoroutineDispatcher {
+    return Dispatchers.IO
+  }
 }

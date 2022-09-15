@@ -29,18 +29,18 @@ import io.getstream.avengerschat.view.main.guest.GuestDialogFragment
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private val viewModel: MainViewModel by viewModels()
+  private val viewModel: MainViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        onTransformationStartContainer()
-        super.onCreate(savedInstanceState)
-        binding {
-            adapter = MainAvengersAdapter(onItemYouClicked)
-            vm = viewModel
-        }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    onTransformationStartContainer()
+    super.onCreate(savedInstanceState)
+    binding {
+      adapter = MainAvengersAdapter(onItemYouClicked)
+      vm = viewModel
     }
+  }
 
-    private val onItemYouClicked: (Avenger) -> Unit = {
-        GuestDialogFragment.create(it).show(supportFragmentManager, GuestDialogFragment.TAG)
-    }
+  private val onItemYouClicked: (Avenger) -> Unit = {
+    GuestDialogFragment.create(it).show(supportFragmentManager, GuestDialogFragment.TAG)
+  }
 }

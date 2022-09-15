@@ -29,42 +29,42 @@ import io.getstream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint
 class UserProfileDialogFragment :
-    BindingBottomSheetDialogFragment<DialogFragmentUserProfileBinding>(R.layout.dialog_fragment_user_profile) {
+  BindingBottomSheetDialogFragment<DialogFragmentUserProfileBinding>(R.layout.dialog_fragment_user_profile) {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+  private val viewModel: HomeViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
+  }
+
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View {
+    super.onCreateView(inflater, container, savedInstanceState)
+    return binding {
+      lifecycleOwner = viewLifecycleOwner
+      vm = viewModel
+    }.root
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding.edit.setOnClickListener {
+      UserProfileEditDialogFragment.create().show(
+        requireActivity().supportFragmentManager,
+        UserProfileEditDialogFragment.TAG
+      )
+      dismissAllowingStateLoss()
     }
+  }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return binding {
-            lifecycleOwner = viewLifecycleOwner
-            vm = viewModel
-        }.root
-    }
+  companion object {
+    const val TAG = "UserInfoDialogFragment"
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.edit.setOnClickListener {
-            UserProfileEditDialogFragment.create().show(
-                requireActivity().supportFragmentManager,
-                UserProfileEditDialogFragment.TAG
-            )
-            dismissAllowingStateLoss()
-        }
-    }
-
-    companion object {
-        const val TAG = "UserInfoDialogFragment"
-
-        fun create() = UserProfileDialogFragment()
-    }
+    fun create() = UserProfileDialogFragment()
+  }
 }

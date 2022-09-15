@@ -22,6 +22,6 @@ import retrofit2.http.GET
 
 interface MarvelService {
 
-    @GET("Avengers.json")
-    suspend fun fetchAvengers(): ApiResponse<List<Avenger>>
+  @GET("Avengers.json")
+  suspend fun fetchAvengers(): ApiResponse<List<Avenger>>
 }

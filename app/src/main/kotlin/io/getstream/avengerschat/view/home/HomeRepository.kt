@@ -30,53 +30,53 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
-    private val chatClient: ChatClient,
-    private val avengersDao: AvengersDao,
-    private val dispatcher: CoroutineDispatcher,
+  private val chatClient: ChatClient,
+  private val avengersDao: AvengersDao,
+  private val dispatcher: CoroutineDispatcher
 ) {
 
-    init {
-        Timber.d("injection HomeRepository")
+  init {
+    Timber.d("injection HomeRepository")
+  }
+
+  /**
+   * Connects a specific user using the given user token to the Stream client server.
+   * This connection will keep maintained until be disconnected.
+   */
+  @WorkerThread
+  fun connectUser(avenger: Avenger) = flow {
+    // disconnect a user if already connected.
+    disconnectUser(avenger)
+
+    val user = User(
+      id = avenger.id,
+      name = avenger.name,
+      image = avenger.getProfileImage()
+    )
+    val result = chatClient.connectUser(user, avenger.token).await()
+    result.onSuccessSuspend {
+      emit(result.data())
     }
+  }.flowOn(dispatcher)
 
-    /**
-     * Connects a specific user using the given user token to the Stream client server.
-     * This connection will keep maintained until be disconnected.
-     */
-    @WorkerThread
-    fun connectUser(avenger: Avenger) = flow {
-        // disconnect a user if already connected.
-        disconnectUser(avenger)
-
-        val user = User(
-            id = avenger.id,
-            name = avenger.name,
-            image = avenger.getProfileImage()
-        )
-        val result = chatClient.connectUser(user, avenger.token).await()
-        result.onSuccessSuspend {
-            emit(result.data())
-        }
-    }.flowOn(dispatcher)
-
-    /**
-     * Check and disconnect the current user
-     * if there's already connected user to the Stream client server.
-     */
-    fun disconnectUser(avenger: Avenger) {
-        val currentUser = chatClient.getCurrentUser()
-        if (currentUser != null && avenger.id == currentUser.id) {
-            chatClient.disconnect(false).enqueue()
-        }
+  /**
+   * Check and disconnect the current user
+   * if there's already connected user to the Stream client server.
+   */
+  fun disconnectUser(avenger: Avenger) {
+    val currentUser = chatClient.getCurrentUser()
+    if (currentUser != null && avenger.id == currentUser.id) {
+      chatClient.disconnect(false).enqueue()
     }
+  }
 
-    /**
-     * gets live room information list from the local database.
-     */
-    @WorkerThread
-    fun getLiveRoomInfo(avenger: Avenger) = flow {
-        val avengers = avengersDao.getAvengers()
-        val liveRoomInfo = avengers.filterNot { it.id == avenger.id }.map { it.liveRoomInfo }
-        emit(liveRoomInfo)
-    }.flowOn(dispatcher)
+  /**
+   * gets live room information list from the local database.
+   */
+  @WorkerThread
+  fun getLiveRoomInfo(avenger: Avenger) = flow {
+    val avengers = avengersDao.getAvengers()
+    val liveRoomInfo = avengers.filterNot { it.id == avenger.id }.map { it.liveRoomInfo }
+    emit(liveRoomInfo)
+  }.flowOn(dispatcher)
 }

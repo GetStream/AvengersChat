@@ -18,3 +18,36 @@ buildscript {
         classpath(libs.googleService.plugin)
     }
 }
+
+subprojects {
+    apply(plugin = rootProject.libs.plugins.spotless.get().pluginId)
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+        kotlinOptions.freeCompilerArgs += listOf(
+            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+            "-Xopt-in=kotlin.time.ExperimentalTime",
+        )
+    }
+
+    extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+        kotlin {
+            target("**/*.kt")
+            targetExclude("$buildDir/**/*.kt")
+            ktlint().setUseExperimental(true).editorConfigOverride(
+                mapOf(
+                    "indent_size" to "2",
+                    "continuation_indent_size" to "2"
+                )
+            )
+            licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+        format("xml") {
+            target("**/*.xml")
+            targetExclude("**/build/**/*.xml")
+            licenseHeaderFile(rootProject.file("spotless/copyright.xml"), "(<[^!?])")
+        }
+    }
+}

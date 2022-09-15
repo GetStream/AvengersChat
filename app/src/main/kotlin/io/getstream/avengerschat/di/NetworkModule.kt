@@ -39,47 +39,47 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(HttpRequestInterceptor())
-            .build()
-    }
+  @Provides
+  @Singleton
+  fun provideOkHttpClient(): OkHttpClient {
+    return OkHttpClient.Builder()
+      .addInterceptor(HttpRequestInterceptor())
+      .build()
+  }
 
-    @Provides
-    @Singleton
-    fun provideImageLoader(
-        @ApplicationContext context: Context,
-        okHttpClient: OkHttpClient
-    ): ImageLoader {
-        return ImageLoader.Builder(context)
-            .crossfade(true)
-            .okHttpClient { okHttpClient }
-            .components {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    add(ImageDecoderDecoder.Factory())
-                } else {
-                    add(GifDecoder.Factory())
-                }
-            }
-            .build().apply { Coil.setImageLoader(this) }
-    }
+  @Provides
+  @Singleton
+  fun provideImageLoader(
+    @ApplicationContext context: Context,
+    okHttpClient: OkHttpClient
+  ): ImageLoader {
+    return ImageLoader.Builder(context)
+      .crossfade(true)
+      .okHttpClient { okHttpClient }
+      .components {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+          add(ImageDecoderDecoder.Factory())
+        } else {
+          add(GifDecoder.Factory())
+        }
+      }
+      .build().apply { Coil.setImageLoader(this) }
+  }
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl("https://gist.githubusercontent.com/skydoves/933a70b21d7c96e8a8fdbe31ca72dada/raw/454f107f2c5f32c13823f7a6fd5031900f280d7c/")
-            .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
-            .build()
-    }
+  @Provides
+  @Singleton
+  fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    return Retrofit.Builder()
+      .client(okHttpClient)
+      .baseUrl("https://gist.githubusercontent.com/skydoves/933a70b21d7c96e8a8fdbe31ca72dada/raw/454f107f2c5f32c13823f7a6fd5031900f280d7c/")
+      .addConverterFactory(MoshiConverterFactory.create())
+      .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
+      .build()
+  }
 
-    @Provides
-    @Singleton
-    fun provideMarvelService(retrofit: Retrofit): MarvelService {
-        return retrofit.create(MarvelService::class.java)
-    }
+  @Provides
+  @Singleton
+  fun provideMarvelService(retrofit: Retrofit): MarvelService {
+    return retrofit.create(MarvelService::class.java)
+  }
 }

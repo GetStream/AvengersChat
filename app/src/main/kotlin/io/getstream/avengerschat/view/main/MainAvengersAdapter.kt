@@ -30,75 +30,75 @@ import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.view.home.HomeActivity
 
 class MainAvengersAdapter constructor(
-    private val onItemYouClicked: (Avenger) -> Unit
+  private val onItemYouClicked: (Avenger) -> Unit
 ) : ListAdapter<Avenger, MainAvengersAdapter.CharacterViewHolder>(DIFF_CALLBACK) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        return when (viewType) {
-            ItemViewType.HERO.viewType -> AvengersViewHolder(parent.binding(R.layout.item_avenger))
-            ItemViewType.GUEST.viewType -> GuestViewHolder(parent.binding(R.layout.item_guest))
-            else -> throw IllegalArgumentException("Wrong viewType: $viewType")
-        }
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
+    return when (viewType) {
+      ItemViewType.HERO.viewType -> AvengersViewHolder(parent.binding(R.layout.item_avenger))
+      ItemViewType.GUEST.viewType -> GuestViewHolder(parent.binding(R.layout.item_guest))
+      else -> throw IllegalArgumentException("Wrong viewType: $viewType")
+    }
+  }
+
+  override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+    if (holder is AvengersViewHolder) {
+      holder.bindAvenger(getItem(position))
+    }
+  }
+
+  override fun getItemViewType(position: Int): Int {
+    return if (position == currentList.lastIndex) {
+      ItemViewType.GUEST.viewType
+    } else {
+      ItemViewType.HERO.viewType
+    }
+  }
+
+  fun getAvenger(position: Int): Avenger = getItem(position)
+
+  abstract class CharacterViewHolder(rootBinding: ViewDataBinding) :
+    RecyclerView.ViewHolder(rootBinding.root)
+
+  inner class AvengersViewHolder(val binding: ItemAvengerBinding) : CharacterViewHolder(binding) {
+
+    init {
+      binding.root.setOnClickListener {
+        val position = adapterPositionOrNull ?: return@setOnClickListener
+        HomeActivity.startActivity(binding.transformationLayout, currentList[position])
+      }
     }
 
-    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        if (holder is AvengersViewHolder) {
-            holder.bindAvenger(getItem(position))
-        }
+    fun bindAvenger(avenger: Avenger) {
+      binding.avenger = avenger
+      binding.executePendingBindings()
     }
+  }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (position == currentList.lastIndex) {
-            ItemViewType.GUEST.viewType
-        } else {
-            ItemViewType.HERO.viewType
-        }
+  inner class GuestViewHolder(binding: ItemGuestBinding) : CharacterViewHolder(binding) {
+
+    init {
+      binding.root.setOnClickListener {
+        val position = adapterPositionOrNull ?: return@setOnClickListener
+        onItemYouClicked.invoke(currentList[position])
+      }
     }
+  }
 
-    fun getAvenger(position: Int): Avenger = getItem(position)
+  private enum class ItemViewType(val viewType: Int) {
+    HERO(0),
+    GUEST(1),
+  }
 
-    abstract class CharacterViewHolder(rootBinding: ViewDataBinding) :
-        RecyclerView.ViewHolder(rootBinding.root)
+  companion object {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Avenger>() {
+      override fun areItemsTheSame(oldItem: Avenger, newItem: Avenger): Boolean {
+        return oldItem.id == newItem.id
+      }
 
-    inner class AvengersViewHolder(val binding: ItemAvengerBinding) : CharacterViewHolder(binding) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPositionOrNull ?: return@setOnClickListener
-                HomeActivity.startActivity(binding.transformationLayout, currentList[position])
-            }
-        }
-
-        fun bindAvenger(avenger: Avenger) {
-            binding.avenger = avenger
-            binding.executePendingBindings()
-        }
+      override fun areContentsTheSame(oldItem: Avenger, newItem: Avenger): Boolean {
+        return oldItem == newItem
+      }
     }
-
-    inner class GuestViewHolder(binding: ItemGuestBinding) : CharacterViewHolder(binding) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPositionOrNull ?: return@setOnClickListener
-                onItemYouClicked.invoke(currentList[position])
-            }
-        }
-    }
-
-    private enum class ItemViewType(val viewType: Int) {
-        HERO(0),
-        GUEST(1),
-    }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Avenger>() {
-            override fun areItemsTheSame(oldItem: Avenger, newItem: Avenger): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: Avenger, newItem: Avenger): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
+  }
 }

@@ -28,27 +28,27 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class UserProfileEditRepository @Inject constructor(
-    private val chatClient: ChatClient,
-    private val dispatcher: CoroutineDispatcher,
+  private val chatClient: ChatClient,
+  private val dispatcher: CoroutineDispatcher
 ) {
 
-    init {
-        Timber.d("injection UserProfileEditRepository")
-    }
+  init {
+    Timber.d("injection UserProfileEditRepository")
+  }
 
-    /**
-     * Updates a specific user for updating the new profile image.
-     */
-    @WorkerThread
-    fun updateUser(avenger: Avenger, newProfileUrl: String) = flow {
-        val user = User(
-            id = avenger.id,
-            name = avenger.name,
-            image = newProfileUrl
-        )
-        val result = chatClient.updateUser(user).await()
-        result.onSuccessSuspend {
-            emit(result.data())
-        }
-    }.flowOn(dispatcher)
+  /**
+   * Updates a specific user for updating the new profile image.
+   */
+  @WorkerThread
+  fun updateUser(avenger: Avenger, newProfileUrl: String) = flow {
+    val user = User(
+      id = avenger.id,
+      name = avenger.name,
+      image = newProfileUrl
+    )
+    val result = chatClient.updateUser(user).await()
+    result.onSuccessSuspend {
+      emit(result.data())
+    }
+  }.flowOn(dispatcher)
 }

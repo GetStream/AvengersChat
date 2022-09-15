@@ -36,55 +36,55 @@ import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 
 class HomeViewModel @AssistedInject constructor(
-    private val homeRepository: HomeRepository,
-    chatClient: ChatClient,
-    @Assisted val avenger: Avenger,
+  private val homeRepository: HomeRepository,
+  chatClient: ChatClient,
+  @Assisted val avenger: Avenger
 ) : BindingViewModel() {
 
-    @get:Bindable
-    val connectionData: ConnectionData?
-        by homeRepository.connectUser(avenger).asBindingProperty(null)
+  @get:Bindable
+  val connectionData: ConnectionData?
+    by homeRepository.connectUser(avenger).asBindingProperty(null)
 
-    @get:Bindable
-    val liveRoomInfoList: List<LiveRoomInfo>?
-        by homeRepository.getLiveRoomInfo(avenger).asBindingProperty(null)
+  @get:Bindable
+  val liveRoomInfoList: List<LiveRoomInfo>?
+    by homeRepository.getLiveRoomInfo(avenger).asBindingProperty(null)
 
-    @get:Bindable
-    val parsedColor: Int by bindingProperty(avenger.parsedColor)
+  @get:Bindable
+  val parsedColor: Int by bindingProperty(avenger.parsedColor)
 
-    @get:Bindable
-    var visibleBottomNav: Boolean by bindingProperty(true)
+  @get:Bindable
+  var visibleBottomNav: Boolean by bindingProperty(true)
 
-    val user: StateFlow<User?> = chatClient.clientState.user
+  val user: StateFlow<User?> = chatClient.clientState.user
 
-    val totalUnreadCount: StateFlow<Int> = chatClient.globalState.totalUnreadCount
+  val totalUnreadCount: StateFlow<Int> = chatClient.globalState.totalUnreadCount
 
-    init {
-        Timber.d("injection HomeViewModel")
+  init {
+    Timber.d("injection HomeViewModel")
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+
+    // disconnects user login status.
+    homeRepository.disconnectUser(avenger)
+  }
+
+  @dagger.assisted.AssistedFactory
+  interface AssistedFactory {
+    fun create(avenger: Avenger): HomeViewModel
+  }
+
+  companion object {
+    fun provideFactory(
+      assistedFactory: AssistedFactory,
+      avenger: Avenger
+    ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+
+      @Suppress("UNCHECKED_CAST")
+      override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return assistedFactory.create(avenger) as T
+      }
     }
-
-    override fun onCleared() {
-        super.onCleared()
-
-        // disconnects user login status.
-        homeRepository.disconnectUser(avenger)
-    }
-
-    @dagger.assisted.AssistedFactory
-    interface AssistedFactory {
-        fun create(avenger: Avenger): HomeViewModel
-    }
-
-    companion object {
-        fun provideFactory(
-            assistedFactory: AssistedFactory,
-            avenger: Avenger
-        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return assistedFactory.create(avenger) as T
-            }
-        }
-    }
+  }
 }
