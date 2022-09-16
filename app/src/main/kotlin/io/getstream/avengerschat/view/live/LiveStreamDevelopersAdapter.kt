@@ -23,8 +23,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
 import io.getstream.avengerschat.R
 import io.getstream.avengerschat.core.model.LiveRoomInfo
+import io.getstream.avengerschat.core.uicomponents.extensions.adapterPositionOrNull
 import io.getstream.avengerschat.databinding.ItemStreamDevelopersChannelBinding
-import io.getstream.avengerschat.extensions.adapterPositionOrNull
 
 class LiveStreamDevelopersAdapter constructor(
   private val onItemClicked: (LiveRoomInfo) -> Unit

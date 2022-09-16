@@ -25,8 +25,8 @@ import androidx.navigation.fragment.navArgs
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
-import io.getstream.avengerschat.components.StreamUIComponent
 import io.getstream.avengerschat.components.streamMessageListComponent
+import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
 import io.getstream.avengerschat.databinding.FragmentLiveStreamBinding
 import io.getstream.avengerschat.view.home.HomeViewModel
 

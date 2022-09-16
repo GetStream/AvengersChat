@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.extensions
+package io.getstream.avengerschat.core.uicomponents.extensions
 
 import android.content.Context
 import android.graphics.drawable.Drawable

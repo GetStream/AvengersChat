@@ -20,27 +20,20 @@ import android.app.Activity
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.AppCompatImageButton
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import coil.imageLoader
-import coil.load
-import coil.request.ImageRequest
-import coil.transform.CircleCropTransformation
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import com.skydoves.androidveil.VeilLayout
 import io.getstream.avengerschat.R
-import io.getstream.avengerschat.extensions.color
-import io.getstream.avengerschat.extensions.drawable
-import io.getstream.avengerschat.extensions.setBadgeNumber
+import io.getstream.avengerschat.core.uicomponents.extensions.color
+import io.getstream.avengerschat.core.uicomponents.extensions.drawable
+import io.getstream.avengerschat.core.uicomponents.extensions.setBadgeNumber
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.ui.avatar.AvatarView
 import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
@@ -50,39 +43,6 @@ object ViewBinding {
   @BindingAdapter("isGone")
   fun bindIsGone(view: View, isGone: Boolean) {
     view.isVisible = !isGone
-  }
-
-  @JvmStatic
-  @BindingAdapter("loadImage")
-  fun bindLoadImage(view: AppCompatImageView, url: String?) {
-    view.load(url)
-  }
-
-  @JvmStatic
-  @BindingAdapter("loadCircleImage")
-  fun bindLoadCircleImage(view: AppCompatImageView, url: String?) {
-    val request = ImageRequest.Builder(view.context)
-      .data(url)
-      .target(view)
-      .transformations(CircleCropTransformation())
-      .lifecycle(view.findViewTreeLifecycleOwner())
-      .build()
-    view.context.imageLoader.enqueue(request)
-  }
-
-  @JvmStatic
-  @BindingAdapter("withVeil", "loadImageWithVeil")
-  fun bindLoadImageWithVeil(view: AppCompatImageView, veilLayout: VeilLayout, url: String?) {
-    val request = ImageRequest.Builder(view.context)
-      .data(url)
-      .target(view)
-      .lifecycle(view.findViewTreeLifecycleOwner())
-      .listener(
-        onError = { _, _ -> veilLayout.unVeil() },
-        onSuccess = { _, _ -> veilLayout.unVeil() }
-      )
-      .build()
-    view.context.imageLoader.enqueue(request)
   }
 
   @JvmStatic

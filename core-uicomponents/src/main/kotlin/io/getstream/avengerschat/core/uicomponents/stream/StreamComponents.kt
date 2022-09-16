@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.extensions
+package io.getstream.avengerschat.core.uicomponents.stream
 
-import androidx.recyclerview.widget.RecyclerView
-
-val RecyclerView.ViewHolder.adapterPositionOrNull: Int?
-  inline get() = bindingAdapterPosition.takeIf { it != RecyclerView.NO_POSITION }
+@DslMarker
+annotation class StreamComponents

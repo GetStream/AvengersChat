@@ -28,9 +28,9 @@ import com.skydoves.bundler.bundleNonNull
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
 import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.core.uicomponents.extensions.toast
 import io.getstream.avengerschat.databinding.DialogFragmentGuestBinding
 import io.getstream.avengerschat.extensions.isValidForId
-import io.getstream.avengerschat.extensions.toast
 import io.getstream.avengerschat.view.home.HomeActivity
 import kotlinx.coroutines.launch
 

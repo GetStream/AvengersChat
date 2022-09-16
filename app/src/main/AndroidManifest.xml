@@ -48,7 +48,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="io.getstream.avengerschat.initializer.StreamGlobalStyleInitializer"
+                android:name="io.getstream.avengerschat.initializer.StreamChatInitializer"
                 android:value="androidx.startup" />
         </provider>
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.extensions
+package io.getstream.avengerschat.core.uicomponents.extensions
 
 import android.view.View
 import android.view.ViewAnimationUtils
@@ -26,7 +26,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.uicomponents.R
 import kotlin.math.hypot
 
 fun View.startCircularReveal(@ColorInt color: Int) {

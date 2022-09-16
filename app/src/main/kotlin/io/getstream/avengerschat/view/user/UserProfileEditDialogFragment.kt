@@ -26,12 +26,11 @@ import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.uicomponents.extensions.doOnUrlTextChanged
+import io.getstream.avengerschat.core.uicomponents.extensions.hideSoftInputFromWindow
+import io.getstream.avengerschat.core.uicomponents.extensions.toast
 import io.getstream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
-import io.getstream.avengerschat.extensions.doOnUrlTextChanged
-import io.getstream.avengerschat.extensions.hideSoftInputFromWindow
-import io.getstream.avengerschat.extensions.toast
 import io.getstream.avengerschat.view.home.HomeViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

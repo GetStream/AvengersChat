@@ -45,6 +45,7 @@ android {
 dependencies {
   // modules
   implementation(project(":core-data"))
+  implementation(project(":core-uicomponents"))
 
   // android supports
   implementation(libs.material)
@@ -55,8 +56,6 @@ dependencies {
   implementation(libs.androidx.navigation.ktx)
   implementation(libs.androidx.navigation.ui)
   implementation(libs.androidx.navigation.dynamic)
-  implementation(libs.androidx.room.ktx)
-  ksp(libs.androidx.room.compiler)
 
   // stream chat core + UI SDK
   implementation(libs.stream.ui.components)
@@ -72,22 +71,8 @@ dependencies {
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 
-  // network
-  implementation(libs.sandwich)
-  implementation(libs.retrofit)
-  implementation(libs.retrofit.moshi)
-  implementation(libs.okhttp.interceptor)
-
-  // moshi
-  implementation(libs.moshi)
-  ksp(libs.moshi.codegen)
-
   // coroutines
   implementation(libs.coroutines)
-
-  // image loading
-  implementation(libs.coil)
-  implementation(libs.coil.gif)
 
   // youtube player
   implementation(libs.youtube.player)
@@ -100,7 +85,6 @@ dependencies {
 
   // custom views
   implementation(libs.transformationLayout)
-  implementation(libs.veil)
   implementation(libs.descretescroll)
 
   implementation(platform(libs.firebase.bom))
