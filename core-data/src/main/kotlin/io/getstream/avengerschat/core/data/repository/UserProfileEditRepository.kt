@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.user
+package io.getstream.avengerschat.core.data.repository
 
 import androidx.annotation.WorkerThread
-import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.core.network.AppDispatchers
+import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
@@ -29,7 +31,7 @@ import javax.inject.Inject
 
 class UserProfileEditRepository @Inject constructor(
   private val chatClient: ChatClient,
-  private val dispatcher: CoroutineDispatcher
+  @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) {
 
   init {

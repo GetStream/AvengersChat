@@ -23,10 +23,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.databinding.ItemAvengerBinding
 import io.getstream.avengerschat.databinding.ItemGuestBinding
 import io.getstream.avengerschat.extensions.adapterPositionOrNull
-import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.view.home.HomeActivity
 
 class MainAvengersAdapter constructor(

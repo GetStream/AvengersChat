@@ -51,7 +51,7 @@
 
         <argument
             android:name="info"
-            app:argType="io.getstream.avengerschat.model.LiveRoomInfo" />
+            app:argType="io.getstream.avengerschat.core.model.LiveRoomInfo" />
     </fragment>
 
     <fragment

@@ -23,11 +23,11 @@ import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import io.getstream.avengerschat.extensions.parsedColor
-import io.getstream.avengerschat.model.Avenger
-import io.getstream.avengerschat.model.LiveRoomInfo
+import io.getstream.avengerschat.core.data.extensions.parsedColor
+import io.getstream.avengerschat.core.data.repository.HomeRepository
+import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.core.model.LiveRoomInfo
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.ConnectionData
 import io.getstream.chat.android.client.models.User

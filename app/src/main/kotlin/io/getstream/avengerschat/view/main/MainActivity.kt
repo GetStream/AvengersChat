@@ -22,8 +22,8 @@ import com.skydoves.bindables.BindingActivity
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.databinding.ActivityMainBinding
-import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.view.main.guest.GuestDialogFragment
 
 @AndroidEntryPoint

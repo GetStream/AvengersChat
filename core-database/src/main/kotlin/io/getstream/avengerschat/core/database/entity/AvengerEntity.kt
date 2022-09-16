@@ -17,10 +17,11 @@
 package io.getstream.avengerschat.core.database.entity
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class AvengerEntity(
-  val id: String,
+  @PrimaryKey val id: String,
   val name: String,
   val token: String,
   val color: String,

@@ -32,7 +32,7 @@
             name="adapterStreamDev"
             type="io.getstream.avengerschat.view.live.LiveStreamDevelopersAdapter" />
 
-        <import type="io.getstream.avengerschat.core.network.Api" />
+        <import type="io.getstream.avengerschat.core.data.Api" />
     </data>
 
     <androidx.core.widget.NestedScrollView

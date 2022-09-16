@@ -26,8 +26,8 @@ import com.skydoves.transformationlayout.TransformationCompat.onTransformationEn
 import com.skydoves.transformationlayout.TransformationLayout
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.databinding.ActivityHomeBinding
-import io.getstream.avengerschat.model.Avenger
 import javax.inject.Inject
 
 @AndroidEntryPoint

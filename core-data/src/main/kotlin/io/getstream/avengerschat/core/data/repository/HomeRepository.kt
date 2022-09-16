@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.home
+package io.getstream.avengerschat.core.data.repository
 
 import androidx.annotation.WorkerThread
+import io.getstream.avengerschat.core.data.extensions.liveRoomInfo
 import io.getstream.avengerschat.core.database.AvengersDao
-import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.core.database.entity.mapper.asDomain
+import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.core.network.AppDispatchers
+import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
@@ -30,8 +34,8 @@ import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
   private val chatClient: ChatClient,
-  private val avengersDao: io.getstream.avengerschat.core.database.AvengersDao,
-  private val dispatcher: CoroutineDispatcher
+  private val avengersDao: AvengersDao,
+  @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) {
 
   init {
@@ -74,7 +78,7 @@ class HomeRepository @Inject constructor(
    */
   @WorkerThread
   fun getLiveRoomInfo(avenger: Avenger) = flow {
-    val avengers = avengersDao.getAvengers()
+    val avengers = avengersDao.getAvengers().map { it.asDomain() }
     val liveRoomInfo = avengers.filterNot { it.id == avenger.id }.map { it.liveRoomInfo }
     emit(liveRoomInfo)
   }.flowOn(dispatcher)

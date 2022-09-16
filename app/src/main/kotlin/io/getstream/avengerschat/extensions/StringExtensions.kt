@@ -16,8 +16,8 @@
 
 package io.getstream.avengerschat.extensions
 
-@PublishedApi
-internal const val emptyString: String = ""
+val String.Companion.Empty: String
+  inline get() = ""
 
 val String.isValidForId: Boolean
   get() = isNotEmpty() && matches("^[a-zA-Z0-9]*$".toRegex())

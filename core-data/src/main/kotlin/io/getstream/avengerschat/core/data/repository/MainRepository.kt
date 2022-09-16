@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.main
+package io.getstream.avengerschat.core.data.repository
 
 import androidx.annotation.WorkerThread
 import com.skydoves.sandwich.message
-import com.skydoves.sandwich.onError
-import com.skydoves.sandwich.onException
+import com.skydoves.sandwich.onFailure
 import com.skydoves.sandwich.suspendOnSuccess
 import io.getstream.avengerschat.core.database.AvengersDao
-import io.getstream.avengerschat.core.network.MarvelService
+import io.getstream.avengerschat.core.database.entity.mapper.asDomain
+import io.getstream.avengerschat.core.database.entity.mapper.asEntity
+import io.getstream.avengerschat.core.network.AppDispatchers
+import io.getstream.avengerschat.core.network.Dispatcher
+import io.getstream.avengerschat.core.network.service.MarvelService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -30,9 +33,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
-  private val marvelService: io.getstream.avengerschat.core.network.MarvelService,
-  private val avengersDao: io.getstream.avengerschat.core.database.AvengersDao,
-  private val dispatcher: CoroutineDispatcher
+  private val marvelService: MarvelService,
+  private val avengersDao: AvengersDao,
+  @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) {
 
   init {
@@ -50,18 +53,15 @@ class MainRepository @Inject constructor(
     if (avengers.isEmpty()) {
       val response = marvelService.fetchAvengers()
       response.suspendOnSuccess {
-        avengersDao.insertAvengers(data)
+        avengersDao.insertAvengers(data.map { it.asEntity() })
         emit(data)
         Timber.d("suspendOnSuccess: $data")
-      }.onError {
+      }.onFailure {
         onError(message())
         Timber.d("onError: ${message()}")
-      }.onException {
-        onError(message())
-        Timber.d("OnException: ${message()}")
       }
     } else {
-      emit(avengers)
+      emit(avengers.map { it.asDomain() })
     }
   }.flowOn(dispatcher)
 }

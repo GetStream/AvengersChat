@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.dm
+package io.getstream.avengerschat.core.data.repository
 
 import androidx.annotation.WorkerThread
-import io.getstream.avengerschat.extensions.EXTRA_TEAM
-import io.getstream.avengerschat.extensions.currentUserId
+import io.getstream.avengerschat.core.data.Api.STREAM_CHANNEL_TYPE_MESSAGING
+import io.getstream.avengerschat.core.data.Api.STREAM_USER_ID
+import io.getstream.avengerschat.core.data.Api.STREAM_USER_ROLE
+import io.getstream.avengerschat.core.data.Api.STREAM_USER_ROLE_ADMIN
+import io.getstream.avengerschat.core.data.extensions.EXTRA_TEAM
+import io.getstream.avengerschat.core.data.extensions.currentUserId
+import io.getstream.avengerschat.core.network.AppDispatchers
+import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.api.models.QueryUsersRequest
 import io.getstream.chat.android.client.models.Filters
@@ -32,7 +38,7 @@ import javax.inject.Inject
 
 class DirectMessageRepository @Inject constructor(
   private val chatClient: ChatClient,
-  private val dispatcher: CoroutineDispatcher
+  @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) {
 
   init {

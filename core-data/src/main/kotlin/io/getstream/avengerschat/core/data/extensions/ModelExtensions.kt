@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.model
+package io.getstream.avengerschat.core.data.extensions
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import android.graphics.Color
+import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.core.model.LiveRoomInfo
+import io.getstream.chat.android.client.ChatClient
 
-@Parcelize
-data class LiveRoomInfo constructor(
-  val cid: String,
-  val video: String
-) : Parcelable
+@PublishedApi
+internal const val EXTRA_TEAM = "team"
+
+val Avenger.parsedColor: Int
+  inline get() = Color.parseColor(color)
+
+val Avenger.liveRoomInfo: LiveRoomInfo
+  inline get() = LiveRoomInfo(cid = livecid, video = video)
+
+val ChatClient.currentUserId
+  inline get() = getCurrentUser()?.id ?: ""

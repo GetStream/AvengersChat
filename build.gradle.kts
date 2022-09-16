@@ -1,54 +1,54 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.spotless)
+  alias(libs.plugins.spotless)
 }
 
 buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
+  repositories {
+    google()
+    mavenCentral()
+    gradlePluginPortal()
+  }
 
-    dependencies {
-        classpath(libs.agp)
-        classpath(libs.kotlin.gradlePlugin)
-        classpath(libs.hilt.plugin)
-        classpath(libs.navigation.plugin)
-        classpath(libs.crashlyrics.plugin)
-        classpath(libs.googleService.plugin)
-    }
+  dependencies {
+    classpath(libs.agp)
+    classpath(libs.kotlin.gradlePlugin)
+    classpath(libs.hilt.plugin)
+    classpath(libs.navigation.plugin)
+    classpath(libs.crashlyrics.plugin)
+    classpath(libs.googleService.plugin)
+  }
 }
 
 subprojects {
-    apply(plugin = rootProject.libs.plugins.spotless.get().pluginId)
+  apply(plugin = rootProject.libs.plugins.spotless.get().pluginId)
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-        kotlinOptions.freeCompilerArgs += listOf(
-            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "-Xopt-in=kotlin.time.ExperimentalTime",
+  tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    kotlinOptions.freeCompilerArgs += listOf(
+      "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+      "-Xopt-in=kotlin.time.ExperimentalTime",
+    )
+  }
+
+  extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+    kotlin {
+      target("**/*.kt")
+      targetExclude("$buildDir/**/*.kt")
+      ktlint().setUseExperimental(true).editorConfigOverride(
+        mapOf(
+          "indent_size" to "2",
+          "continuation_indent_size" to "2"
         )
+      )
+      licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
+      trimTrailingWhitespace()
+      endWithNewline()
     }
-
-    extensions.configure<com.diffplug.gradle.spotless.SpotlessExtension> {
-        kotlin {
-            target("**/*.kt")
-            targetExclude("$buildDir/**/*.kt")
-            ktlint().setUseExperimental(true).editorConfigOverride(
-                mapOf(
-                    "indent_size" to "2",
-                    "continuation_indent_size" to "2"
-                )
-            )
-            licenseHeaderFile(rootProject.file("spotless/copyright.kt"))
-            trimTrailingWhitespace()
-            endWithNewline()
-        }
-        format("xml") {
-            target("**/*.xml")
-            targetExclude("**/build/**/*.xml")
-            licenseHeaderFile(rootProject.file("spotless/copyright.xml"), "(<[^!?])")
-        }
+    format("xml") {
+      target("**/*.xml")
+      targetExclude("**/build/**/*.xml")
+      licenseHeaderFile(rootProject.file("spotless/copyright.xml"), "(<[^!?])")
     }
+  }
 }

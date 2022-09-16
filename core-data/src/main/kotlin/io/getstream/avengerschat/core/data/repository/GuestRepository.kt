@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.main.guest
+package io.getstream.avengerschat.core.data.repository
 
 import androidx.annotation.WorkerThread
+import io.getstream.avengerschat.core.network.AppDispatchers
+import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.utils.onSuccessSuspend
 import kotlinx.coroutines.CoroutineDispatcher
@@ -27,7 +29,7 @@ import javax.inject.Inject
 
 class GuestRepository @Inject constructor(
   val chatClient: ChatClient,
-  private val dispatcher: CoroutineDispatcher
+  @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
 ) {
 
   init {

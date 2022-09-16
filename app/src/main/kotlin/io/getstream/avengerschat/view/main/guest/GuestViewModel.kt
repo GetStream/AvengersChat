@@ -20,8 +20,9 @@ import androidx.databinding.Bindable
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.getstream.avengerschat.extensions.emptyString
-import io.getstream.avengerschat.model.Avenger
+import io.getstream.avengerschat.core.data.repository.GuestRepository
+import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.extensions.Empty
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filter
@@ -35,13 +36,13 @@ class GuestViewModel @Inject constructor(
   private val guestRepository: GuestRepository
 ) : BindingViewModel() {
 
-  private val nameStateFlow: MutableStateFlow<String> = MutableStateFlow(emptyString)
+  private val nameStateFlow: MutableStateFlow<String> = MutableStateFlow(String.Empty)
 
-  val tokenFlow: Flow<String> = nameStateFlow.filter { it != emptyString }
+  val tokenFlow: Flow<String> = nameStateFlow.filter { it != String.Empty }
     .flatMapLatest { guestRepository.fetchGuestToken(it) }
 
   @get:Bindable
-  val enabled: Boolean by nameStateFlow.map { it == emptyString }.asBindingProperty(true)
+  val enabled: Boolean by nameStateFlow.map { it == String.Empty }.asBindingProperty(true)
 
   init {
     Timber.d("injection YouViewModel")
