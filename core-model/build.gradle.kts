@@ -19,7 +19,7 @@ android {
 
 dependencies {
     // stream client
-    implementation(libs.stream.client)
+    api(libs.stream.client)
 
     // json parsing
     implementation(libs.moshi)

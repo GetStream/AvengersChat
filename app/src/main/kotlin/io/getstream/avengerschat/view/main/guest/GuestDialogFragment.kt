@@ -27,12 +27,11 @@ import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import com.skydoves.bundler.bundleNonNull
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.databinding.DialogFragmentGuestBinding
 import io.getstream.avengerschat.extensions.isValidForId
 import io.getstream.avengerschat.extensions.toast
-import io.getstream.avengerschat.model.Avenger
 import io.getstream.avengerschat.view.home.HomeActivity
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

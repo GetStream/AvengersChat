@@ -15,63 +15,63 @@
     limitations under the License.
 -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+  <data>
 
-        <variable
-            name="info"
-            type="io.getstream.avengerschat.model.LiveRoomInfo" />
+    <variable
+      name="info"
+      type="io.getstream.avengerschat.core.model.LiveRoomInfo" />
 
-        <import type="io.getstream.avengerschat.network.Api" />
-    </data>
+    <import type="io.getstream.avengerschat.core.data.Api" />
+  </data>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="170dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="4dp"
-        app:layout_constraintStart_toStartOf="@id/live_featured"
-        app:layout_constraintTop_toBottomOf="@id/live_featured">
+  <com.google.android.material.card.MaterialCardView
+    android:layout_width="170dp"
+    android:layout_height="95dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="12dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="4dp"
+    app:layout_constraintStart_toStartOf="@id/live_featured"
+    app:layout_constraintTop_toBottomOf="@id/live_featured">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/liveVideo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foreground="?attr/selectableItemBackground"
-            tools:ignore="UnusedAttribute">
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/liveVideo"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:foreground="?attr/selectableItemBackground"
+      tools:ignore="UnusedAttribute">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:loadImage="@{Api.getYoutubeThumbnailPath(info.video)}" />
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loadImage="@{Api.getYoutubeThumbnailPath(info.video)}" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/liveLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:background="@drawable/shape_live"
-                android:includeFontPadding="false"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="2dp"
-                android:text="@string/live"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/liveLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/shape_live"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:text="@string/live"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+  </com.google.android.material.card.MaterialCardView>
 
 </layout>

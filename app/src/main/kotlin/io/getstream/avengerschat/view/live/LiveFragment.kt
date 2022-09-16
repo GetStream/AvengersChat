@@ -25,9 +25,9 @@ import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.data.extensions.liveRoomInfo
+import io.getstream.avengerschat.core.model.LiveRoomInfo
 import io.getstream.avengerschat.databinding.FragmentLiveBinding
-import io.getstream.avengerschat.extensions.liveRoomInfo
-import io.getstream.avengerschat.model.LiveRoomInfo
 import io.getstream.avengerschat.view.home.HomeViewModel
 import io.getstream.avengerschat.view.user.UserProfileDialogFragment
 
