@@ -20,7 +20,7 @@ import androidx.databinding.Bindable
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.getstream.avengerschat.core.data.repository.DirectMessageRepository
+import io.getstream.avengerschat.core.data.repository.dm.DirectMessageRepository
 import io.getstream.chat.android.client.models.User
 import timber.log.Timber
 import javax.inject.Inject

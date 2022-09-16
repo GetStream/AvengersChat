@@ -23,7 +23,7 @@ import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import com.skydoves.bindables.bindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.getstream.avengerschat.core.data.repository.MainRepository
+import io.getstream.avengerschat.core.data.repository.main.MainRepository
 import io.getstream.avengerschat.core.model.Avenger
 import timber.log.Timber
 import javax.inject.Inject

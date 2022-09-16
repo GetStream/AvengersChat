@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.core.data.repository
+package io.getstream.avengerschat.core.data.repository.user
 
 import androidx.annotation.WorkerThread
+import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.network.AppDispatchers
 import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
@@ -27,28 +29,28 @@ import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
 
-class GuestRepository @Inject constructor(
-  val chatClient: ChatClient,
+internal class UserProfileEditRepositoryImpl @Inject constructor(
+  private val chatClient: ChatClient,
   @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
-) {
+) : UserProfileEditRepository {
 
   init {
-    Timber.d("injection GuestRepository")
+    Timber.d("injection UserProfileEditRepository")
   }
 
   /**
-   * Connects a guest user using the given user name to the Stream client server.
-   * This connection will keep maintained until be disconnected.
+   * Updates a specific user for updating the new profile image.
    */
   @WorkerThread
-  fun fetchGuestToken(name: String) = flow {
-    // connect a guest user.
-    chatClient.connectGuestUser(name, name).await()
-
-    // fetch a guest token.
-    val result = chatClient.getGuestToken(name, name).await()
+  override fun updateUser(avenger: Avenger, newProfileUrl: String) = flow {
+    val user = User(
+      id = avenger.id,
+      name = avenger.name,
+      image = newProfileUrl
+    )
+    val result = chatClient.updateUser(user).await()
     result.onSuccessSuspend {
-      emit(result.data().token)
+      emit(result.data())
     }
   }.flowOn(dispatcher)
 }

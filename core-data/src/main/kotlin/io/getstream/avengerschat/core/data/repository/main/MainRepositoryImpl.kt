@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.core.data.repository
+package io.getstream.avengerschat.core.data.repository.main
 
 import androidx.annotation.WorkerThread
 import com.skydoves.sandwich.message
@@ -32,11 +32,11 @@ import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainRepository @Inject constructor(
+internal class MainRepositoryImpl @Inject constructor(
   private val marvelService: MarvelService,
   private val avengersDao: AvengersDao,
   @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
-) {
+) : MainRepository {
 
   init {
     Timber.d("injection MainRepository")
@@ -46,7 +46,7 @@ class MainRepository @Inject constructor(
    * loads avengers via fetching from network or getting from a local database.
    */
   @WorkerThread
-  fun loadAvengers(
+  override fun loadAvengers(
     onError: (String) -> Unit
   ) = flow {
     val avengers = avengersDao.getAvengers()

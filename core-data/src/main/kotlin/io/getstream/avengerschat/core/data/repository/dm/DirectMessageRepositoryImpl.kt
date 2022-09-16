@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.core.data.repository
+package io.getstream.avengerschat.core.data.repository.dm
 
 import androidx.annotation.WorkerThread
 import io.getstream.avengerschat.core.data.Api.STREAM_CHANNEL_TYPE_MESSAGING
@@ -36,10 +36,10 @@ import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
 
-class DirectMessageRepository @Inject constructor(
+internal class DirectMessageRepositoryImpl @Inject constructor(
   private val chatClient: ChatClient,
   @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
-) {
+) : DirectMessageRepository {
 
   init {
     Timber.d("injection DirectMessageRepository")
@@ -49,7 +49,7 @@ class DirectMessageRepository @Inject constructor(
    * requests query to the Stream Client server for getting a filtered list of Avengers.
    */
   @WorkerThread
-  fun queryAvengers() = flow {
+  override fun queryAvengers() = flow {
     val usersRequest = QueryUsersRequest(
       filter = Filters.and(
         Filters.ne(STREAM_USER_ID, chatClient.currentUserId),
@@ -69,7 +69,7 @@ class DirectMessageRepository @Inject constructor(
    * requests to create a new channel if there is no existing or joins if there is an existing channel.
    */
   @WorkerThread
-  fun joinNewChannel(user: User) = flow {
+  override fun joinNewChannel(user: User) = flow {
     val result = chatClient.createChannel(
       channelType = STREAM_CHANNEL_TYPE_MESSAGING,
       channelId = user.id,
