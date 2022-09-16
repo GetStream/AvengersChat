@@ -17,9 +17,8 @@
 package io.getstream.avengerschat.view.home
 
 import androidx.annotation.WorkerThread
-import io.getstream.avengerschat.extensions.liveRoomInfo
+import io.getstream.avengerschat.core.database.AvengersDao
 import io.getstream.avengerschat.model.Avenger
-import io.getstream.avengerschat.persistence.AvengersDao
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
@@ -31,7 +30,7 @@ import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
   private val chatClient: ChatClient,
-  private val avengersDao: AvengersDao,
+  private val avengersDao: io.getstream.avengerschat.core.database.AvengersDao,
   private val dispatcher: CoroutineDispatcher
 ) {
 

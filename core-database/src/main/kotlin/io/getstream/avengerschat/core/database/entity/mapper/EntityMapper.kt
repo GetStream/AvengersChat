@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.persistence
+package io.getstream.avengerschat.core.database.entity.mapper
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import io.getstream.avengerschat.model.Avenger
+interface EntityMapper<Domain, Entity> {
 
-@Database(entities = [Avenger::class], version = 1, exportSchema = true)
-abstract class AppDatabase : RoomDatabase() {
+  fun asEntity(domain: Domain): Entity
 
-  abstract fun avengersDao(): AvengersDao
+  fun asDomain(entity: Entity): Domain
 }

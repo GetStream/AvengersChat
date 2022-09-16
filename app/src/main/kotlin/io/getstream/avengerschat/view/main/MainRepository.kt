@@ -21,8 +21,8 @@ import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
 import com.skydoves.sandwich.onException
 import com.skydoves.sandwich.suspendOnSuccess
+import io.getstream.avengerschat.core.database.AvengersDao
 import io.getstream.avengerschat.core.network.MarvelService
-import io.getstream.avengerschat.persistence.AvengersDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -31,7 +31,7 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(
   private val marvelService: io.getstream.avengerschat.core.network.MarvelService,
-  private val avengersDao: AvengersDao,
+  private val avengersDao: io.getstream.avengerschat.core.database.AvengersDao,
   private val dispatcher: CoroutineDispatcher
 ) {
 

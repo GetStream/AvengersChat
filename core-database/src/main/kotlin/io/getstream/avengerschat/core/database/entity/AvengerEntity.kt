@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.persistence
+package io.getstream.avengerschat.core.database.entity
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import io.getstream.avengerschat.model.Avenger
+import androidx.room.Entity
 
-@Dao
-interface AvengersDao {
-
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insertAvengers(posters: List<Avenger>)
-
-  @Query("SELECT * FROM Avenger WHERE id = :id_")
-  suspend fun getAvenger(id_: String): Avenger
-
-  @Query("SELECT * FROM Avenger")
-  suspend fun getAvengers(): List<Avenger>
-}
+@Entity
+data class AvengerEntity(
+  val id: String,
+  val name: String,
+  val token: String,
+  val color: String,
+  val quote: String,
+  val video: String,
+  val livecid: String,
+  val poster: String
+)
