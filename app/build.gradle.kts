@@ -43,6 +43,9 @@ android {
 }
 
 dependencies {
+    // modules
+    implementation(project(":core-model"))
+
     // android supports
     implementation(libs.material)
 
