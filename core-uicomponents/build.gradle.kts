@@ -18,6 +18,10 @@ android {
   buildFeatures {
     dataBinding = true
   }
+
+  lint {
+    abortOnError = false
+  }
 }
 
 dependencies {
