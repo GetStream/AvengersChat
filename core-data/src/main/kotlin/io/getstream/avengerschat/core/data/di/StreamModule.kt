@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.di
+package io.getstream.avengerschat.core.data.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import io.getstream.avengerschat.initializer.StreamChatInitializer
 import io.getstream.chat.android.client.ChatClient
 import javax.inject.Singleton
 
@@ -31,9 +30,7 @@ object StreamModule {
   @Provides
   @Singleton
   fun provideStreamChatClient(): ChatClient {
-    /**
-     * Provides an instance of the [ChatClient] which is initialized in [StreamChatInitializer].
-     */
+    /** Provides an instance of the [ChatClient]. */
     return ChatClient.instance()
   }
 }

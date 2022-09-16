@@ -25,7 +25,7 @@ import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import io.getstream.avengerschat.core.data.extensions.parsedColor
-import io.getstream.avengerschat.core.data.repository.HomeRepository
+import io.getstream.avengerschat.core.data.repository.home.HomeRepository
 import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.model.LiveRoomInfo
 import io.getstream.chat.android.client.ChatClient

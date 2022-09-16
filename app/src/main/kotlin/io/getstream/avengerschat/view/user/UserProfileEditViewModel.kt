@@ -24,7 +24,7 @@ import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.bindingProperty
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import io.getstream.avengerschat.core.data.repository.UserProfileEditRepository
+import io.getstream.avengerschat.core.data.repository.user.UserProfileEditRepository
 import io.getstream.avengerschat.core.model.Avenger
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

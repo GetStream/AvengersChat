@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.core.data.repository
+package io.getstream.avengerschat.core.data.repository.home
 
 import androidx.annotation.WorkerThread
 import io.getstream.avengerschat.core.data.extensions.liveRoomInfo
@@ -32,11 +32,11 @@ import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
 
-class HomeRepository @Inject constructor(
+internal class HomeRepositoryImpl @Inject constructor(
   private val chatClient: ChatClient,
   private val avengersDao: AvengersDao,
   @Dispatcher(AppDispatchers.IO) private val dispatcher: CoroutineDispatcher
-) {
+) : HomeRepository {
 
   init {
     Timber.d("injection HomeRepository")
@@ -47,7 +47,7 @@ class HomeRepository @Inject constructor(
    * This connection will keep maintained until be disconnected.
    */
   @WorkerThread
-  fun connectUser(avenger: Avenger) = flow {
+  override fun connectUser(avenger: Avenger) = flow {
     // disconnect a user if already connected.
     disconnectUser(avenger)
 
@@ -66,7 +66,7 @@ class HomeRepository @Inject constructor(
    * Check and disconnect the current user
    * if there's already connected user to the Stream client server.
    */
-  fun disconnectUser(avenger: Avenger) {
+  override fun disconnectUser(avenger: Avenger) {
     val currentUser = chatClient.getCurrentUser()
     if (currentUser != null && avenger.id == currentUser.id) {
       chatClient.disconnect(false).enqueue()
@@ -77,7 +77,7 @@ class HomeRepository @Inject constructor(
    * gets live room information list from the local database.
    */
   @WorkerThread
-  fun getLiveRoomInfo(avenger: Avenger) = flow {
+  override fun getLiveRoomInfo(avenger: Avenger) = flow {
     val avengers = avengersDao.getAvengers().map { it.asDomain() }
     val liveRoomInfo = avengers.filterNot { it.id == avenger.id }.map { it.liveRoomInfo }
     emit(liveRoomInfo)

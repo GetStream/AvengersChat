@@ -20,7 +20,7 @@ import androidx.databinding.Bindable
 import com.skydoves.bindables.BindingViewModel
 import com.skydoves.bindables.asBindingProperty
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.getstream.avengerschat.core.data.repository.GuestRepository
+import io.getstream.avengerschat.core.data.repository.guest.GuestRepository
 import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.extensions.Empty
 import kotlinx.coroutines.flow.Flow
