@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "AvengersChat"
 include(":app")
 include(":core-model")
+include(":core-network")
