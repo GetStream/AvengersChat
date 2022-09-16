@@ -24,7 +24,7 @@
             name="info"
             type="io.getstream.avengerschat.model.LiveRoomInfo" />
 
-        <import type="io.getstream.avengerschat.network.Api" />
+        <import type="io.getstream.avengerschat.core.network.Api" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

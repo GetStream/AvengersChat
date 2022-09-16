@@ -14,22 +14,15 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.di
+package io.getstream.avengerschat.core.network.di
 
-import android.content.Context
-import android.os.Build
-import coil.Coil
-import coil.ImageLoader
-import coil.decode.GifDecoder
-import coil.decode.ImageDecoderDecoder
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.getstream.avengerschat.network.HttpRequestInterceptor
-import io.getstream.avengerschat.network.MarvelService
+import io.getstream.avengerschat.core.network.interceptor.HttpRequestInterceptor
+import io.getstream.avengerschat.core.network.service.MarvelService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -47,24 +40,24 @@ object NetworkModule {
       .build()
   }
 
-  @Provides
-  @Singleton
-  fun provideImageLoader(
-    @ApplicationContext context: Context,
-    okHttpClient: OkHttpClient
-  ): ImageLoader {
-    return ImageLoader.Builder(context)
-      .crossfade(true)
-      .okHttpClient { okHttpClient }
-      .components {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-          add(ImageDecoderDecoder.Factory())
-        } else {
-          add(GifDecoder.Factory())
-        }
-      }
-      .build().apply { Coil.setImageLoader(this) }
-  }
+//  @Provides
+//  @Singleton
+//  fun provideImageLoader(
+//    @ApplicationContext context: Context,
+//    okHttpClient: OkHttpClient
+//  ): ImageLoader {
+//    return ImageLoader.Builder(context)
+//      .crossfade(true)
+//      .okHttpClient { okHttpClient }
+//      .components {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//          add(ImageDecoderDecoder.Factory())
+//        } else {
+//          add(GifDecoder.Factory())
+//        }
+//      }
+//      .build().apply { Coil.setImageLoader(this) }
+//  }
 
   @Provides
   @Singleton

@@ -21,7 +21,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import io.getstream.avengerschat.network.MarvelService
+import io.getstream.avengerschat.core.network.MarvelService
 import io.getstream.avengerschat.persistence.AvengersDao
 import io.getstream.avengerschat.view.dm.DirectMessageRepository
 import io.getstream.avengerschat.view.home.HomeRepository
@@ -37,7 +37,7 @@ object RepositoryModule {
   @Provides
   @ViewModelScoped
   fun provideMainRepository(
-    marvelService: MarvelService,
+    marvelService: io.getstream.avengerschat.core.network.MarvelService,
     avengersDao: AvengersDao,
     dispatcher: CoroutineDispatcher
   ): MainRepository {

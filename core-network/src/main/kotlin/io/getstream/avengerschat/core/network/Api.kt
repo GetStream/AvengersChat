@@ -14,23 +14,18 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.di
+package io.getstream.avengerschat.core.network
 
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import javax.inject.Singleton
+object Api {
+  private const val YOUTUBE_THUMBNAIL_URL = "https://img.youtube.com/vi/"
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DispatcherModule {
+  const val STREAM_USER_ID = "id"
+  const val STREAM_USER_ROLE = "role"
+  const val STREAM_USER_ROLE_ADMIN = "admin"
+  const val STREAM_CHANNEL_TYPE_MESSAGING = "messaging"
 
-  @Provides
-  @Singleton
-  fun provideIODispatcher(): CoroutineDispatcher {
-    return Dispatchers.IO
+  @JvmStatic
+  fun getYoutubeThumbnailPath(thumbnailPath: String?): String {
+    return "$YOUTUBE_THUMBNAIL_URL$thumbnailPath/default.jpg"
   }
 }

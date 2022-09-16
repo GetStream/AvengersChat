@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.network
+package io.getstream.avengerschat.core.network.service
 
-object Api {
-  private const val YOUTUBE_THUMBNAIL_URL = "https://img.youtube.com/vi/"
+import com.skydoves.sandwich.ApiResponse
+import io.getstream.avengerschat.core.model.Avenger
+import retrofit2.http.GET
 
-  const val STREAM_USER_ID = "id"
-  const val STREAM_USER_ROLE = "role"
-  const val STREAM_USER_ROLE_ADMIN = "admin"
-  const val STREAM_CHANNEL_TYPE_MESSAGING = "messaging"
+interface MarvelService {
 
-  @JvmStatic
-  fun getYoutubeThumbnailPath(thumbnailPath: String?): String {
-    return "$YOUTUBE_THUMBNAIL_URL$thumbnailPath/default.jpg"
-  }
+  @GET("Avengers.json")
+  suspend fun fetchAvengers(): ApiResponse<List<Avenger>>
 }

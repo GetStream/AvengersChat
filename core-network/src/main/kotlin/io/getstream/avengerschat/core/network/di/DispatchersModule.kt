@@ -14,14 +14,22 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.network
+package io.getstream.avengerschat.core.network.di
 
-import com.skydoves.sandwich.ApiResponse
-import io.getstream.avengerschat.model.Avenger
-import retrofit2.http.GET
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import io.getstream.avengerschat.core.network.AppDispatchers
+import io.getstream.avengerschat.core.network.Dispatcher
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 
-interface MarvelService {
+@Module
+@InstallIn(SingletonComponent::class)
+object DispatchersModule {
 
-  @GET("Avengers.json")
-  suspend fun fetchAvengers(): ApiResponse<List<Avenger>>
+  @Provides
+  @Dispatcher(AppDispatchers.IO)
+  fun providesIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 }
