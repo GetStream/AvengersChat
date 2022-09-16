@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.components
+@file:Suppress("unused")
 
-import android.view.View
-import androidx.lifecycle.LifecycleOwner
+package io.getstream.avengerschat.core.uicomponents.startup
 
-/**
- * Stream UI components for abstracting the implementations of the bindings between
- * ViewModels and Stream UI components.
- */
-interface StreamUIComponent {
+import android.content.Context
+import androidx.startup.Initializer
+import io.getstream.avengerschat.core.uicomponents.StreamGlobalStyles.initializeReactionsGlobalStyles
 
-  val lifecycleOwner: LifecycleOwner
+class StreamGlobalStyleInitializer : Initializer<Unit> {
 
-  @StreamComponents
-  fun bindLayout(view: View)
+  override fun create(context: Context) {
+    initializeReactionsGlobalStyles(context)
+  }
+
+  override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
 }

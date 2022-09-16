@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2022 Stream.IO, Inc. All Rights Reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+    <string name="app_name">Avengers Chat</string>
+    <string name="choose_your_hero">Choose your hero</string>
+    <string name="live">Live</string>
+    <string name="stream_developers_channel">Stream Developers Channel</string>
+    <string name="live_featured">Featured Live</string>
+    <string name="direct_message">Direct Message</string>
+    <string name="join">Join</string>
+    <string name="join_us">Join Us</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_profile_updated">Profile has been updated</string>
+    <string name="enter_edit_profile_url">Enter your profile url</string>
+    <string name="enter_edit_your_name">Enter your name</string>
+    <string name="enter_edit_your_name_error">Please enter a valid name</string>
+    <string name="stream_channel_header_active">Active %s</string>
+    <string name="stream_channel_header_active_now">just now</string>
+
+    <string name="you">You? 🦄</string>
+    <string name="greeting">Welcome to Avengers Chat!</string>
+
+    <string name="tab_live">Live</string>
+    <string name="tab_chat">Chat</string>
+    <string name="tab_mention">Mentions</string>
+
+    <string name="placeholder_error">Something went wrong:\n %s</string>
+
+    <string name="stream_api_key">uwg4ggudgjz9</string>
+</resources>

@@ -45,6 +45,7 @@ android {
 dependencies {
   // modules
   implementation(project(":core-data"))
+  implementation(project(":core-uicomponents"))
 
   // android supports
   implementation(libs.material)
@@ -84,7 +85,6 @@ dependencies {
 
   // custom views
   implementation(libs.transformationLayout)
-  implementation(libs.veil)
   implementation(libs.descretescroll)
 
   implementation(platform(libs.firebase.bom))

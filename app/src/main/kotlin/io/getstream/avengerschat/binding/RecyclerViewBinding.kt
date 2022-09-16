@@ -24,9 +24,9 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 import io.getstream.avengerschat.core.data.extensions.parsedColor
 import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.model.LiveRoomInfo
-import io.getstream.avengerschat.extensions.adapterPositionOrNull
-import io.getstream.avengerschat.extensions.startCircularReveal
-import io.getstream.avengerschat.view.custom.StreamGlobalStyles
+import io.getstream.avengerschat.core.uicomponents.StreamGlobalStyles
+import io.getstream.avengerschat.core.uicomponents.extensions.adapterPositionOrNull
+import io.getstream.avengerschat.core.uicomponents.extensions.startCircularReveal
 import io.getstream.avengerschat.view.dm.DirectMessageAdapter
 import io.getstream.avengerschat.view.live.LiveAdapter
 import io.getstream.avengerschat.view.main.MainAvengersAdapter

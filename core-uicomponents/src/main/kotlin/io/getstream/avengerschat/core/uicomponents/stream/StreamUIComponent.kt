@@ -14,26 +14,19 @@
  * limitations under the License.
  */
 
-@file:Suppress("unused")
+package io.getstream.avengerschat.core.uicomponents.stream
 
-package io.getstream.avengerschat.initializer
+import android.view.View
+import androidx.lifecycle.LifecycleOwner
 
-import android.content.Context
-import androidx.startup.Initializer
-import io.getstream.avengerschat.view.custom.StreamGlobalStyles
-import timber.log.Timber
+/**
+ * Stream UI components for abstracting the implementations of the bindings between
+ * ViewModels and Stream UI components.
+ */
+interface StreamUIComponent {
 
-class StreamGlobalStyleInitializer : Initializer<Unit> {
+  val lifecycleOwner: LifecycleOwner
 
-  override fun create(context: Context) {
-    Timber.d("StreamGlobalStyleInitializer is initialized")
-
-    StreamGlobalStyles.initializeReactionsGlobalStyles(context)
-  }
-
-  override fun dependencies(): List<Class<out Initializer<*>>> =
-    listOf(
-      TimberInitializer::class.java,
-      StreamChatInitializer::class.java
-    )
+  @StreamComponents
+  fun bindLayout(view: View)
 }

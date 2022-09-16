@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.custom
+package io.getstream.avengerschat.core.uicomponents
 
 import android.content.Context
 import androidx.annotation.ColorInt
-import io.getstream.avengerschat.R
-import io.getstream.avengerschat.extensions.drawable
+import io.getstream.avengerschat.core.uicomponents.extensions.drawable
 import io.getstream.chat.android.ui.ChatUI
 import io.getstream.chat.android.ui.StyleTransformer
 import io.getstream.chat.android.ui.SupportedReactions

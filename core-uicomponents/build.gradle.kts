@@ -4,6 +4,7 @@ import io.getstream.Configuration
 plugins {
   id(libs.plugins.android.library.get().pluginId)
   id(libs.plugins.kotlin.android.get().pluginId)
+  id(libs.plugins.kotlin.kapt.get().pluginId)
 }
 
 android {
@@ -32,4 +33,7 @@ dependencies {
   // image loading
   implementation(libs.coil)
   implementation(libs.coil.gif)
+
+  // custom views
+  api(libs.veil)
 }

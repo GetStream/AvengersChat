@@ -21,6 +21,8 @@ import androidx.lifecycle.LifecycleOwner
 import com.getstream.sdk.chat.viewmodel.MessageInputViewModel
 import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.uicomponents.stream.StreamComponents
+import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
 import io.getstream.chat.android.ui.message.input.MessageInputView
 import io.getstream.chat.android.ui.message.input.viewmodel.bindView
 import io.getstream.chat.android.ui.message.list.MessageListView

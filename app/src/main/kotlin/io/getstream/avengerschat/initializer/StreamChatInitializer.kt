@@ -21,6 +21,7 @@ import android.content.Intent
 import androidx.startup.Initializer
 import io.getstream.avengerschat.BuildConfig
 import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.uicomponents.startup.StreamGlobalStyleInitializer
 import io.getstream.avengerschat.view.main.MainActivity
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.logger.ChatLogLevel
@@ -93,5 +94,9 @@ class StreamChatInitializer : Initializer<Unit> {
   }
 
   override fun dependencies(): List<Class<out Initializer<*>>> =
-    listOf(FirebaseInitializer::class.java)
+    listOf(
+      TimberInitializer::class.java,
+      StreamGlobalStyleInitializer::class.java,
+      FirebaseInitializer::class.java
+    )
 }
