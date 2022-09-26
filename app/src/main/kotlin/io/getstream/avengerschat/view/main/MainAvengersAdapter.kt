@@ -65,7 +65,7 @@ class MainAvengersAdapter constructor(
     init {
       binding.root.setOnClickListener {
         val position = adapterPositionOrNull ?: return@setOnClickListener
-        io.getstream.avengerschat.feature.home.HomeActivity.startActivity(binding.transformationLayout, currentList[position])
+        HomeActivity.startActivity(binding.transformationLayout, currentList[position])
       }
     }
 

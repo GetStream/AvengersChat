@@ -76,7 +76,7 @@ class GuestDialogFragment :
           quote = getString(R.string.greeting),
           token = it
         )
-        io.getstream.avengerschat.feature.home.HomeActivity.startActivity(binding.transformationLayout, newAvenger)
+        HomeActivity.startActivity(binding.transformationLayout, newAvenger)
         dismissAllowingStateLoss()
       }
     }

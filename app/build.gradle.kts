@@ -48,8 +48,7 @@ dependencies {
   implementation(project(":core-uicomponents"))
 
   // feature modules
-  implementation(project(":feature-dm"))
-  implementation(project(":feature-chat"))
+  implementation(project(":feature-home"))
 
   // androidx
   implementation(libs.androidx.lifecycle)

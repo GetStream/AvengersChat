@@ -56,9 +56,9 @@ object ViewBinding {
     bottomNavigationView.apply {
       setupWithNavController(controller)
       val context = bottomNavigationView.context
-      val accentRed = context.color(io.getstream.chat.android.ui.R.color.stream_ui_accent_red)
+      val accentRed = context.color(R.color.stream_ui_accent_red)
       val literalWhite =
-        context.color(io.getstream.chat.android.ui.R.color.stream_ui_literal_white)
+        context.color(R.color.stream_ui_literal_white)
       getOrCreateBadge(R.id.fragment_channel_list).apply {
         backgroundColor = accentRed
         badgeTextColor = literalWhite
