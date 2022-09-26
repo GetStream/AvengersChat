@@ -47,11 +47,7 @@ dependencies {
   implementation(project(":core-data"))
   implementation(project(":core-uicomponents"))
 
-  // android supports
-  implementation(libs.material)
-
-  // jetpack components
-  implementation(libs.androidx.fragment)
+  // androidx
   implementation(libs.androidx.lifecycle)
   implementation(libs.androidx.navigation.ktx)
   implementation(libs.androidx.navigation.ui)
@@ -79,9 +75,6 @@ dependencies {
 
   // bundler
   implementation(libs.bundler)
-
-  // threeten
-  implementation("com.jakewharton.threetenabp:threetenabp:1.4.0")
 
   // custom views
   implementation(libs.transformationLayout)

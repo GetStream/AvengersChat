@@ -29,8 +29,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
 import io.getstream.avengerschat.components.StreamMessageListUIComponent
 import io.getstream.avengerschat.components.streamMessageListComponent
+import io.getstream.avengerschat.core.uicomponents.extensions.addOnBackPressedDispatcher
 import io.getstream.avengerschat.databinding.FragmentMessageListBinding
-import io.getstream.avengerschat.extensions.addOnBackPressedDispatcher
 import io.getstream.avengerschat.view.home.HomeViewModel
 
 @AndroidEntryPoint

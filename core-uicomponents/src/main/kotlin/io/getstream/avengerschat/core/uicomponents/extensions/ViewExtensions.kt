@@ -53,7 +53,7 @@ fun BottomNavigationView.setBadgeNumber(@IdRes menuItemId: Int, badgeNumber: Int
   getOrCreateBadge(menuItemId).apply {
     horizontalOffset = -context.dimensionPixelSize(R.dimen.badge_horizontal_offset)
     verticalOffset = context.dimensionPixelSize(R.dimen.badge_vertical_offset)
-    backgroundColor = context.color(io.getstream.chat.android.ui.R.color.stream_ui_accent_red)
+    backgroundColor = context.color(R.color.stream_ui_accent_red)
     isVisible = badgeNumber > 0
     number = badgeNumber
   }

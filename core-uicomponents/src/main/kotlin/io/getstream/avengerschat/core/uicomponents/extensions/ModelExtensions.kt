@@ -20,7 +20,7 @@ import android.content.Context
 import android.text.format.DateUtils
 import com.getstream.sdk.chat.adapter.MessageListItem
 import com.getstream.sdk.chat.utils.DateFormatter
-import io.getstream.avengerschat.R
+import io.getstream.avengerschat.core.uicomponents.R
 import io.getstream.chat.android.client.models.User
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDateTime

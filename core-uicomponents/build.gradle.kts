@@ -25,14 +25,18 @@ android {
 }
 
 dependencies {
-  // android supports
-  implementation(libs.material)
+  // androidx
+  api(libs.material)
+  api(libs.androidx.fragment)
 
   // stream chat UI components
-  implementation(libs.stream.ui.components)
+  api(libs.stream.ui.components)
 
   // startup
   implementation(libs.androidx.startup)
+
+  // threeten backport
+  implementation(libs.androidAbp)
 
   // image loading
   implementation(libs.coil)
