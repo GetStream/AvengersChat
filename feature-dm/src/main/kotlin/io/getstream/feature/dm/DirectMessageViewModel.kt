@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.dm
+package io.getstream.feature.dm
 
 import androidx.databinding.Bindable
 import com.skydoves.bindables.BindingViewModel
