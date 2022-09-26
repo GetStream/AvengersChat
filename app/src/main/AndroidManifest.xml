@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.home.HomeActivity" />
+        <activity android:name=".feature.home.HomeActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

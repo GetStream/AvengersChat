@@ -21,7 +21,7 @@
 
         <variable
             name="vm"
-            type="io.getstream.avengerschat.view.home.HomeViewModel" />
+            type="io.getstream.avengerschat.feature.home.common.HomeViewModel" />
 
         <variable
             name="video"

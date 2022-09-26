@@ -49,6 +49,7 @@ dependencies {
 
   // feature modules
   implementation(project(":feature-dm"))
+  implementation(project(":feature-chat"))
 
   // androidx
   implementation(libs.androidx.lifecycle)

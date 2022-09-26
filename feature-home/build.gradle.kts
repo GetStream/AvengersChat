@@ -1,5 +1,3 @@
-import io.getstream.Configuration
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   id(libs.plugins.android.library.get().pluginId)
@@ -10,16 +8,20 @@ plugins {
 }
 
 android {
-  compileSdk = Configuration.compileSdk
+  compileSdk = io.getstream.Configuration.compileSdk
 
   defaultConfig {
-    minSdk = Configuration.minSdk
-    targetSdk = Configuration.targetSdk
+    minSdk = io.getstream.Configuration.minSdk
+    targetSdk = io.getstream.Configuration.targetSdk
   }
 
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+  }
+
+  buildFeatures {
+    dataBinding = true
   }
 }
 
@@ -30,10 +32,17 @@ dependencies {
 
   // feature modules
   implementation(project(":feature-dm"))
+  implementation(project(":feature-chat"))
   implementation(project(":feature-home-common"))
 
   // data binding
   implementation(libs.bindables)
+
+  // custom views
+  implementation(libs.transformationLayout)
+
+  // bundler
+  implementation(libs.bundler)
 
   // hilt
   implementation(libs.hilt.android)

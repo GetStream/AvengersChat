@@ -28,13 +28,13 @@ import io.getstream.avengerschat.R
 import io.getstream.avengerschat.core.data.extensions.liveRoomInfo
 import io.getstream.avengerschat.core.model.LiveRoomInfo
 import io.getstream.avengerschat.databinding.FragmentLiveBinding
-import io.getstream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.feature.home.HomeViewModel
 import io.getstream.avengerschat.view.user.UserProfileDialogFragment
 
 @AndroidEntryPoint
 class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live) {
 
-  private val homeViewModel: HomeViewModel by activityViewModels()
+  private val homeViewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
 
   override fun onCreateView(
     inflater: LayoutInflater,

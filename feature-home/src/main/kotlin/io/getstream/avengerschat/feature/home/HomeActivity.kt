@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.home
+package io.getstream.avengerschat.feature.home
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -25,9 +25,9 @@ import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationCompat.onTransformationEndContainerApplyParams
 import com.skydoves.transformationlayout.TransformationLayout
 import dagger.hilt.android.AndroidEntryPoint
-import io.getstream.avengerschat.R
 import io.getstream.avengerschat.core.model.Avenger
-import io.getstream.avengerschat.databinding.ActivityHomeBinding
+import io.getstream.avengerschat.feature.home.common.HomeViewModel
+import io.getstream.avengerschat.feature.home.databinding.ActivityHomeBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint

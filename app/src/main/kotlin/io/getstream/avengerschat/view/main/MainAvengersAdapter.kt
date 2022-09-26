@@ -27,7 +27,7 @@ import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.uicomponents.extensions.adapterPositionOrNull
 import io.getstream.avengerschat.databinding.ItemAvengerBinding
 import io.getstream.avengerschat.databinding.ItemGuestBinding
-import io.getstream.avengerschat.view.home.HomeActivity
+import io.getstream.avengerschat.feature.home.HomeActivity
 
 class MainAvengersAdapter constructor(
   private val onItemYouClicked: (Avenger) -> Unit
@@ -65,7 +65,7 @@ class MainAvengersAdapter constructor(
     init {
       binding.root.setOnClickListener {
         val position = adapterPositionOrNull ?: return@setOnClickListener
-        HomeActivity.startActivity(binding.transformationLayout, currentList[position])
+        io.getstream.avengerschat.feature.home.HomeActivity.startActivity(binding.transformationLayout, currentList[position])
       }
     }
 

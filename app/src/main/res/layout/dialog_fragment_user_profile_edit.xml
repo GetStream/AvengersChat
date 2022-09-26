@@ -26,7 +26,7 @@
 
         <variable
             name="homeVm"
-            type="io.getstream.avengerschat.view.home.HomeViewModel" />
+            type="io.getstream.avengerschat.feature.home.common.HomeViewModel" />
 
         <import type="android.webkit.URLUtil" />
     </data>

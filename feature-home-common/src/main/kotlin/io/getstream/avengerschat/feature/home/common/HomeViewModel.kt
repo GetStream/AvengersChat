@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.home
+package io.getstream.avengerschat.feature.home.common
 
 import androidx.databinding.Bindable
 import androidx.lifecycle.ViewModel

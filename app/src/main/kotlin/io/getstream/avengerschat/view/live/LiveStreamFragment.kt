@@ -28,14 +28,14 @@ import io.getstream.avengerschat.R
 import io.getstream.avengerschat.components.streamMessageListComponent
 import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
 import io.getstream.avengerschat.databinding.FragmentLiveStreamBinding
-import io.getstream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.feature.home.HomeViewModel
 
 @AndroidEntryPoint
 class LiveStreamFragment :
   BindingFragment<FragmentLiveStreamBinding>(R.layout.fragment_live_stream) {
 
   private val args: LiveStreamFragmentArgs by navArgs()
-  private val homeViewModel: HomeViewModel by activityViewModels()
+  private val homeViewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
   private val streamMessageListComponent: StreamUIComponent by streamMessageListComponent(
     cidProvider = { args.info.cid }
   )

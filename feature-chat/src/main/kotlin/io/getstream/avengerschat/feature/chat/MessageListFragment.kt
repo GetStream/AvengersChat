@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.chat
+package io.getstream.avengerschat.feature.chat
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,12 +26,11 @@ import androidx.navigation.fragment.navArgs
 import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.getstream.avengerschat.R
-import io.getstream.avengerschat.components.StreamMessageListUIComponent
-import io.getstream.avengerschat.components.streamMessageListComponent
 import io.getstream.avengerschat.core.uicomponents.extensions.addOnBackPressedDispatcher
-import io.getstream.avengerschat.databinding.FragmentMessageListBinding
-import io.getstream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.feature.chat.component.StreamMessageListUIComponent
+import io.getstream.avengerschat.feature.chat.component.streamMessageListComponent
+import io.getstream.avengerschat.feature.chat.databinding.FragmentMessageListBinding
+import io.getstream.avengerschat.feature.home.common.HomeViewModel
 
 @AndroidEntryPoint
 class MessageListFragment :

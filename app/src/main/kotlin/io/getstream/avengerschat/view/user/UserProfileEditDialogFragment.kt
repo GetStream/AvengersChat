@@ -30,7 +30,7 @@ import io.getstream.avengerschat.core.uicomponents.extensions.doOnUrlTextChanged
 import io.getstream.avengerschat.core.uicomponents.extensions.hideSoftInputFromWindow
 import io.getstream.avengerschat.core.uicomponents.extensions.toast
 import io.getstream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
-import io.getstream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.feature.home.HomeViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,7 +38,7 @@ import javax.inject.Inject
 class UserProfileEditDialogFragment :
   BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
 
-  private val homeViewModel: HomeViewModel by activityViewModels()
+  private val homeViewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
 
   @Inject
   internal lateinit var editModelFactory: UserProfileEditViewModel.AssistedFactory

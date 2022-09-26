@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.components
+package io.getstream.avengerschat.feature.chat.component
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import io.getstream.avengerschat.core.uicomponents.stream.StreamComponents
 import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
+import io.getstream.avengerschat.feature.chat.R
 import io.getstream.chat.android.ui.channel.list.ChannelListView
 import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
 import io.getstream.chat.android.ui.channel.list.viewmodel.bindView
@@ -45,7 +46,7 @@ class StreamChannelListUIComponent constructor(
   @StreamComponents
   override fun bindLayout(view: View) {
     val channelListView =
-      view.findViewById<ChannelListView>(io.getstream.avengerschat.R.id.channelListView)
+      view.findViewById<ChannelListView>(R.id.channelListView)
     channelListView?.let {
       channelListViewModel.bindView(it, lifecycleOwner)
     }

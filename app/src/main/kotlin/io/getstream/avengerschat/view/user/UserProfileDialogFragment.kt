@@ -25,13 +25,13 @@ import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.R
 import io.getstream.avengerschat.databinding.DialogFragmentUserProfileBinding
-import io.getstream.avengerschat.view.home.HomeViewModel
+import io.getstream.avengerschat.feature.home.HomeViewModel
 
 @AndroidEntryPoint
 class UserProfileDialogFragment :
   BindingBottomSheetDialogFragment<DialogFragmentUserProfileBinding>(R.layout.dialog_fragment_user_profile) {
 
-  private val viewModel: HomeViewModel by activityViewModels()
+  private val viewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
