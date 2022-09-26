@@ -5,7 +5,8 @@ plugins {
   id(libs.plugins.android.library.get().pluginId)
   id(libs.plugins.kotlin.android.get().pluginId)
   id(libs.plugins.kotlin.kapt.get().pluginId)
-  id(libs.plugins.ksp.get().pluginId) version libs.versions.ksp.get()
+  id(libs.plugins.navigation.get().pluginId)
+  id(libs.plugins.hilt.plugin.get().pluginId)
 }
 
 android {
@@ -15,25 +16,25 @@ android {
     minSdk = Configuration.minSdk
     targetSdk = Configuration.targetSdk
   }
+
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
+
+  buildFeatures {
+    dataBinding = true
+  }
 }
 
 dependencies {
-  implementation(project(":core-model"))
+  implementation(project(":core-data"))
+  implementation(project(":core-uicomponents"))
 
-  // coroutines
-  implementation(libs.coroutines)
+  // data binding
+  implementation(libs.bindables)
 
-  // network
-  implementation(libs.sandwich)
-  implementation(libs.retrofit)
-  implementation(libs.retrofit.moshi)
-  implementation(libs.okhttp.interceptor)
-
-  // json parsing
-  implementation(libs.moshi)
-  ksp(libs.moshi.codegen)
-
-  // di
+  // hilt
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 }

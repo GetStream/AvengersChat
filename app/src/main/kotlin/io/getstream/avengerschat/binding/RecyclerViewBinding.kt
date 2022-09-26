@@ -27,10 +27,8 @@ import io.getstream.avengerschat.core.model.LiveRoomInfo
 import io.getstream.avengerschat.core.uicomponents.StreamGlobalStyles
 import io.getstream.avengerschat.core.uicomponents.extensions.adapterPositionOrNull
 import io.getstream.avengerschat.core.uicomponents.extensions.startCircularReveal
-import io.getstream.avengerschat.view.dm.DirectMessageAdapter
 import io.getstream.avengerschat.view.live.LiveAdapter
 import io.getstream.avengerschat.view.main.MainAvengersAdapter
-import io.getstream.chat.android.client.models.User
 
 object RecyclerViewBinding {
   @JvmStatic
@@ -49,12 +47,6 @@ object RecyclerViewBinding {
   @BindingAdapter("adapterLiveInfo")
   fun bindAdapterLiveRoomInfo(view: RecyclerView, roomInfo: List<LiveRoomInfo>?) {
     (view.adapter as? LiveAdapter)?.submitList(roomInfo)
-  }
-
-  @JvmStatic
-  @BindingAdapter("adapterDirectMessage")
-  fun bindAdapterQueriedAvengers(view: RecyclerView, user: List<User>?) {
-    (view.adapter as? DirectMessageAdapter)?.submitList(user?.reversed())
   }
 
   @JvmStatic

@@ -15,122 +15,109 @@
     limitations under the License.
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_nav"
-    app:startDestination="@id/fragment_live">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main_nav"
+  app:startDestination="@id/fragment_live">
 
-    <fragment
-        android:id="@+id/fragment_live"
-        android:name="io.getstream.avengerschat.view.live.LiveFragment"
-        tools:layout="@layout/fragment_live">
+  <include app:graph="@navigation/dm_navigation" />
 
-        <action
-            android:id="@+id/action_to_fragment_live_stream"
-            app:destination="@id/fragment_live_stream"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_enter_anim"
-            app:popExitAnim="@anim/nav_exit_anim"
-            app:popUpToInclusive="true" />
+  <fragment
+    android:id="@+id/fragment_live"
+    android:name="io.getstream.avengerschat.view.live.LiveFragment"
+    tools:layout="@layout/fragment_live">
 
-        <action
-            android:id="@+id/action_to_fragment_user_profile_edit"
-            app:destination="@id/fragment_user_profile_edit"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_enter_anim"
-            app:popExitAnim="@anim/nav_exit_anim"
-            app:popUpToInclusive="true" />
-    </fragment>
+    <action
+      android:id="@+id/action_to_fragment_live_stream"
+      app:destination="@id/fragment_live_stream"
+      app:enterAnim="@anim/nav_enter_anim"
+      app:exitAnim="@anim/nav_exit_anim"
+      app:popEnterAnim="@anim/nav_enter_anim"
+      app:popExitAnim="@anim/nav_exit_anim"
+      app:popUpToInclusive="true" />
 
-    <fragment
-        android:id="@+id/fragment_live_stream"
-        android:name="io.getstream.avengerschat.view.live.LiveStreamFragment"
-        tools:layout="@layout/fragment_live_stream">
+    <action
+      android:id="@+id/action_to_fragment_user_profile_edit"
+      app:destination="@id/fragment_user_profile_edit"
+      app:enterAnim="@anim/nav_enter_anim"
+      app:exitAnim="@anim/nav_exit_anim"
+      app:popEnterAnim="@anim/nav_enter_anim"
+      app:popExitAnim="@anim/nav_exit_anim"
+      app:popUpToInclusive="true" />
+  </fragment>
 
-        <argument
-            android:name="info"
-            app:argType="io.getstream.avengerschat.core.model.LiveRoomInfo" />
-    </fragment>
+  <fragment
+    android:id="@+id/fragment_live_stream"
+    android:name="io.getstream.avengerschat.view.live.LiveStreamFragment"
+    tools:layout="@layout/fragment_live_stream">
 
-    <fragment
-        android:id="@+id/fragment_channel_list"
-        android:name="io.getstream.avengerschat.view.chat.ChannelListFragment"
-        tools:layout="@layout/fragment_channel_list">
+    <argument
+      android:name="info"
+      app:argType="io.getstream.avengerschat.core.model.LiveRoomInfo" />
+  </fragment>
 
-        <action
-            android:id="@+id/action_to_fragment_message_list"
-            app:destination="@id/fragment_message_list"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_enter_anim"
-            app:popExitAnim="@anim/nav_exit_anim"
-            app:popUpToInclusive="true" />
-    </fragment>
+  <fragment
+    android:id="@+id/fragment_channel_list"
+    android:name="io.getstream.avengerschat.view.chat.ChannelListFragment"
+    tools:layout="@layout/fragment_channel_list">
 
-    <fragment
-        android:id="@+id/fragment_message_list"
-        android:name="io.getstream.avengerschat.view.chat.MessageListFragment"
-        tools:layout="@layout/fragment_message_list">
+    <action
+      android:id="@+id/action_to_fragment_message_list"
+      app:destination="@id/fragment_message_list"
+      app:enterAnim="@anim/nav_enter_anim"
+      app:exitAnim="@anim/nav_exit_anim"
+      app:popEnterAnim="@anim/nav_enter_anim"
+      app:popExitAnim="@anim/nav_exit_anim"
+      app:popUpToInclusive="true" />
+  </fragment>
 
-        <action
-            android:id="@+id/action_to_fragment_chat"
-            app:destination="@id/fragment_channel_list"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_enter_anim"
-            app:popExitAnim="@anim/nav_exit_anim"
-            app:popUpToInclusive="true" />
+  <fragment
+    android:id="@+id/fragment_message_list"
+    android:name="io.getstream.avengerschat.view.chat.MessageListFragment"
+    tools:layout="@layout/fragment_message_list">
 
-        <argument
-            android:name="cid"
-            app:argType="string" />
+    <action
+      android:id="@+id/action_to_fragment_chat"
+      app:destination="@id/fragment_channel_list"
+      app:enterAnim="@anim/nav_enter_anim"
+      app:exitAnim="@anim/nav_exit_anim"
+      app:popEnterAnim="@anim/nav_enter_anim"
+      app:popExitAnim="@anim/nav_exit_anim"
+      app:popUpToInclusive="true" />
 
-        <argument
-            android:name="messageId"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
+    <argument
+      android:name="cid"
+      app:argType="string" />
 
-    <fragment
-        android:id="@+id/fragment_mentions"
-        android:name="io.getstream.avengerschat.view.mention.MentionsFragment"
-        tools:layout="@layout/fragment_mentions">
+    <argument
+      android:name="messageId"
+      app:argType="string"
+      app:nullable="true" />
+  </fragment>
 
-        <action
-            android:id="@+id/action_to_fragment_message_list"
-            app:destination="@id/fragment_message_list"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_enter_anim"
-            app:popExitAnim="@anim/nav_exit_anim"
-            app:popUpToInclusive="true" />
-    </fragment>
+  <fragment
+    android:id="@+id/fragment_mentions"
+    android:name="io.getstream.avengerschat.view.mention.MentionsFragment"
+    tools:layout="@layout/fragment_mentions">
 
-    <fragment
-        android:id="@+id/fragment_direct_message"
-        android:name="io.getstream.avengerschat.view.dm.DirectMessageDialogFragment"
-        tools:layout="@layout/dialog_fragment_direct_message">
+    <action
+      android:id="@+id/action_to_fragment_message_list"
+      app:destination="@id/fragment_message_list"
+      app:enterAnim="@anim/nav_enter_anim"
+      app:exitAnim="@anim/nav_exit_anim"
+      app:popEnterAnim="@anim/nav_enter_anim"
+      app:popExitAnim="@anim/nav_exit_anim"
+      app:popUpToInclusive="true" />
+  </fragment>
 
-        <action
-            android:id="@+id/action_to_fragment_message_list"
-            app:destination="@id/fragment_message_list"
-            app:enterAnim="@anim/nav_enter_anim"
-            app:exitAnim="@anim/nav_exit_anim"
-            app:popEnterAnim="@anim/nav_enter_anim"
-            app:popExitAnim="@anim/nav_exit_anim"
-            app:popUpToInclusive="true" />
-    </fragment>
+  <fragment
+    android:id="@+id/fragment_user_profile"
+    android:name="io.getstream.avengerschat.view.user.UserProfileDialogFragment"
+    tools:layout="@layout/dialog_fragment_user_profile" />
 
-    <fragment
-        android:id="@+id/fragment_user_profile"
-        android:name="io.getstream.avengerschat.view.user.UserProfileDialogFragment"
-        tools:layout="@layout/dialog_fragment_user_profile" />
-
-    <fragment
-        android:id="@+id/fragment_user_profile_edit"
-        android:name="io.getstream.avengerschat.view.user.UserProfileEditDialogFragment"
-        tools:layout="@layout/dialog_fragment_user_profile_edit" />
+  <fragment
+    android:id="@+id/fragment_user_profile_edit"
+    android:name="io.getstream.avengerschat.view.user.UserProfileEditDialogFragment"
+    tools:layout="@layout/dialog_fragment_user_profile_edit" />
 
 </navigation>

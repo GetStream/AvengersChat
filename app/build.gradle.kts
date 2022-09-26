@@ -43,25 +43,23 @@ android {
 }
 
 dependencies {
-  // modules
+  // core modules
   implementation(project(":core-data"))
   implementation(project(":core-uicomponents"))
 
+  // feature modules
+  implementation(project(":feature-dm"))
+
   // androidx
   implementation(libs.androidx.lifecycle)
-  implementation(libs.androidx.navigation.ktx)
-  implementation(libs.androidx.navigation.ui)
-  implementation(libs.androidx.navigation.dynamic)
+  implementation(libs.androidx.startup)
 
   // stream chat core + UI SDK
   implementation(libs.stream.ui.components)
   implementation(libs.stream.firebase)
 
-  // binding
+  // data binding
   implementation(libs.bindables)
-
-  // startup
-  implementation(libs.androidx.startup)
 
   // hilt
   implementation(libs.hilt.android)

@@ -29,6 +29,11 @@ dependencies {
   api(libs.material)
   api(libs.androidx.fragment)
 
+  // navigation
+  api(libs.androidx.navigation.ktx)
+  api(libs.androidx.navigation.ui)
+  api(libs.androidx.navigation.dynamic)
+
   // stream chat UI components
   api(libs.stream.ui.components)
 
