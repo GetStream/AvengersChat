@@ -16,7 +16,9 @@
 
 package io.getstream.avengerschat.core.uicomponents.binding
 
+import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import coil.imageLoader
@@ -24,6 +26,8 @@ import coil.load
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import com.skydoves.androidveil.VeilLayout
+import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.ui.avatar.AvatarView
 
 object ViewBinding {
   @JvmStatic
@@ -57,5 +61,17 @@ object ViewBinding {
       )
       .build()
     view.context.imageLoader.enqueue(request)
+  }
+
+  @JvmStatic
+  @BindingAdapter("isGone")
+  fun bindIsGone(view: View, isGone: Boolean) {
+    view.isVisible = !isGone
+  }
+
+  @JvmStatic
+  @BindingAdapter("user")
+  fun bindUser(avatarView: AvatarView, user: User?) {
+    user?.let { avatarView.setUserData(it) }
   }
 }

@@ -14,27 +14,30 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.live
+package io.getstream.avengerschat.feature.live
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.getstream.avengerschat.R
-import io.getstream.avengerschat.core.data.extensions.liveRoomInfo
-import io.getstream.avengerschat.core.model.LiveRoomInfo
-import io.getstream.avengerschat.databinding.FragmentLiveBinding
-import io.getstream.avengerschat.feature.home.HomeViewModel
-import io.getstream.avengerschat.feature.user.UserProfileDialogFragment
+import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
+import io.getstream.avengerschat.feature.home.common.HomeViewModel
+import io.getstream.avengerschat.feature.live.component.streamMessageListComponent
+import io.getstream.avengerschat.feature.live.databinding.FragmentLiveStreamBinding
 
 @AndroidEntryPoint
-class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live) {
+class LiveStreamFragment :
+  BindingFragment<FragmentLiveStreamBinding>(R.layout.fragment_live_stream) {
 
-  private val homeViewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
+  private val args: LiveStreamFragmentArgs by navArgs()
+  private val homeViewModel: HomeViewModel by activityViewModels()
+  private val streamMessageListComponent: StreamUIComponent by streamMessageListComponent(
+    cidProvider = { args.info.cid }
+  )
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -43,9 +46,7 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
   ): View {
     super.onCreateView(inflater, container, savedInstanceState)
     return binding {
-      adapter = LiveAdapter(::navigateToStream)
-      adapterStreamDev = LiveStreamDevelopersAdapter(::navigateToStream)
-      lifecycleOwner = viewLifecycleOwner
+      video = args.info.video
       vm = homeViewModel
     }.root
   }
@@ -53,18 +54,18 @@ class LiveFragment : BindingFragment<FragmentLiveBinding>(R.layout.fragment_live
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    binding.featuredLiveVideo.setOnClickListener {
-      navigateToStream(homeViewModel.avenger.liveRoomInfo)
-    }
-
-    binding.avatar.setOnClickListener {
-      UserProfileDialogFragment.create().show(parentFragmentManager, UserProfileDialogFragment.TAG)
-    }
+    // initializes and bind layouts to Stream message list UI components.
+    streamMessageListComponent.bindLayout(binding.root)
+    binding.messageListView.setMessageViewHolderFactory(LiveStreamMessageItemVhFactory.create())
   }
 
-  private fun navigateToStream(liveRoomInfo: LiveRoomInfo) {
-    findNavController().navigate(
-      LiveFragmentDirections.actionToFragmentLiveStream(liveRoomInfo)
-    )
+  override fun onResume() {
+    super.onResume()
+    homeViewModel.visibleBottomNav = false
+  }
+
+  override fun onPause() {
+    super.onPause()
+    homeViewModel.visibleBottomNav = true
   }
 }

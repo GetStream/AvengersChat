@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.live
+package io.getstream.avengerschat.feature.live
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.getstream.sdk.chat.adapter.MessageListItem
-import io.getstream.avengerschat.databinding.ItemLiveMessageBinding
 import io.getstream.avengerschat.extensions.localDate
+import io.getstream.avengerschat.feature.live.databinding.ItemLiveMessageBinding
 import io.getstream.chat.android.ui.message.list.adapter.BaseMessageItemViewHolder
 import io.getstream.chat.android.ui.message.list.adapter.MessageListItemPayloadDiff
 import io.getstream.chat.android.ui.message.list.adapter.MessageListItemViewHolderFactory

@@ -29,6 +29,9 @@ dependencies {
   // core modules
   implementation(project(":core-data"))
 
+  // stream chat SDK
+  implementation(libs.stream.offline)
+
   // data binding
   implementation(libs.bindables)
 

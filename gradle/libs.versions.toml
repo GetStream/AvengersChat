@@ -68,6 +68,7 @@ crashlyrics-plugin = { module = "com.google.firebase:firebase-crashlytics-gradle
 googleService-plugin = { module = "com.google.gms:google-services", version.ref  = "googleService" }
 
 stream-client = { module = "io.getstream:stream-chat-android-client", version.ref = "stream" }
+stream-offline = { module = "io.getstream:stream-chat-android-offline", version.ref = "stream" }
 stream-ui-components = { module = "io.getstream:stream-chat-android-ui-components", version.ref = "stream" }
 stream-firebase = { module = "io.getstream:stream-chat-android-pushprovider-firebase", version.ref = "stream" }
 material = { module = "com.google.android.material:material", version.ref = "material" }

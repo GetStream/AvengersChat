@@ -69,9 +69,6 @@ dependencies {
   // coroutines
   implementation(libs.coroutines)
 
-  // youtube player
-  implementation(libs.youtube.player)
-
   // bundler
   implementation(libs.bundler)
 
