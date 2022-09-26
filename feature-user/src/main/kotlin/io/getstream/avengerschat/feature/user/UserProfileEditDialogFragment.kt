@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.user
+package io.getstream.avengerschat.feature.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,12 +25,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.getstream.avengerschat.R
 import io.getstream.avengerschat.core.uicomponents.extensions.doOnUrlTextChanged
 import io.getstream.avengerschat.core.uicomponents.extensions.hideSoftInputFromWindow
 import io.getstream.avengerschat.core.uicomponents.extensions.toast
-import io.getstream.avengerschat.databinding.DialogFragmentUserProfileEditBinding
-import io.getstream.avengerschat.feature.home.HomeViewModel
+import io.getstream.avengerschat.feature.home.common.HomeViewModel
+import io.getstream.avengerschat.feature.user.databinding.DialogFragmentUserProfileEditBinding
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,7 +37,7 @@ import javax.inject.Inject
 class UserProfileEditDialogFragment :
   BindingBottomSheetDialogFragment<DialogFragmentUserProfileEditBinding>(R.layout.dialog_fragment_user_profile_edit) {
 
-  private val homeViewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
+  private val homeViewModel: HomeViewModel by activityViewModels()
 
   @Inject
   internal lateinit var editModelFactory: UserProfileEditViewModel.AssistedFactory

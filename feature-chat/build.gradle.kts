@@ -30,6 +30,7 @@ dependencies {
 
   // feature modules
   implementation(project(":feature-dm"))
+  implementation(project(":feature-user"))
   implementation(project(":feature-home-common"))
 
   // data binding

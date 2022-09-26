@@ -49,6 +49,7 @@ dependencies {
 
   // feature modules
   implementation(project(":feature-home"))
+  implementation(project(":feature-user"))
 
   // androidx
   implementation(libs.androidx.lifecycle)

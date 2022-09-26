@@ -28,8 +28,12 @@ android {
 }
 
 dependencies {
+  // core modules
   implementation(project(":core-data"))
   implementation(project(":core-uicomponents"))
+
+  // feature modules
+  implementation(project(":feature-home-common"))
 
   // data binding
   implementation(libs.bindables)

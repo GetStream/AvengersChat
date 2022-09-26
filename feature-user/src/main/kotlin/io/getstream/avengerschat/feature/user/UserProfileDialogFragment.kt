@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.user
+package io.getstream.avengerschat.feature.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,15 +23,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
-import io.getstream.avengerschat.R
-import io.getstream.avengerschat.databinding.DialogFragmentUserProfileBinding
-import io.getstream.avengerschat.feature.home.HomeViewModel
+import io.getstream.avengerschat.feature.home.common.HomeViewModel
+import io.getstream.avengerschat.feature.user.databinding.DialogFragmentUserProfileBinding
 
 @AndroidEntryPoint
 class UserProfileDialogFragment :
   BindingBottomSheetDialogFragment<DialogFragmentUserProfileBinding>(R.layout.dialog_fragment_user_profile) {
 
-  private val viewModel: io.getstream.avengerschat.feature.home.HomeViewModel by activityViewModels()
+  private val viewModel: HomeViewModel by activityViewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

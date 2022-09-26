@@ -28,8 +28,7 @@ import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
 import io.getstream.avengerschat.feature.chat.component.streamChannelListComponent
 import io.getstream.avengerschat.feature.chat.databinding.FragmentChannelListBinding
 import io.getstream.avengerschat.feature.home.common.HomeViewModel
-import io.getstream.avengerschat.view.home.HomeViewModel
-import io.getstream.avengerschat.view.user.UserProfileDialogFragment
+import io.getstream.avengerschat.feature.user.UserProfileDialogFragment
 import io.getstream.feature.dm.DirectMessageDialogFragment
 
 @AndroidEntryPoint

@@ -22,6 +22,7 @@
 
   <include app:graph="@navigation/dm_navigation" />
   <include app:graph="@navigation/chat_navigation" />
+  <include app:graph="@navigation/user_navigation" />
 
 <!--  <fragment-->
 <!--    android:id="@+id/fragment_live"-->
@@ -71,15 +72,5 @@
 <!--      app:popExitAnim="@anim/nav_exit_anim"-->
 <!--      app:popUpToInclusive="true" />-->
 <!--  </fragment>-->
-
-<!--  <fragment-->
-<!--    android:id="@+id/fragment_user_profile"-->
-<!--    android:name="io.getstream.avengerschat.view.user.UserProfileDialogFragment"-->
-<!--    tools:layout="@layout/dialog_fragment_user_profile" />-->
-
-<!--  <fragment-->
-<!--    android:id="@+id/fragment_user_profile_edit"-->
-<!--    android:name="io.getstream.avengerschat.view.user.UserProfileEditDialogFragment"-->
-<!--    tools:layout="@layout/dialog_fragment_user_profile_edit" />-->
 
 </navigation>

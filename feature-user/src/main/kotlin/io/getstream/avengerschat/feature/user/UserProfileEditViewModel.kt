@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.getstream.avengerschat.view.user
+package io.getstream.avengerschat.feature.user
 
 import android.webkit.URLUtil
 import androidx.databinding.Bindable

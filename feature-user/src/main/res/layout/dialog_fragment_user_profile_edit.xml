@@ -22,7 +22,7 @@
 
         <variable
             name="vm"
-            type="io.getstream.avengerschat.view.user.UserProfileEditViewModel" />
+            type="io.getstream.avengerschat.feature.user.UserProfileEditViewModel" />
 
         <variable
             name="homeVm"
