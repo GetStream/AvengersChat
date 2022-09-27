@@ -40,6 +40,13 @@ android {
   lint {
     abortOnError = false
   }
+    buildTypes {
+        create("benchmark") {
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
+        }
+    }
 }
 
 dependencies {
