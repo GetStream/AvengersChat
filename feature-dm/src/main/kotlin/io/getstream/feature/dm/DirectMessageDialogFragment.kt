@@ -58,7 +58,7 @@ class DirectMessageDialogFragment :
     viewLifecycleOwner.lifecycleScope.launch {
       viewModel.joinNewChannel(it).collect {
         val request = NavDeepLinkRequest.Builder
-          .fromUri("android-app://io.getstream.avengerschat/message_list?cid=$it".toUri())
+          .fromUri("android-app://io.getstream.avengerschat/message_list?cid=$it&messageId=".toUri())
           .build()
         findNavController().navigate(request)
         dismissAllowingStateLoss()

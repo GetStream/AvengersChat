@@ -53,7 +53,7 @@ class MentionsFragment : BindingFragment<FragmentMentionsBinding>(R.layout.fragm
 
       mentionsListView.setMentionSelectedListener { message ->
         val request = NavDeepLinkRequest.Builder
-          .fromUri("android-app://io.getstream.avengerschat/message_list?cid=${message.cid}&messageId={${message.id}}".toUri())
+          .fromUri("android-app://io.getstream.avengerschat/message_list?cid=${message.cid}&messageId=${message.id}".toUri())
           .build()
         findNavController().navigate(request = request)
       }
