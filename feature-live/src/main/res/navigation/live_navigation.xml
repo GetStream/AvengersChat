@@ -25,7 +25,7 @@
     android:name="io.getstream.avengerschat.feature.live.LiveFragment"
     tools:layout="@layout/fragment_live">
 
-    <deepLink app:uri="android-app://io.getstream.avengerschat/live" />
+    <deepLink app:uri="@string/deeplink_live" />
 
     <action
       android:id="@+id/action_to_fragment_live_stream"

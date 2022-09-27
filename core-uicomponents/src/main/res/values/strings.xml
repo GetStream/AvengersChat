@@ -15,30 +15,35 @@
     limitations under the License.
 -->
 <resources>
-    <string name="app_name">Avengers Chat</string>
-    <string name="choose_your_hero">Choose your hero</string>
-    <string name="live">Live</string>
-    <string name="stream_developers_channel">Stream Developers Channel</string>
-    <string name="live_featured">Featured Live</string>
-    <string name="direct_message">Direct Message</string>
-    <string name="join">Join</string>
-    <string name="join_us">Join Us</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="edit_profile_updated">Profile has been updated</string>
-    <string name="enter_edit_profile_url">Enter your profile url</string>
-    <string name="enter_edit_your_name">Enter your name</string>
-    <string name="enter_edit_your_name_error">Please enter a valid name</string>
-    <string name="stream_channel_header_active">Active %s</string>
-    <string name="stream_channel_header_active_now">just now</string>
+  <string name="app_name">Avengers Chat</string>
+  <string name="choose_your_hero">Choose your hero</string>
+  <string name="live">Live</string>
+  <string name="stream_developers_channel">Stream Developers Channel</string>
+  <string name="live_featured">Featured Live</string>
+  <string name="direct_message">Direct Message</string>
+  <string name="join">Join</string>
+  <string name="join_us">Join Us</string>
+  <string name="edit_profile">Edit Profile</string>
+  <string name="edit_profile_updated">Profile has been updated</string>
+  <string name="enter_edit_profile_url">Enter your profile url</string>
+  <string name="enter_edit_your_name">Enter your name</string>
+  <string name="enter_edit_your_name_error">Please enter a valid name</string>
+  <string name="stream_channel_header_active">Active %s</string>
+  <string name="stream_channel_header_active_now">just now</string>
 
-    <string name="you">You? 🦄</string>
-    <string name="greeting">Welcome to Avengers Chat!</string>
+  <string name="you">You? 🦄</string>
+  <string name="greeting">Welcome to Avengers Chat!</string>
 
-    <string name="tab_live">Live</string>
-    <string name="tab_chat">Chat</string>
-    <string name="tab_mention">Mentions</string>
+  <string name="tab_live">Live</string>
+  <string name="tab_chat">Chat</string>
+  <string name="tab_mention">Mentions</string>
 
-    <string name="placeholder_error">Something went wrong:\n %s</string>
+  <string name="placeholder_error">Something went wrong:\n %s</string>
 
-    <string name="stream_api_key">uwg4ggudgjz9</string>
+  <string name="deeplink_live">android-app://io.getstream.avengerschat/live</string>
+  <string name="deeplink_channel_list">android-app://io.getstream.avengerschat/channel_list</string>
+  <string name="deeplink_dm">android-app://io.getstream.avengerschat/dm</string>
+  <string name="deeplink_mentions">android-app://io.getstream.avengerschat/mentions</string>
+
+  <string name="stream_api_key">uwg4ggudgjz9</string>
 </resources>

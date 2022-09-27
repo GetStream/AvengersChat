@@ -30,6 +30,7 @@ android {
 dependencies {
   implementation(project(":core-data"))
   implementation(project(":core-uicomponents"))
+  implementation(project(":core-navigation"))
 
   // data binding
   implementation(libs.bindables)

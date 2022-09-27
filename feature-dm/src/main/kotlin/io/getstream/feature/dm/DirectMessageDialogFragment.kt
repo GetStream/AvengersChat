@@ -20,13 +20,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avengerschat.core.navigation.navigateToMessageList
 import io.getstream.chat.android.client.models.User
 import io.getstream.feature.dm.databinding.DialogFragmentDirectMessageBinding
 import kotlinx.coroutines.launch
@@ -57,10 +55,7 @@ class DirectMessageDialogFragment :
   private val onItemClicked: (User) -> Unit = {
     viewLifecycleOwner.lifecycleScope.launch {
       viewModel.joinNewChannel(it).collect {
-        val request = NavDeepLinkRequest.Builder
-          .fromUri("android-app://io.getstream.avengerschat/message_list?cid=$it&messageId=".toUri())
-          .build()
-        findNavController().navigate(request)
+        navigateToMessageList(cid = it)
         dismissAllowingStateLoss()
       }
     }

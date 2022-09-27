@@ -25,6 +25,7 @@
     android:name="io.getstream.feature.dm.DirectMessageDialogFragment"
     tools:layout="@layout/dialog_fragment_direct_message">
 
-    <deepLink app:uri="android-app://io.getstream.avengerschat/dm" />
+    <deepLink app:uri="@string/deeplink_dm" />
   </fragment>
+
 </navigation>

@@ -20,12 +20,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avengerschat.core.navigation.navigateToMessageList
 import io.getstream.avengerschat.feature.mention.databinding.FragmentMentionsBinding
 import io.getstream.chat.android.ui.mention.list.viewmodel.MentionListViewModel
 import io.getstream.chat.android.ui.mention.list.viewmodel.bindView
@@ -52,10 +50,7 @@ class MentionsFragment : BindingFragment<FragmentMentionsBinding>(R.layout.fragm
       viewModel.bindView(mentionsListView, viewLifecycleOwner)
 
       mentionsListView.setMentionSelectedListener { message ->
-        val request = NavDeepLinkRequest.Builder
-          .fromUri("android-app://io.getstream.avengerschat/message_list?cid=${message.cid}&messageId=${message.id}".toUri())
-          .build()
-        findNavController().navigate(request = request)
+        navigateToMessageList(cid = message.cid, messageId = message.id)
       }
     }
   }

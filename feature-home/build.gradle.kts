@@ -29,6 +29,7 @@ dependencies {
   // core modules
   implementation(project(":core-data"))
   implementation(project(":core-uicomponents"))
+  implementation(project(":core-navigation"))
 
   // feature modules
   implementation(project(":feature-dm"))

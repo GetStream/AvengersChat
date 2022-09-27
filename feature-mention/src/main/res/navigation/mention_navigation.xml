@@ -25,8 +25,7 @@
     android:name="io.getstream.avengerschat.feature.mention.MentionsFragment"
     tools:layout="@layout/fragment_mentions">
     
-    <deepLink app:uri="android-app://io.getstream.avengerschat/mentions" />
-
+    <deepLink app:uri="@string/deeplink_mentions" />
   </fragment>
 
 </navigation>
