@@ -123,6 +123,16 @@ Anyone can contribute to our open source project! Please kindly read this [Contr
 
 ## 🏛 Architecture
 
+**AvengersChat** is based on the MVVM architecture and the Repository pattern, which follows the [Google's official architecture guidance](https://developer.android.com/topic/architecture).
+
+![architecture](figure/figure0.png)
+
+The overall architecture of **AvengersChat** is composed of two layers; the UI layer and the data layer. Each layer has dedicated components and they have each different responsibilities, as defined below:
+
+**AvengersChat** was built with [Guide to app architecture](https://developer.android.com/topic/architecture), so it would be a great sample to show how the architecture works in real-world projects.
+
+### Architecture Overview
+
 ![architecture](figure/figure1.png)
 
 - Each layer follows [unidirectional event/data flow](https://developer.android.com/topic/architecture/ui-layer#udf); the UI layer emits user events to the data layer, and the data layer exposes data as a stream to other layers.
@@ -144,8 +154,22 @@ The UI layer consists of UI elements to configure screens that could interact wi
 
 The data Layer consists of repositories, which include business logic, such as querying data from the local database and requesting remote data from the network. It is implemented as an offline-first source of business logic and follows the [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) principle.<br>
 
-**Pokedex** is an offline-first app is an app that is able to perform all, or a critical subset of its core functionality without access to the internet. 
+**AvengersChat** is an offline-first app is an app that is able to perform all, or a critical subset of its core functionality without access to the internet. 
 So users don't need to be up-to-date on the network resources every time and it will decrease users' data consumption. For further information, you can check out [Build an offline-first app](https://developer.android.com/topic/architecture/data-layer/offline-first).
+
+## Modularization
+
+![architecture](figure/figure4.png)
+
+**AvengersChat** adopted modularization strategies below:
+
+- **Reusability**: Modulizing reusable codes properly enable opportunities for code sharing and limits code accessibility in other modules at the same time.
+- **Parallel Building**: Each module can be run in parallel and it reduces the build time.
+- **Strict visibility control**: Modules restrict to expose dedicated components and access to other layers, so it prevents they're being used outside the module
+- **Decentralized focusing**: Each developer team can assign their dedicated module and they can focus on their own modules.
+
+For more information, check out the [Guide to Android app modularization](https://developer.android.com/topic/modularization).
+
 
 ## 💯 MAD Score
 ![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
