@@ -17,16 +17,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/main_nav"
-  app:startDestination="@id/fragment_home">
+  app:startDestination="@id/live_navigation">
 
   <include app:graph="@navigation/live_navigation" />
   <include app:graph="@navigation/chat_navigation" />
   <include app:graph="@navigation/mention_navigation" />
   <include app:graph="@navigation/user_navigation" />
   <include app:graph="@navigation/dm_navigation" />
-
-  <fragment
-    android:id="@+id/fragment_home"
-    android:name="io.getstream.avengerschat.feature.home.HomeFragment" />
 
 </navigation>

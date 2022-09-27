@@ -21,10 +21,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 
-fun Fragment.navigateToLive() {
-  findNavController().navigate(createDeepLinkRequest(getString(R.string.deeplink_live)))
-}
-
 fun Fragment.navigateToMessageList(
   cid: String,
   messageId: String = ""

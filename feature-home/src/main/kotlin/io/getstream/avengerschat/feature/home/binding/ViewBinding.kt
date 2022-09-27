@@ -34,7 +34,7 @@ internal object ViewBinding {
   @JvmStatic
   @BindingAdapter("totalUnreadCount")
   fun bindTotalUnreadCount(bottomNavigationView: BottomNavigationView, totalUnreadCount: Int) {
-    bottomNavigationView.setBadgeNumber(R.id.fragment_channel_list, totalUnreadCount)
+    bottomNavigationView.setBadgeNumber(R.id.menu_channel_list, totalUnreadCount)
   }
 
   @JvmStatic
