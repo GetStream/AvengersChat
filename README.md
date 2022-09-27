@@ -7,72 +7,93 @@
   <a href="https://github.com/skydoves/AvengersChat/actions/workflows/android.yml"><img alt="API" src="https://github.com/skydoves/AvengersChat/actions/workflows/android.yml/badge.svg"/></a>
 </p>
 
-<p align="center">  
-AvengersChat is a demo application based on modern Android tech stacks and Stream Chat SDK.
-</br>
-
 <p align="center">
 <img src="/previews/screenshot.jpg" />
 </p>
 
-## Previews
-<p align="center">
-<img src="/previews/preview0.gif" width="32%"/>
-<img src="/previews/preview1.gif" width="32%"/>
-<img src="/previews/preview2.gif" width="32%"/>
-</p>
+AvengersChat demonstrates modern Android development based on MVVM architecture and [Stream Chat SDK for Android](https://getstream.io/tutorials/android-chat).
 
-## Tutorials
-If you'd like to learn more about this project, check out the **[Tutorials Page](https://github.com/GetStream/AvengersChat/blob/main/TUTORIAL.md)**!
+The purpose of this repository is to demonstrate below:
 
-### Blog posts
-- [Building an Avengers Chat Application - Part 1](https://getstream.io/blog/android-avengers-chat-app-part-1/)
-- [Building an Avengers Chat Application – Part 2](https://getstream.io/blog/building-avengers-chat-application-part-2/)
+- Implementing each different feature with modularization and navigation.
+- Implementation of Android architecture components with Jetpack libraries, such as Hilt and AppStartup.
+- Performing background tasks with Kotlin Coroutines.
+- Integrating chat systems with [Stream Chat SDK for Android](https://getstream.io/tutorials/android-chat) for real-time event handling.
 
-### Youtube Videos
-- [Stream Avengers Chat Part 1 - Home Screen](https://www.youtube.com/watch?v=BsyHrHTn4CA)
-- [Stream Avengers Chat Part 2 - Channel List Activity](https://youtu.be/0lIED0j9t4I)
-- [Stream Avengers Chat Part 3 - Message List Activity](https://youtu.be/HedwkZz5aww)
+## ✍️ Tutorials
 
-## Download
-Go to the [Releases](https://github.com/skydoves/AvengersChat/releases) to download the latest APK.
+![banner](https://github.com/GetStream/AvengersChat/raw/main/previews/turotial0.png)
 
+You can learn more about this project from the [blog posts](https://github.com/GetStream/AvengersChat/blob/main/TUTORIAL.md#stream-blog-contents) and [Youtube videos](https://github.com/GetStream/AvengersChat/blob/main/TUTORIAL.md#stream-developers-youtube-channel).
+If you're interested in the materials, check out the **[Tutorials Page](https://github.com/GetStream/AvengersChat/blob/main/TUTORIAL.md)**!
+
+## :bulb: Additional Repositories
+
+If you're interested in additional repositories that were built with Jetpack Compose and Stream SDK, check out the repositories below:
+
+- [WhatsApp Clone Android](https://github.com/getStream/whatsApp-clone-compose): 📱 WhatsApp clone project demonstrates modern Android development built with Jetpack Compose and Stream Chat SDK for Compose.
+- [Slack Clone Android](https://github.com/GetStream/stream-slack-clone-android): 📱 A chat demo app built with Jetpack Compose and Stream Chat SDK following clean architecture principles.
+- [Stream Draw Android](https://github.com/getStream/stream-draw-android): 🛥 Stream Draw is a real-time multiplayer drawing & chat game app built entirely with Jetpack Compose.
+- [Facebook Messenger Clone](https://github.com/MathRoda/Messenger-clone): Facebook Messenger clone using Stream SDK & Jetpack Compose.
+
+## 📲 Download APK
+Go to the [Releases](https://github.com/getStream/AvengersChat/releases) to download the latest APK.
+
+<a href="https://getstream.io/tutorials/android-chat?utm_source=Github&utm_medium=Github_Repo_Content_Ad&utm_content=Developer&utm_campaign=Github_Sept2022_AvengersChat&utm_term=DevRelOss">
 <img src="https://user-images.githubusercontent.com/24237865/138428440-b92e5fb7-89f8-41aa-96b1-71a5486c5849.png" align="right" width="12%"/>
+</a>
 
-
-## Stream Chat SDK
-AvengersChat has been built with [Stream Chat SDK](https://getstream.io/) for implementing messaging systems.
+## ⛴ Stream Chat SDK
+AvengersChat was built with [Stream Chat SDK for Android](https://getstream.io/tutorials/android-chat/) for implementing messaging systems.
 - [Chat Messaging Tutorial](https://getstream.io/tutorials/android-chat/?utm_source=Github&utm_campaign=Devrel_oss&utm_medium=avengerschat) - Basic tutorials for getting started by building a simple messaging app.
 - [Stream Chat Android repository](https://github.com/GetStream/stream-chat-android) - Official Android SDK for Stream Chat.
 - [Chat Client Documentation](https://getstream.io/chat/docs/android/?language=kotlin) - Full documentation of the Chat client for requesting API calls. 
 - [UI Components Documentation](https://getstream.io/chat/docs/sdk/android/) - Full documentation of the Stream UI Components.
 - [UI Components Sample](https://github.com/GetStream/stream-chat-android/tree/main/stream-chat-android-ui-components-sample) - Official sample app for building messaging app.
 
+## 📷 Previews
+
+If you find funny moments on this demo application, feel free to join and share the moment in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
+
+<p align="center">
+<img src="/previews/preview0.gif" width="32%"/>
+<img src="/previews/preview1.gif" width="32%"/>
+<img src="/previews/preview2.gif" width="32%"/>
+</p>
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24237865/139976413-675a3b32-1edf-4bfc-b600-a8ffb734f1ec.jpeg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/139976435-5da608b9-e453-47c0-be78-73f0039b4ab1.jpeg" width="32%"/>
+<img src="https://user-images.githubusercontent.com/24237865/139976345-dedc9c4c-2140-4fbc-9d02-7d815380d900.jpeg" width="32%"/>
+</p>
 
 <img src="/previews/preview0.gif" align="right" width="32%"/>
 
-## Tech stack & Open source libraries
+## 🏛 Tech stack & Open source libraries
+
 - Minimum SDK level 21.
 - 100% [Kotlin](https://kotlinlang.org/) based + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
 - Hilt for dependency injection.
-- JetPack
-  - Lifecycle - dispose observing data when lifecycle state changes.
-  - ViewModel - UI related data holder, lifecycle aware.
-  - Room Persistence - construct database.
-  - App Startup - Provides a straightforward, performant way to initialize components at application startup.
+- Jetpack
+  - Lifecycle: Dispose observing data when lifecycle state changes.
+  - ViewModel: UI related data holder and lifecycle aware.
+  - App Startup: Provides a straightforward, performant way to initialize components at application startup.
+  - Navigation: For navigating screens and provides deeplinks. 
+  - Room: Constructs Database by providing an abstraction layer over SQLite to allow fluent database access.
+  - [Hilt](https://dagger.dev/hilt/): Dependency Injection.
 - Architecture
-  - MVVM Architecture (View - DataBinding - ViewModel - Model)
-  - [Bindables](https://github.com/skydoves/bindables) - Android DataBinding kit for notifying data changes to UI layers.
+  - MVVM Architecture: View - DataBinding - ViewModel - Model
+  - [Bindables](https://github.com/skydoves/bindables): Android DataBinding kit for notifying data changes to UI layers.
   - Repository pattern
-- [Material Design & Animations](https://material.io/design) - Design system created by Google to help teams build high-quality digital experiences.
-- [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - Construct the REST APIs and paging network data.
-- [Sandwich](https://github.com/skydoves/Sandwich) - Construct lightweight http API response and handling error responses.
-- [Moshi](https://github.com/square/moshi/) - A modern JSON library for Kotlin and Java.
-- [Coil](https://github.com/coil-kt/coil) - Image loading for Android backed by Kotlin Coroutines.
-- [TransformationLayout](https://github.com/skydoves/transformationlayout) - implementing transformation motion animations.
-- [android-youtube-player](https://github.com/PierfrancescoSoffritti/android-youtube-player) - YouTube Player library for Android and Chromecast, stable and customizable.
-- [DiscreteScrollView](https://github.com/yarolegovich/DiscreteScrollView) - Implementing a scrollable list of items.
-- [Timber](https://github.com/JakeWharton/timber) - Logging.
+- [Material Design & Animations](https://material.io/design): Design system created by Google to help teams build high-quality digital experiences.
+- [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Construct the REST APIs and paging network data.
+- [Sandwich](https://github.com/skydoves/Sandwich): Construct lightweight http API response and handling error responses.
+- [Moshi](https://github.com/square/moshi/): A modern JSON library for Kotlin and Java.
+- [Coil](https://github.com/coil-kt/coil): Image loading for Android backed by Kotlin Coroutines.
+- [TransformationLayout](https://github.com/skydoves/transformationlayout): Implementing transformation motion animations.
+- [android-youtube-player](https://github.com/PierfrancescoSoffritti/android-youtube-player): YouTube Player library for Android and Chromecast, stable and customizable.
+- [DiscreteScrollView](https://github.com/yarolegovich/DiscreteScrollView): Implementing a scrollable list of items.
+- [Timber](https://github.com/JakeWharton/timber): A logger with a small, extensible API which provides utility.
 
 <img src="/previews/preview3.gif" align="right" width="32%"/>
 
@@ -101,17 +122,8 @@ Anyone can contribute to our open source project! Please kindly read this [Contr
 - [ ] Access user info dialog everywhere.
 - [ ] Add unit test cases for all business logic.
 
-## Chat screenshots
-If you find some funny moments on this demo application, feel free to join and share that moment in [this thread](https://github.com/skydoves/AvengersChat/discussions/1)!
-<p align="center">
-<img src="https://user-images.githubusercontent.com/24237865/139976413-675a3b32-1edf-4bfc-b600-a8ffb734f1ec.jpeg" width="32%"/>
-<img src="https://user-images.githubusercontent.com/24237865/139976435-5da608b9-e453-47c0-be78-73f0039b4ab1.jpeg" width="32%"/>
-<img src="https://user-images.githubusercontent.com/24237865/139976345-dedc9c4c-2140-4fbc-9d02-7d815380d900.jpeg" width="32%"/>
-</p>
-
 ## Architecture
 ![architecture-android-stream](https://user-images.githubusercontent.com/24237865/138990023-98e21858-534a-4607-addf-cf828139ccd2.jpg)
-
 
 ## MAD Score
 ![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
