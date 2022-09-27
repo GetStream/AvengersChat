@@ -17,7 +17,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/dm_navigation"
+  android:id="@+id/chat_navigation"
   app:startDestination="@+id/fragment_channel_list">
 
   <fragment
@@ -25,7 +25,7 @@
     android:name="io.getstream.avengerschat.feature.chat.ChannelListFragment"
     tools:layout="@layout/fragment_channel_list">
 
-    <deepLink app:uri="android-app://io.getstream.avengerschat/channel_list" />
+    <deepLink app:uri="android-app://io.getstream.avengerschat/channel_list?" />
 
     <action
       android:id="@+id/action_to_fragment_message_list"
@@ -42,7 +42,7 @@
     android:name="io.getstream.avengerschat.feature.chat.MessageListFragment"
     tools:layout="@layout/fragment_message_list">
 
-    <deepLink app:uri="android-app://io.getstream.avengerschat/message_list" />
+    <deepLink app:uri="android-app://io.getstream.avengerschat/message_list?cid={cid}&amp;messageId={messageId}" />
 
     <action
       android:id="@+id/action_to_fragment_chat"

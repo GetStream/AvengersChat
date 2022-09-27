@@ -17,13 +17,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/dm_navigation"
+  android:id="@+id/live_navigation"
   app:startDestination="@+id/fragment_live">
 
   <fragment
     android:id="@+id/fragment_live"
     android:name="io.getstream.avengerschat.feature.live.LiveFragment"
     tools:layout="@layout/fragment_live">
+
+    <deepLink app:uri="android-app://io.getstream.avengerschat/live" />
 
     <action
       android:id="@+id/action_to_fragment_live_stream"

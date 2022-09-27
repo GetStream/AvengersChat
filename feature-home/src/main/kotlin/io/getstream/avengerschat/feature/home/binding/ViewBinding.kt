@@ -19,10 +19,11 @@ package io.getstream.avengerschat.feature.home.binding
 import android.app.Activity
 import android.view.View
 import android.view.WindowManager
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.getstream.avengerschat.core.uicomponents.extensions.color
 import io.getstream.avengerschat.core.uicomponents.extensions.setBadgeNumber
@@ -45,7 +46,17 @@ internal object ViewBinding {
     val controller =
       (fragmentManager.findFragmentById(R.id.container) as NavHostFragment).navController
     bottomNavigationView.apply {
-      setupWithNavController(controller)
+      setOnItemSelectedListener {
+        val deeplink = when (it.itemId) {
+          R.id.menu_live -> "android-app://io.getstream.avengerschat/live"
+          R.id.menu_channel_list -> "android-app://io.getstream.avengerschat/channel_list"
+          R.id.menu_mentions -> "android-app://io.getstream.avengerschat/mentions"
+          else -> ""
+        }
+        val request = NavDeepLinkRequest.Builder.fromUri(deeplink.toUri()).build()
+        controller.navigate(request)
+        true
+      }
       val context = bottomNavigationView.context
       val accentRed = context.color(R.color.stream_ui_accent_red)
       val literalWhite =
