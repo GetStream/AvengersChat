@@ -48,7 +48,8 @@ dependencies {
   implementation(project(":core-uicomponents"))
 
   // feature modules
-  implementation(project(":feature-dm"))
+  implementation(project(":feature-home"))
+  implementation(project(":feature-user"))
 
   // androidx
   implementation(libs.androidx.lifecycle)
@@ -67,9 +68,6 @@ dependencies {
 
   // coroutines
   implementation(libs.coroutines)
-
-  // youtube player
-  implementation(libs.youtube.player)
 
   // bundler
   implementation(libs.bundler)

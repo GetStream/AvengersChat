@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2022 Stream.IO, Inc. All Rights Reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="vm"
+      type="io.getstream.avengerschat.feature.home.common.HomeViewModel" />
+
+    <import type="android.content.Context" />
+
+    <import type="io.getstream.avengerschat.extensions.ModelExtensionsKt" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    tools:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="36dp"
+      android:background="@drawable/bg_bottom_sheet_dialog"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHeight_percent="0.6"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@{vm.avenger.name}"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/stream_ui_black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/quotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Iron Man" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/quotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:text="@{vm.avenger.quote}"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/stream_ui_black_50"
+        android:textSize="21sp"
+        app:autoSizeMaxTextSize="24sp"
+        app:autoSizeMinTextSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/quotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="quotes" />
+
+      <TextView
+        android:id="@+id/lastActiveTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="26dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@{ModelExtensionsKt.lastActive(vm.user, context)}"
+        android:textColor="@color/text_mid_emphasis"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quotes"
+        tools:text="2 mins ago" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <io.getstream.chat.android.ui.avatar.AvatarView
+      android:id="@+id/avatarView"
+      style="?attr/streamUiMessageListItemAvatarStyle"
+      android:layout_width="72dp"
+      android:layout_height="72dp"
+      app:layout_constraintBottom_toTopOf="@id/container"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/container"
+      app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
+      app:streamUiAvatarOnlineIndicatorEnabled="true"
+      app:streamUiAvatarOnlineIndicatorPosition="topRight"
+      app:userData="@{vm.user}"
+      tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/edit"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="48dp"
+      android:layout_marginEnd="12dp"
+      android:src="@drawable/ic_edit"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:tint="@color/colorPrimary" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

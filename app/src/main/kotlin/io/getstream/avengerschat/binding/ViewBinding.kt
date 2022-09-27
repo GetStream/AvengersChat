@@ -19,62 +19,46 @@ package io.getstream.avengerschat.binding
 import android.app.Activity
 import android.view.View
 import android.view.WindowManager
-import androidx.appcompat.widget.AppCompatImageButton
-import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import io.getstream.avengerschat.R
-import io.getstream.avengerschat.core.uicomponents.extensions.color
-import io.getstream.avengerschat.core.uicomponents.extensions.drawable
-import io.getstream.avengerschat.core.uicomponents.extensions.setBadgeNumber
-import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.ui.avatar.AvatarView
-import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
+import com.yarolegovich.discretescrollview.DiscreteScrollView
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer
+import io.getstream.avengerschat.core.data.extensions.parsedColor
+import io.getstream.avengerschat.core.model.Avenger
+import io.getstream.avengerschat.core.uicomponents.StreamGlobalStyles
+import io.getstream.avengerschat.core.uicomponents.extensions.adapterPositionOrNull
+import io.getstream.avengerschat.core.uicomponents.extensions.startCircularReveal
+import io.getstream.avengerschat.view.main.MainAvengersAdapter
 
 object ViewBinding {
   @JvmStatic
-  @BindingAdapter("isGone")
-  fun bindIsGone(view: View, isGone: Boolean) {
-    view.isVisible = !isGone
+  @BindingAdapter("adapterAvengers")
+  fun bindAdapterPosterList(view: DiscreteScrollView, posters: List<Avenger>?) {
+    (view.adapter as? MainAvengersAdapter)?.submitList(posters)
+    view.setItemTransformer(
+      ScaleTransformer.Builder()
+        .setMaxScale(1.25f)
+        .setMinScale(0.8f)
+        .build()
+    )
   }
 
   @JvmStatic
-  @BindingAdapter("navigation")
-  fun bindNavigation(
-    bottomNavigationView: BottomNavigationView,
-    fragmentManager: FragmentManager
-  ) {
-    val controller =
-      (fragmentManager.findFragmentById(R.id.container) as NavHostFragment).navController
-    bottomNavigationView.apply {
-      setupWithNavController(controller)
-      val context = bottomNavigationView.context
-      val accentRed = context.color(io.getstream.chat.android.ui.R.color.stream_ui_accent_red)
-      val literalWhite =
-        context.color(io.getstream.chat.android.ui.R.color.stream_ui_literal_white)
-      getOrCreateBadge(R.id.fragment_channel_list).apply {
-        backgroundColor = accentRed
-        badgeTextColor = literalWhite
+  @BindingAdapter("bindOnItemChanged", "bindOnItemChangedBackground")
+  fun bindOnItemChanged(view: DiscreteScrollView, adapter: MainAvengersAdapter, pointView: View) {
+    view.addOnItemChangedListener { viewHolder, _ ->
+      val position = viewHolder?.adapterPositionOrNull ?: return@addOnItemChangedListener
+      if (position >= 0 && position < adapter.itemCount) {
+        val parsedColor = adapter.getAvenger(position).parsedColor
+        bindStatusBarColor(view, parsedColor)
+        pointView.startCircularReveal(parsedColor)
+
+        // updates global styles of the stream chat lists.
+        StreamGlobalStyles.updatePrimaryColorGlobalStyles(parsedColor)
       }
     }
   }
 
-  @JvmStatic
-  @BindingAdapter("totalUnreadCount")
-  fun bindTotalUnreadCount(bottomNavigationView: BottomNavigationView, totalUnreadCount: Int) {
-    bottomNavigationView.setBadgeNumber(R.id.fragment_channel_list, totalUnreadCount)
-  }
-
-  @JvmStatic
-  @BindingAdapter("statusBarColor")
-  fun bindStatusBarColor(
+  private fun bindStatusBarColor(
     view: View,
     color: Int
   ) {
@@ -83,53 +67,6 @@ object ViewBinding {
       val window = context.window
       window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
       window.statusBarColor = color
-    }
-  }
-
-  @JvmStatic
-  @BindingAdapter("channelListHeader")
-  fun bindChannelListHeader(channelListHeaderView: ChannelListHeaderView, user: User?) {
-    if (user != null) {
-      channelListHeaderView.apply {
-        setUser(user)
-        showOnlineTitle()
-        setOnlineTitle(context.getString(R.string.app_name))
-      }
-    }
-  }
-
-  @JvmStatic
-  @BindingAdapter("playYoutubeVideo")
-  fun bindPlayYoutubeVideo(youTubePlayerView: YouTubePlayerView, videoId: String) {
-    val playListener = object : AbstractYouTubePlayerListener() {
-      override fun onReady(youTubePlayer: YouTubePlayer) {
-        youTubePlayer.loadVideo(videoId = videoId, startSeconds = 0f)
-      }
-    }
-
-    val playerOptions = IFramePlayerOptions.Builder()
-      .controls(0)
-      .rel(0)
-      .build()
-
-    youTubePlayerView.initialize(playListener, false, playerOptions)
-  }
-
-  @JvmStatic
-  @BindingAdapter("user")
-  fun bindUser(avatarView: AvatarView, user: User?) {
-    user?.let { avatarView.setUserData(it) }
-  }
-
-  @JvmStatic
-  @BindingAdapter("sendUrlBtn")
-  fun bindSendUrlButton(imageButton: AppCompatImageButton, enabled: Boolean) {
-    val context = imageButton.context
-    imageButton.isEnabled = enabled
-    imageButton.background = if (enabled) {
-      context.drawable(R.drawable.shape_circle)
-    } else {
-      context.drawable(R.drawable.shape_circle_disabled)
     }
   }
 }

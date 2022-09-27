@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2022 Stream.IO, Inc. All Rights Reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="vm"
+      type="io.getstream.avengerschat.feature.user.UserProfileEditViewModel" />
+
+    <variable
+      name="homeVm"
+      type="io.getstream.avengerschat.feature.home.common.HomeViewModel" />
+
+    <import type="android.webkit.URLUtil" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    tools:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/bg_bottom_sheet_dialog"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHeight_percent="0.6"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="@string/edit_profile"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/stream_ui_black"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textAllCaps="true" />
+
+      <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/profile_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@{homeVm.parsedColor}"
+        android:enabled="@{!vm.sendUrlSateFlow}"
+        android:gravity="center"
+        android:hint="@string/enter_edit_profile_url"
+        android:textColor="@color/stream_ui_black"
+        android:textColorHint="@color/stream_ui_grey"
+        android:textCursorDrawable="@null"
+        app:layout_constraintEnd_toStartOf="@id/enter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_profile" />
+
+      <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/enter"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/shape_circle_disabled"
+        android:enabled="@{!vm.sendUrlSateFlow}"
+        android:focusable="true"
+        android:padding="6dp"
+        android:rotation="180"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toBottomOf="@id/profile_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/profile_edit_text"
+        app:layout_constraintTop_toTopOf="@id/profile_edit_text"
+        app:sendUrlBtn="@{vm.sendEnabled}"
+        app:tint="@color/white" />
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/preview"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginVertical="32dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enter"
+        app:loadCircleImage="@{vm.profileUrl}" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginBottom="26dp"
+        android:backgroundTint="@{homeVm.parsedColor}"
+        android:enabled="@{URLUtil.isNetworkUrl(vm.profileUrl) &amp;&amp; !vm.sendUrlSateFlow}"
+        android:text="@string/edit_profile"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/preview" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

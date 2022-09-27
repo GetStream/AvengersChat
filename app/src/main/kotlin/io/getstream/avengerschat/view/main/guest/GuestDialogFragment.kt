@@ -31,7 +31,7 @@ import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.uicomponents.extensions.toast
 import io.getstream.avengerschat.databinding.DialogFragmentGuestBinding
 import io.getstream.avengerschat.extensions.isValidForId
-import io.getstream.avengerschat.view.home.HomeActivity
+import io.getstream.avengerschat.feature.home.HomeActivity
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
