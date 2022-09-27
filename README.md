@@ -7,6 +7,7 @@
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://mailchi.mp/kotlinweekly/kotlin-weekly-274"><img alt="KotlinWeekly" src="https://skydoves.github.io/badges/kotlin-weekly.svg"/></a>
   <a href="https://github.com/skydoves/AvengersChat/actions/workflows/android.yml"><img alt="API" src="https://github.com/skydoves/AvengersChat/actions/workflows/android.yml/badge.svg"/></a>
+  <a href="https://getstream.io/tutorials/android-chat?utm_source=Github&utm_medium=Github_Repo_Content_Ad&utm_content=Developer&utm_campaign=Github_Sept2022_AvengersChat&utm_term=DevRelOss"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/HayesGordon/e7f3c4587859c17f3e593fd3ff5b13f4/raw/11d9d9385c9f34374ede25f6471dc743b977a914/badge.json" alt="Stream Feeds"></a>
 </p>
 
 AvengersChat demonstrates modern Android development based on MVVM architecture and [Stream Chat SDK for Android](https://getstream.io/tutorials/android-chat).
@@ -41,13 +42,13 @@ Go to the [Releases](https://github.com/getStream/AvengersChat/releases) to down
 <img src="https://user-images.githubusercontent.com/24237865/138428440-b92e5fb7-89f8-41aa-96b1-71a5486c5849.png" align="right" width="12%"/>
 </a>
 
-## ⛴ Stream Chat SDK
-AvengersChat was built with [Stream Chat SDK for Android](https://getstream.io/tutorials/android-chat/) for implementing messaging systems.
-- [Chat Messaging Tutorial](https://getstream.io/tutorials/android-chat/?utm_source=Github&utm_campaign=Devrel_oss&utm_medium=avengerschat) - Basic tutorials for getting started by building a simple messaging app.
-- [Stream Chat Android repository](https://github.com/GetStream/stream-chat-android) - Official Android SDK for Stream Chat.
-- [Chat Client Documentation](https://getstream.io/chat/docs/android/?language=kotlin) - Full documentation of the Chat client for requesting API calls. 
-- [UI Components Documentation](https://getstream.io/chat/docs/sdk/android/) - Full documentation of the Stream UI Components.
-- [UI Components Sample](https://github.com/GetStream/stream-chat-android/tree/main/stream-chat-android-ui-components-sample) - Official sample app for building messaging app.
+## ⛴ Stream Chat SDK for Android
+AvengersChat was built with [Stream Chat SDK for Android](https://getstream.io/tutorials/android-chat/) for implementing messaging systems. You can learn more about the SDK with the materials below:
+- [Chat Messaging Tutorial](https://getstream.io/tutorials/android-chat/?utm_source=Github&utm_campaign=Devrel_oss&utm_medium=avengerschat): Basic tutorials for getting started by building a simple messaging app.
+- [Stream Chat Android repository](https://github.com/GetStream/stream-chat-android): Official Android SDK for Stream Chat.
+- [Chat Client Documentation](https://getstream.io/chat/docs/android/?language=kotlin): Full documentation of the Chat client for requesting API calls. 
+- [UI Components Documentation](https://getstream.io/chat/docs/sdk/android/): Full documentation of the Stream UI Components.
+- [UI Components Sample](https://github.com/GetStream/stream-chat-android/tree/main/stream-chat-android-ui-components-sample): Official sample app for building messaging app.
 
 ## 📷 Previews
 
@@ -67,7 +68,7 @@ If you find funny moments on this demo application, feel free to join and share 
 
 <img src="/previews/preview0.gif" align="right" width="32%"/>
 
-## 🏛 Tech stack & Open source libraries
+## 🛠 Tech stack & Open source libraries
 
 - Minimum SDK level 21.
 - 100% [Kotlin](https://kotlinlang.org/) based + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
@@ -95,7 +96,7 @@ If you find funny moments on this demo application, feel free to join and share 
 
 <img src="/previews/preview3.gif" align="right" width="32%"/>
 
-## Supported features
+## ✅ Supported features
 - Light and Dark themes.
 - Different color themes by a chosen character.
 - 100% offline mode supports.
@@ -111,7 +112,7 @@ If you find funny moments on this demo application, feel free to join and share 
 - Visual animations like transition.
 - And a lot of features by Stream Android SDK!
 
-## TODO
+## ☑️ TODO
 Anyone can contribute to our open source project! Please kindly read this [Contributing Guideline](https://github.com/skydoves/AvengersChat/blob/main/CONTRIBUTING.md) before contributing to our project. 😎
 - [x] Modify a user profile image.
 - [x] Login with a new guest user.
@@ -120,12 +121,11 @@ Anyone can contribute to our open source project! Please kindly read this [Contr
 - [ ] Access user info dialog everywhere.
 - [ ] Add unit test cases for all business logic.
 
-## Architecture
+## 🏛 Architecture
 ![architecture-android-stream](https://user-images.githubusercontent.com/24237865/138990023-98e21858-534a-4607-addf-cf828139ccd2.jpg)
 
-## MAD Score
+## 💯 MAD Score
 ![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
-
 
 <img src="https://user-images.githubusercontent.com/24237865/141415477-d1af2b48-2498-4ff0-8fdf-95dff092e317.png" align="right" width="22%"/>
 
