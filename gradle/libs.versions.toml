@@ -1,5 +1,5 @@
 [versions]
-stream = "5.11.1"
+stream = "5.17.0"
 agp = "7.3.0"
 kotlin = "1.7.20"
 ksp = "1.7.20-1.0.6"
