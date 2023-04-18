@@ -22,7 +22,7 @@
 
     <variable
       name="data"
-      type="com.getstream.sdk.chat.adapter.MessageListItem.MessageItem" />
+      type="io.getstream.chat.android.ui.feature.messages.list.adapter.MessageListItem.MessageItem" />
 
     <variable
       name="localDate"
@@ -35,7 +35,7 @@
     android:paddingTop="@dimen/margin_tiny"
     android:paddingBottom="@dimen/margin_small">
 
-    <io.getstream.chat.android.ui.avatar.AvatarView
+    <io.getstream.chat.android.ui.widgets.avatar.UserAvatarView
       android:id="@+id/avatarView"
       style="?attr/streamUiMessageListItemAvatarStyle"
       android:layout_width="42dp"
@@ -47,7 +47,7 @@
       app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
       app:streamUiAvatarOnlineIndicatorEnabled="true"
       app:streamUiAvatarOnlineIndicatorPosition="topRight"
-      app:userData="@{data.message.user}"
+      app:setUser="@{data.message.user}"
       tools:src="@tools:sample/avatars" />
 
     <TextView

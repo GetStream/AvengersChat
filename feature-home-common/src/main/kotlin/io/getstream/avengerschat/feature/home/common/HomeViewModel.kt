@@ -29,9 +29,9 @@ import io.getstream.avengerschat.core.data.repository.home.HomeRepository
 import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.model.LiveRoomInfo
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.models.ConnectionData
-import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.offline.extensions.globalState
+import io.getstream.chat.android.models.ConnectionData
+import io.getstream.chat.android.models.User
+import io.getstream.chat.android.state.extensions.globalState
 import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 
@@ -55,7 +55,7 @@ class HomeViewModel @AssistedInject constructor(
   @get:Bindable
   var visibleBottomNav: Boolean by bindingProperty(true)
 
-  val user: StateFlow<User?> = chatClient.clientState.user
+  val user: StateFlow<User?> = chatClient.globalState.user
 
   val totalUnreadCount: StateFlow<Int> = chatClient.globalState.totalUnreadCount
 

@@ -20,9 +20,9 @@ import android.content.Context
 import androidx.annotation.ColorInt
 import io.getstream.avengerschat.core.uicomponents.extensions.drawable
 import io.getstream.chat.android.ui.ChatUI
-import io.getstream.chat.android.ui.StyleTransformer
-import io.getstream.chat.android.ui.SupportedReactions
-import io.getstream.chat.android.ui.TransformStyle
+import io.getstream.chat.android.ui.helper.StyleTransformer
+import io.getstream.chat.android.ui.helper.SupportedReactions
+import io.getstream.chat.android.ui.helper.TransformStyle
 
 /**
  * StreamGlobalStyles unify the styles of the Stream UI components by using the
@@ -67,10 +67,10 @@ object StreamGlobalStyles {
         )
       }
 
-    TransformStyle.messageInputStyleTransformer =
+    TransformStyle.messageComposerStyleTransformer =
       StyleTransformer { messageInputStyle ->
         messageInputStyle.copy(
-          sendButtonEnabledIcon = messageInputStyle.sendButtonEnabledIcon.apply {
+          sendMessageButtonIconDrawable = messageInputStyle.sendMessageButtonIconDrawable.apply {
             setTint(color)
           }
         )

@@ -18,7 +18,7 @@ package io.getstream.feature.dm.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.models.User
 
 internal object ViewBinding {
 

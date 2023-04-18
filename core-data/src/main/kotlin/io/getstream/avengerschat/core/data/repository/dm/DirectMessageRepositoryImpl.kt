@@ -27,9 +27,9 @@ import io.getstream.avengerschat.core.network.AppDispatchers
 import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.api.models.QueryUsersRequest
-import io.getstream.chat.android.client.models.Filters
-import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
+import io.getstream.chat.android.models.Filters
+import io.getstream.chat.android.models.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -61,7 +61,7 @@ internal class DirectMessageRepositoryImpl @Inject constructor(
     )
     val result = chatClient.queryUsers(usersRequest).await()
     result.onSuccessSuspend {
-      emit(result.data())
+      emit(it)
     }
   }.flowOn(dispatcher)
 
@@ -77,7 +77,7 @@ internal class DirectMessageRepositoryImpl @Inject constructor(
       extraData = mapOf()
     ).await()
     result.onSuccessSuspend {
-      emit(result.data().cid)
+      emit(it.cid)
     }
   }
 }

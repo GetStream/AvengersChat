@@ -18,7 +18,7 @@ package io.getstream.avengerschat.core.data.repository.user
 
 import androidx.annotation.WorkerThread
 import io.getstream.avengerschat.core.model.Avenger
-import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.models.User
 import kotlinx.coroutines.flow.Flow
 
 interface UserProfileEditRepository {

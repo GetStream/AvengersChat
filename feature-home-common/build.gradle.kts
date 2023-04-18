@@ -30,6 +30,7 @@ dependencies {
   implementation(project(":core-data"))
 
   // stream chat SDK
+  implementation(libs.stream.state)
   implementation(libs.stream.offline)
 
   // data binding
