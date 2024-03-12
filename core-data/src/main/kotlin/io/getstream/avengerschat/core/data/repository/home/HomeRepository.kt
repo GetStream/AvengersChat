@@ -19,7 +19,7 @@ package io.getstream.avengerschat.core.data.repository.home
 import androidx.annotation.WorkerThread
 import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.model.LiveRoomInfo
-import io.getstream.chat.android.client.models.ConnectionData
+import io.getstream.chat.android.models.ConnectionData
 import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {

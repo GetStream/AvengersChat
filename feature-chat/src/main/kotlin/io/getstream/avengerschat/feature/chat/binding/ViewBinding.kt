@@ -18,8 +18,8 @@ package io.getstream.avengerschat.feature.chat.binding
 
 import androidx.databinding.BindingAdapter
 import io.getstream.avengerschat.feature.chat.R
-import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
+import io.getstream.chat.android.models.User
+import io.getstream.chat.android.ui.feature.channels.header.ChannelListHeaderView
 
 internal object ViewBinding {
 

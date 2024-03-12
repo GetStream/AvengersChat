@@ -48,7 +48,7 @@ internal class GuestRepositoryImpl @Inject constructor(
     // fetch a guest token.
     val result = chatClient.getGuestToken(name, name).await()
     result.onSuccessSuspend {
-      emit(result.data().token)
+      emit(it.token)
     }
   }.flowOn(dispatcher)
 }

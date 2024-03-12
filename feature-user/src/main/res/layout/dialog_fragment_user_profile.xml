@@ -101,7 +101,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <io.getstream.chat.android.ui.avatar.AvatarView
+    <io.getstream.chat.android.ui.widgets.avatar.UserAvatarView
       android:id="@+id/avatarView"
       style="?attr/streamUiMessageListItemAvatarStyle"
       android:layout_width="72dp"
@@ -113,7 +113,7 @@
       app:streamUiAvatarOnlineIndicatorColor="@color/stream_ui_accent_green"
       app:streamUiAvatarOnlineIndicatorEnabled="true"
       app:streamUiAvatarOnlineIndicatorPosition="topRight"
-      app:userData="@{vm.user}"
+      app:setUser="@{vm.user}"
       tools:src="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatImageView

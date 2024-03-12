@@ -19,6 +19,7 @@ package io.getstream.avengerschat.initializer
 import android.content.Context
 import android.content.Intent
 import androidx.startup.Initializer
+import io.getstream.android.push.firebase.FirebasePushDeviceGenerator
 import io.getstream.avengerschat.BuildConfig
 import io.getstream.avengerschat.R
 import io.getstream.avengerschat.core.uicomponents.startup.StreamGlobalStyleInitializer
@@ -28,10 +29,10 @@ import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.client.notifications.handler.NotificationConfig
 import io.getstream.chat.android.client.notifications.handler.NotificationHandler
 import io.getstream.chat.android.client.notifications.handler.NotificationHandlerFactory
-import io.getstream.chat.android.offline.model.message.attachments.UploadAttachmentsNetworkType
-import io.getstream.chat.android.offline.plugin.configuration.Config
+import io.getstream.chat.android.models.UploadAttachmentsNetworkType
 import io.getstream.chat.android.offline.plugin.factory.StreamOfflinePluginFactory
-import io.getstream.chat.android.pushprovider.firebase.FirebasePushDeviceGenerator
+import io.getstream.chat.android.state.plugin.config.StatePluginConfig
+import io.getstream.chat.android.state.plugin.factory.StreamStatePluginFactory
 import timber.log.Timber
 
 /**
@@ -43,14 +44,13 @@ class StreamChatInitializer : Initializer<Unit> {
     Timber.d("StreamChatInitializer is initialized")
 
     val logLevel = if (BuildConfig.DEBUG) ChatLogLevel.ALL else ChatLogLevel.NOTHING
-    val offlinePluginFactory = StreamOfflinePluginFactory(
-      config = Config(
+    val offlinePluginFactory = StreamOfflinePluginFactory(appContext = context)
+    val statePluginFactory = StreamStatePluginFactory(
+      appContext = context,
+      config = StatePluginConfig(
         backgroundSyncEnabled = true,
-        userPresence = true,
-        persistenceEnabled = true,
-        uploadAttachmentsNetworkType = UploadAttachmentsNetworkType.NOT_ROAMING
-      ),
-      appContext = context
+        userPresence = true
+      )
     )
 
     /**
@@ -60,7 +60,8 @@ class StreamChatInitializer : Initializer<Unit> {
      */
     ChatClient.Builder(context.getString(R.string.stream_api_key), context)
       .notifications(createNotificationConfig(), createNotificationHandler(context))
-      .withPlugin(offlinePluginFactory)
+      .withPlugins(offlinePluginFactory, statePluginFactory)
+      .uploadAttachmentsNetworkType(UploadAttachmentsNetworkType.NOT_ROAMING)
       .logLevel(logLevel)
       .build()
   }

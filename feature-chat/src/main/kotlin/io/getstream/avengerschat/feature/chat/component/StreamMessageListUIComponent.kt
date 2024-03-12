@@ -18,19 +18,19 @@ package io.getstream.avengerschat.feature.chat.component
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
-import com.getstream.sdk.chat.viewmodel.MessageInputViewModel
-import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
 import io.getstream.avengerschat.core.uicomponents.stream.StreamComponents
 import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
 import io.getstream.avengerschat.feature.chat.R
-import io.getstream.chat.android.ui.message.input.MessageInputView
-import io.getstream.chat.android.ui.message.input.viewmodel.bindView
-import io.getstream.chat.android.ui.message.list.MessageListView
-import io.getstream.chat.android.ui.message.list.header.MessageListHeaderView
-import io.getstream.chat.android.ui.message.list.header.viewmodel.MessageListHeaderViewModel
-import io.getstream.chat.android.ui.message.list.header.viewmodel.bindView
-import io.getstream.chat.android.ui.message.list.viewmodel.bindView
-import io.getstream.chat.android.ui.message.list.viewmodel.factory.MessageListViewModelFactory
+import io.getstream.chat.android.ui.common.state.messages.Edit
+import io.getstream.chat.android.ui.common.state.messages.MessageMode
+import io.getstream.chat.android.ui.feature.messages.composer.MessageComposerView
+import io.getstream.chat.android.ui.feature.messages.header.MessageListHeaderView
+import io.getstream.chat.android.ui.feature.messages.list.MessageListView
+import io.getstream.chat.android.ui.viewmodel.messages.MessageComposerViewModel
+import io.getstream.chat.android.ui.viewmodel.messages.MessageListHeaderViewModel
+import io.getstream.chat.android.ui.viewmodel.messages.MessageListViewModel
+import io.getstream.chat.android.ui.viewmodel.messages.MessageListViewModelFactory
+import io.getstream.chat.android.ui.viewmodel.messages.bindView
 
 /**
  * Stream message list UI component.
@@ -52,8 +52,8 @@ class StreamMessageListUIComponent constructor(
   val messageListViewModel: MessageListViewModel by lazy(LazyThreadSafetyMode.NONE) {
     factory.create(MessageListViewModel::class.java)
   }
-  private val messageInputViewModel: MessageInputViewModel by lazy(LazyThreadSafetyMode.NONE) {
-    factory.create(MessageInputViewModel::class.java)
+  private val messageInputViewModel: MessageComposerViewModel by lazy(LazyThreadSafetyMode.NONE) {
+    factory.create(MessageComposerViewModel::class.java)
   }
 
   @StreamComponents
@@ -70,7 +70,7 @@ class StreamMessageListUIComponent constructor(
       messageListViewModel.bindView(it, lifecycleOwner)
     }
     val messageInputView =
-      view.findViewById<MessageInputView>(R.id.messageInputView)
+      view.findViewById<MessageComposerView>(R.id.messageInputView)
     messageInputView?.let {
       messageInputViewModel.bindView(it, lifecycleOwner)
     }
@@ -78,17 +78,18 @@ class StreamMessageListUIComponent constructor(
     // observe thread modes states.
     messageListViewModel.mode.observe(lifecycleOwner) {
       when (it) {
-        is MessageListViewModel.Mode.Thread -> {
+        is MessageMode.MessageThread -> {
           messageListHeaderViewModel.setActiveThread(it.parentMessage)
-          messageInputViewModel.setActiveThread(it.parentMessage)
         }
-        is MessageListViewModel.Mode.Normal -> {
+        is MessageMode.Normal -> {
           messageListHeaderViewModel.resetThread()
-          messageInputViewModel.resetThread()
         }
       }
+      messageInputViewModel.setMessageMode(it)
     }
-    messageListView?.setMessageEditHandler(messageInputViewModel::postMessageToEdit)
+    messageListView?.setMessageEditHandler {
+      messageInputViewModel.performMessageAction(Edit(it))
+    }
   }
 }
 

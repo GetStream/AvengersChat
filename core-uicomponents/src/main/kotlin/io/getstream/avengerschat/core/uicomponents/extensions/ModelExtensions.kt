@@ -18,10 +18,10 @@ package io.getstream.avengerschat.extensions
 
 import android.content.Context
 import android.text.format.DateUtils
-import com.getstream.sdk.chat.adapter.MessageListItem
-import com.getstream.sdk.chat.utils.DateFormatter
 import io.getstream.avengerschat.core.uicomponents.R
-import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.models.User
+import io.getstream.chat.android.ui.common.helper.DateFormatter
+import io.getstream.chat.android.ui.feature.messages.list.adapter.MessageListItem
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.ZoneId
@@ -30,7 +30,7 @@ import java.util.Date
 fun MessageListItem.MessageItem.localDate(context: Context): String {
   val formatter = DateFormatter.from(context)
   val date = message.createdAt ?: message.createdLocallyAt
-  return formatter.formatDate(date?.let(::toLocalDateTime))
+  return formatter.formatDate(date)
 }
 
 private fun toLocalDateTime(date: Date): LocalDateTime {

@@ -45,7 +45,7 @@
       app:playYoutubeVideo="@{video}"
       app:showFullScreenButton="false" />
 
-    <io.getstream.chat.android.ui.message.list.MessageListView
+    <io.getstream.chat.android.ui.feature.messages.list.MessageListView
       android:id="@+id/messageListView"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -59,17 +59,16 @@
       app:streamUiMessageTextColorDateSeparator="@color/white"
       app:streamUiMessageTextSizeUserName="15sp"
       app:streamUiMessageTextStyleUserName="bold"
-      app:streamUiMuteUserEnabled="false"
-      app:streamUiPinMessageEnabled="true" />
+      />
 
-    <io.getstream.chat.android.ui.message.input.MessageInputView
+    <io.getstream.chat.android.ui.feature.messages.composer.MessageComposerView
       android:id="@+id/messageInputView"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:streamUiAttachButtonEnabled="false" />
+      app:streamUiMessageComposerAttachmentsButtonVisible="false" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

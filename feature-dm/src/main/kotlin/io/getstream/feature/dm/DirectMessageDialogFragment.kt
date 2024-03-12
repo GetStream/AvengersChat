@@ -25,7 +25,7 @@ import androidx.lifecycle.lifecycleScope
 import com.skydoves.bindables.BindingBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.core.navigation.navigateToMessageList
-import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.models.User
 import io.getstream.feature.dm.databinding.DialogFragmentDirectMessageBinding
 import kotlinx.coroutines.launch
 
