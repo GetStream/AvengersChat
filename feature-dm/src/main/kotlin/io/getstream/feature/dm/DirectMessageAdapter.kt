@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.bindables.binding
 import io.getstream.avengerschat.core.uicomponents.extensions.adapterPositionOrNull
 import io.getstream.avengerschat.extensions.lastActive
-import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.models.User
 import io.getstream.feature.dm.databinding.ItemDirectMessageBinding
 
 class DirectMessageAdapter constructor(

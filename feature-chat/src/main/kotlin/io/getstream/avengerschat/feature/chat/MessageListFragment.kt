@@ -23,7 +23,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.core.uicomponents.extensions.addOnBackPressedDispatcher
@@ -31,6 +30,7 @@ import io.getstream.avengerschat.feature.chat.component.StreamMessageListUICompo
 import io.getstream.avengerschat.feature.chat.component.streamMessageListComponent
 import io.getstream.avengerschat.feature.chat.databinding.FragmentMessageListBinding
 import io.getstream.avengerschat.feature.home.common.HomeViewModel
+import io.getstream.chat.android.ui.viewmodel.messages.MessageListViewModel
 
 @AndroidEntryPoint
 class MessageListFragment :

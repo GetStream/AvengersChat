@@ -26,8 +26,8 @@ import coil.load
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import com.skydoves.androidveil.VeilLayout
-import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.ui.avatar.AvatarView
+import io.getstream.chat.android.models.User
+import io.getstream.chat.android.ui.widgets.avatar.UserAvatarView
 
 object ViewBinding {
   @JvmStatic
@@ -71,7 +71,7 @@ object ViewBinding {
 
   @JvmStatic
   @BindingAdapter("user")
-  fun bindUser(avatarView: AvatarView, user: User?) {
-    user?.let { avatarView.setUserData(it) }
+  fun bindUser(avatarView: UserAvatarView, user: User?) {
+    user?.let { avatarView.setUser(it) }
   }
 }

@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <io.getstream.chat.android.ui.message.list.header.MessageListHeaderView
+        <io.getstream.chat.android.ui.feature.messages.header.MessageListHeaderView
             android:id="@+id/messageListHeaderView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <io.getstream.chat.android.ui.message.list.MessageListView
+        <io.getstream.chat.android.ui.feature.messages.list.MessageListView
             android:id="@+id/messageListView"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -49,10 +49,10 @@
             app:streamUiMessageTextColorDateSeparator="@color/white"
             app:streamUiMessageTextSizeUserName="15sp"
             app:streamUiMessageTextStyleUserName="bold"
-            app:streamUiMuteUserEnabled="false"
-            app:streamUiPinMessageEnabled="true" />
+            app:streamUiPinMessageEnabled="true"
+          />
 
-        <io.getstream.chat.android.ui.message.input.MessageInputView
+        <io.getstream.chat.android.ui.feature.messages.composer.MessageComposerView
             android:id="@+id/messageInputView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

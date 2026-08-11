@@ -1,5 +1,6 @@
 [versions]
-stream = "5.17.0"
+stream = "6.0.0-beta2"
+streamPush = "1.0.2"
 agp = "7.3.1"
 kotlin = "1.8.10"
 ksp = "1.8.10-1.0.9"
@@ -68,9 +69,10 @@ crashlyrics-plugin = { module = "com.google.firebase:firebase-crashlytics-gradle
 googleService-plugin = { module = "com.google.gms:google-services", version.ref  = "googleService" }
 
 stream-client = { module = "io.getstream:stream-chat-android-client", version.ref = "stream" }
+stream-state = { module = "io.getstream:stream-chat-android-state", version.ref = "stream" }
 stream-offline = { module = "io.getstream:stream-chat-android-offline", version.ref = "stream" }
 stream-ui-components = { module = "io.getstream:stream-chat-android-ui-components", version.ref = "stream" }
-stream-firebase = { module = "io.getstream:stream-chat-android-pushprovider-firebase", version.ref = "stream" }
+stream-firebase = { module = "io.getstream:stream-android-push-firebase", version.ref = "streamPush" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidxFragment" }
 androidx-navigation-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidxNavigation" }

@@ -21,8 +21,8 @@ import io.getstream.avengerschat.core.model.Avenger
 import io.getstream.avengerschat.core.network.AppDispatchers
 import io.getstream.avengerschat.core.network.Dispatcher
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.models.User
 import io.getstream.chat.android.client.utils.onSuccessSuspend
+import io.getstream.chat.android.models.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -50,7 +50,7 @@ internal class UserProfileEditRepositoryImpl @Inject constructor(
     )
     val result = chatClient.updateUser(user).await()
     result.onSuccessSuspend {
-      emit(result.data())
+      emit(it)
     }
   }.flowOn(dispatcher)
 }

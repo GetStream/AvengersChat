@@ -17,7 +17,7 @@
 package io.getstream.avengerschat.core.data.repository.dm
 
 import androidx.annotation.WorkerThread
-import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.models.User
 import kotlinx.coroutines.flow.Flow
 
 interface DirectMessageRepository {

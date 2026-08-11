@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <io.getstream.chat.android.ui.channel.list.header.ChannelListHeaderView
+        <io.getstream.chat.android.ui.feature.channels.header.ChannelListHeaderView
             android:id="@+id/channelListHeaderView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             tools:background="@color/colorPrimary"
             tools:layout_height="56dp" />
 
-        <io.getstream.chat.android.ui.channel.list.ChannelListView
+        <io.getstream.chat.android.ui.feature.channels.list.ChannelListView
             android:id="@+id/channelListView"
             android:layout_width="0dp"
             android:layout_height="0dp"

@@ -21,10 +21,10 @@ import androidx.lifecycle.LifecycleOwner
 import io.getstream.avengerschat.core.uicomponents.stream.StreamComponents
 import io.getstream.avengerschat.core.uicomponents.stream.StreamUIComponent
 import io.getstream.avengerschat.feature.chat.R
-import io.getstream.chat.android.ui.channel.list.ChannelListView
-import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
-import io.getstream.chat.android.ui.channel.list.viewmodel.bindView
-import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListViewModelFactory
+import io.getstream.chat.android.ui.feature.channels.list.ChannelListView
+import io.getstream.chat.android.ui.viewmodel.channels.ChannelListViewModel
+import io.getstream.chat.android.ui.viewmodel.channels.ChannelListViewModelFactory
+import io.getstream.chat.android.ui.viewmodel.channels.bindView
 
 /**
  * Stream channel list UI component.

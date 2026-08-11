@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:loadImage="@{vm.avenger.poster}" />
 
-      <io.getstream.chat.android.ui.avatar.AvatarView
+      <io.getstream.chat.android.ui.widgets.avatar.UserAvatarView
         android:id="@+id/avatar"
         android:layout_width="52dp"
         android:layout_height="52dp"

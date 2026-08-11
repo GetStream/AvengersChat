@@ -64,6 +64,7 @@ dependencies {
 
   // stream chat core + UI SDK
   implementation(libs.stream.ui.components)
+  implementation(libs.stream.offline)
   implementation(libs.stream.firebase)
 
   // data binding

@@ -25,8 +25,8 @@ import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avengerschat.core.navigation.navigateToMessageList
 import io.getstream.avengerschat.feature.mention.databinding.FragmentMentionsBinding
-import io.getstream.chat.android.ui.mention.list.viewmodel.MentionListViewModel
-import io.getstream.chat.android.ui.mention.list.viewmodel.bindView
+import io.getstream.chat.android.ui.viewmodel.mentions.MentionListViewModel
+import io.getstream.chat.android.ui.viewmodel.mentions.bindView
 
 @AndroidEntryPoint
 class MentionsFragment : BindingFragment<FragmentMentionsBinding>(R.layout.fragment_mentions) {

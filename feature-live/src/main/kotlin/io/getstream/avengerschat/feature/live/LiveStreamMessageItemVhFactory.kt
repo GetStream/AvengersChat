@@ -18,13 +18,13 @@ package io.getstream.avengerschat.feature.live
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.getstream.sdk.chat.adapter.MessageListItem
 import io.getstream.avengerschat.extensions.localDate
 import io.getstream.avengerschat.feature.live.databinding.ItemLiveMessageBinding
-import io.getstream.chat.android.ui.message.list.adapter.BaseMessageItemViewHolder
-import io.getstream.chat.android.ui.message.list.adapter.MessageListItemPayloadDiff
-import io.getstream.chat.android.ui.message.list.adapter.MessageListItemViewHolderFactory
-import io.getstream.chat.android.ui.message.list.adapter.MessageListItemViewType
+import io.getstream.chat.android.ui.feature.messages.list.adapter.BaseMessageItemViewHolder
+import io.getstream.chat.android.ui.feature.messages.list.adapter.MessageListItem
+import io.getstream.chat.android.ui.feature.messages.list.adapter.MessageListItemPayloadDiff
+import io.getstream.chat.android.ui.feature.messages.list.adapter.MessageListItemViewHolderFactory
+import io.getstream.chat.android.ui.feature.messages.list.adapter.MessageListItemViewType
 
 /**
  * A custom item ViewHolderFactory for customizing the [MessageListItemViewType.PLAIN_TEXT]
